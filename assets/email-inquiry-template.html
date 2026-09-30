@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Transmission Received - Portfolio Inquiry</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #050608;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #0e1118;
+      border: 1px solid rgba(255, 42, 58, 0.35);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(255, 42, 58, 0.15);
+    }
+    .email-header {
+      background: linear-gradient(135deg, #161922 0%, #0d0f15 100%);
+      padding: 28px 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+    }
+    .brand-kicker {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #ff2a3a;
+      margin-bottom: 6px;
+    }
+    .header-title {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: #ffffff;
+    }
+    .email-body {
+      padding: 32px;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #86efac;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .receipt-box {
+      background: #121622;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 13.5px;
+    }
+    .receipt-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .receipt-row:first-child {
+      padding-top: 0;
+    }
+    .label {
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 500;
+    }
+    .val {
+      color: #ffffff;
+      font-weight: 600;
+      text-align: right;
+    }
+    .val-code {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      color: #ff4d5e;
+    }
+    .message-card {
+      background: rgba(255, 42, 58, 0.04);
+      border-left: 4px solid #ff2a3a;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+    }
+    .message-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .message-content {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #f1f5f9;
+      font-style: italic;
+      margin: 0;
+    }
+    .email-actions {
+      text-align: center;
+      margin-top: 24px;
+    }
+    .btn-reply {
+      display: inline-block;
+      background: #ff2a3a;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 28px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+    .email-footer {
+      background: #090c12;
+      padding: 20px 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.6;
+    }
+    .footer-link {
+      color: #ff2a3a;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <span class="brand-kicker">Niño Miguel S. Rodriguez • Portfolio Gateway</span>
+      <h1 class="header-title">⚡ New Portfolio Inquiry Received</h1>
+    </div>
+
+    <div class="email-body">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>Transmission Confirmed &amp; Dispatched</span>
+      </div>
+
+      <div class="receipt-box">
+        <div class="receipt-row">
+          <span class="label">Reference ID</span>
+          <span class="val val-code">{{TRANSMISSION_ID}}</span>
+        </div>
+        <div class="receipt-row">
+          <span class="label">Sender Name</span>
+          <span class="val">{{SENDER_NAME}}</span>
+        </div>
+        <div class="receipt-row">
+          <span class="label">Sender Email</span>
+          <span class="val">{{SENDER_EMAIL}}</span>
+        </div>
+        <div class="receipt-row">
+          <span class="label">Dispatched Time</span>
+          <span class="val">{{DISPATCHED_AT}}</span>
+        </div>
+        <div class="receipt-row">
+          <span class="label">Origin URL</span>
+          <span class="val">{{ORIGIN_URL}}</span>
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-title">Inquiry Excerpt</div>
+        <p class="message-content">"{{MESSAGE_CONTENT}}"</p>
+      </div>
+
+      <div class="email-actions">
+        <a href="mailto:{{SENDER_EMAIL}}?subject=Re:%20Portfolio%20Inquiry%20-%20Niño%20Miguel" class="btn-reply">
+          Reply Directly to {{SENDER_NAME}} &rarr;
+        </a>
+      </div>
+    </div>
+
+    <div class="email-footer">
+      This transmission was dispatched securely via the contact gateway at
+      <a href="http://localhost:3000" class="footer-link">Niño Miguel's Developer Portfolio</a>.<br>
+      © 2026 Niño Miguel S Rodriguez. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>

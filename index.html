@@ -1,0 +1,2124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Niño Miguel S Rodriguez | Full Stack Web Developer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Niño Miguel S Rodriguez - A passionate Information Technology Student and dedicated Junior Web Developer, architecting modern digital solutions.">
+  <meta name="theme-color" content="#050608">
+  <!-- Dynamic Vector & Legacy Favicons -->
+  <link rel="icon" type="image/svg+xml" href="assets/tiger-logo.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="alternate icon" href="assets/tiger-logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/tiger-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Fixed Hardware-Accelerated Canvas for Scroll Animation -->
+  <canvas id="animation-canvas"></canvas>
+
+  <!-- Ambient Contrast Scrim (Ensures video scrubs fluidly behind translucent content) -->
+  <div class="bg-scrim" aria-hidden="true"></div>
+
+  <!-- Minimalist Loading Screen (fades out immediately when frames are loaded) -->
+  <div id="loader" class="loader-overlay" aria-label="Loading animation frames">
+    <div class="loader-content">
+      <div class="loader-track">
+        <div id="loader-bar" class="loader-bar"></div>
+      </div>
+      <div id="loader-text" class="loader-text">Loading 0%</div>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#home" class="logo-link" aria-label="Home">
+        <img src="assets/tiger-logo.svg" alt="Niño Miguel Logo" class="brand-logo" width="42" height="42">
+      </a>
+      <nav class="navbar" id="navbar">
+        <a href="#home" class="nav-item active">HOME</a>
+        <a href="#about" class="nav-item">ABOUT ME</a>
+        <a href="#services" class="nav-item">SERVICES</a>
+        <a href="#projects" class="nav-item">PROJECTS</a>
+        <a href="#technologies" class="nav-item">ARSENAL</a>
+        <a href="#certificates" class="nav-item">CERTIFICATES</a>
+        <a href="#activity" class="nav-item">ACTIVITY</a>
+        <a href="#resume" class="nav-item">RESUME</a>
+        <a href="#contact" class="nav-item">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Portfolio Content Container (Overlaid seamlessly on the scroll animation) -->
+  <main class="main-content">
+
+    <!-- Hero Section (Reference Image 1) -->
+    <section id="home" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-text-col">
+          <p class="hero-greeting">Hello, My Name Is</p>
+          <h1 class="hero-name">NIÑO MIGUEL<br>S RODRIGUEZ</h1>
+          <p class="hero-tagline">A passionate Information Technology Student and dedicated Junior Web Developer,
+            architecting modern digital solutions. Specializing in crafting responsive, elegant User Interfaces and
+            leveraging a modern tech stack to build efficient web experiences. Always driven by the ever-evolving world
+            of technology and its limitless possibilities.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-secondary">View My Projects</a>
+            <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer"
+              class="btn btn-secondary btn-hero-github" aria-label="Niño Miguel GitHub Profile">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                </path>
+              </svg>
+              GitHub
+            </a>
+            <a href="#contact" class="btn btn-primary">Contact me</a>
+          </div>
+        </div>
+
+        <div class="hero-visual-col">
+          <div class="hero-card-frame">
+            <div class="red-backdrop-box"></div>
+            <img src="assets/nino-suit.jpg" alt="Niño Miguel S Rodriguez" class="hero-photo" loading="eager">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section (Reference Image 2 Top) -->
+    <section id="about" class="about-section">
+      <div class="about-container">
+        <div class="about-visual-col">
+          <div class="about-card-frame">
+            <div class="red-backdrop-box"></div>
+            <img src="assets/nino-gym-selfie.jpg" alt="Niño Miguel S Rodriguez in Gym" class="about-photo"
+              loading="lazy">
+          </div>
+        </div>
+
+        <div class="about-text-col">
+          <span class="section-tag">▸ About me</span>
+          <h2 class="section-title">Who Am I</h2>
+          <p class="about-bio">
+            I am <strong>Niño Miguel S. Rodriguez</strong>, a full-stack web developer dedicated to building high-performance, visually engaging digital experiences. Driven by a commitment to continuous self-improvement and high discipline—traits forged through my dedication to hybrid fitness—I bring consistency, precision, and focus to every line of code I write.
+          </p>
+          <p class="about-bio">
+            My core focus lies at the intersection of aesthetic design and robust engineering. I specialize in transforming complex problems into intuitive, responsive, and elegant user interfaces that deliver seamless experiences across all devices.
+          </p>
+
+          <div class="about-competencies-block">
+            <h4 class="competencies-heading">Core Technical Competencies:</h4>
+            <div class="competency-item">
+              <span class="competency-category">Frontend:</span>
+              <span class="competency-techs">HTML5, CSS3, JavaScript, React, Next.js</span>
+            </div>
+            <div class="competency-item">
+              <span class="competency-category">Backend:</span>
+              <span class="competency-techs">PHP, Full-Stack Architecture</span>
+            </div>
+            <div class="competency-item">
+              <span class="competency-category">Practices:</span>
+              <span class="competency-techs">Responsive Web Design, Modern UI/UX Implementation, Performance Optimization</span>
+            </div>
+          </div>
+
+          <p class="about-bio">
+            I thrive on collaboration, meaningful client relationships, and turning ambitious concepts into impactful digital products. Always exploring new frameworks and industry standards, I aim to build modern, reliable solutions that drive measurable results.
+          </p>
+
+          <div class="tech-pills-grid">
+            <span class="tech-pill"><span class="pill-dot html-dot"></span>HTML5</span>
+            <span class="tech-pill"><span class="pill-dot css-dot"></span>CSS3</span>
+            <span class="tech-pill"><span class="pill-dot js-dot"></span>JavaScript</span>
+            <span class="tech-pill"><span class="pill-dot sass-dot"></span>Sass</span>
+            <span class="tech-pill"><span class="pill-dot next-dot"></span>Next.js</span>
+            <span class="tech-pill"><span class="pill-dot react-dot"></span>React</span>
+            <span class="tech-pill"><span class="pill-dot php-dot"></span>PHP</span>
+            <span class="tech-pill"><span class="pill-dot vue-dot"></span>Vue.js</span>
+            <span class="tech-pill"><span class="pill-dot bs-dot"></span>Bootstrap 5</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Services Section (Reference Image 2 Middle) -->
+    <section id="services" class="services-section">
+      <div class="services-container">
+        <span class="section-tag">▸ My Services</span>
+        <h2 class="section-title">What Can I Do</h2>
+
+        <div class="services-grid">
+          <!-- Card 1 -->
+          <div class="service-card" data-service="creative-design">
+            <div class="service-card-glow" aria-hidden="true"></div>
+            <div class="service-top-bar">
+              <div class="service-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="M2 2l7.586 7.586"></path>
+                  <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+              </div>
+              <span class="service-num">01</span>
+            </div>
+            <h3 class="service-name">Creative Design</h3>
+            <p class="service-desc">Leveraging artistic elements and aesthetic principles to craft visually appealing
+              and engaging user experiences.</p>
+            <div class="service-tags">
+              <span class="service-tag">Figma & Tokens</span>
+              <span class="service-tag">Visual Hierarchy</span>
+              <span class="service-tag">Typography</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="service-card" data-service="clean-code">
+            <div class="service-card-glow" aria-hidden="true"></div>
+            <div class="service-top-bar">
+              <div class="service-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <span class="service-num">02</span>
+            </div>
+            <h3 class="service-name">Clean Code</h3>
+            <p class="service-desc">Writing code that is well-structured, readable, and maintainable. It involves
+              following coding best practices.</p>
+            <div class="service-tags">
+              <span class="service-tag">DRY / SOLID</span>
+              <span class="service-tag">ES6+ Modular</span>
+              <span class="service-tag">Git Workflow</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="service-card" data-service="user-interface">
+            <div class="service-card-glow" aria-hidden="true"></div>
+            <div class="service-top-bar">
+              <div class="service-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <span class="service-num">03</span>
+            </div>
+            <h3 class="service-name">User Interface</h3>
+            <p class="service-desc">Creating intuitive and user-friendly designs that prioritize usability,
+              accessibility, and a seamless user experience.</p>
+            <div class="service-tags">
+              <span class="service-tag">Responsive UI</span>
+              <span class="service-tag">CSS Flex / Grid</span>
+              <span class="service-tag">Micro-Interactions</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="service-card" data-service="user-experience">
+            <div class="service-card-glow" aria-hidden="true"></div>
+            <div class="service-top-bar">
+              <div class="service-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <span class="service-num">04</span>
+            </div>
+            <h3 class="service-name">User Experience</h3>
+            <p class="service-desc">Understanding user behaviors, needs, and preferences to create interfaces that are
+              intuitive, efficient, and enjoyable to use.</p>
+            <div class="service-tags">
+              <span class="service-tag">Wireframing</span>
+              <span class="service-tag">Accessibility (a11y)</span>
+              <span class="service-tag">User Flows</span>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="service-card" data-service="fast-support">
+            <div class="service-card-glow" aria-hidden="true"></div>
+            <div class="service-top-bar">
+              <div class="service-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </div>
+              <span class="service-num">05</span>
+            </div>
+            <h3 class="service-name">Fast Support</h3>
+            <p class="service-desc">Addressing and resolving user-reported issues or inquiries related to the website or
+              application.</p>
+            <div class="service-tags">
+              <span class="service-tag">Agile Debugging</span>
+              <span class="service-tag">Hotfix Deployment</span>
+              <span class="service-tag">Cross-Browser QA</span>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="service-card" data-service="branding">
+            <div class="service-card-glow" aria-hidden="true"></div>
+            <div class="service-top-bar">
+              <div class="service-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                  <line x1="4" y1="22" x2="4" y2="15"></line>
+                </svg>
+              </div>
+              <span class="service-num">06</span>
+            </div>
+            <h3 class="service-name">Branding</h3>
+            <p class="service-desc">Creating consistent and cohesive brand experiences through the use of logos, color
+              schemes, typography, and other branding assets.</p>
+            <div class="service-tags">
+              <span class="service-tag">Design Systems</span>
+              <span class="service-tag">Color Theory</span>
+              <span class="service-tag">Brand Identity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Archive Section (Reference Images 1, 2, 3, 5) -->
+    <section id="projects" class="projects-section">
+      <div class="projects-container">
+
+        <!-- Header with Filter Controls -->
+        <div class="archive-header-row">
+          <div class="archive-title-group">
+            <span class="section-tag">▸ Project Showcase</span>
+            <h2 class="section-title">Project Archive</h2>
+            <p class="archive-subtitle">Selected applications, digital architectures, and collaborative engineering
+              projects.</p>
+          </div>
+
+          <!-- Filter Tabs: ALL, COLLABORATIVE, MY PROJECTS -->
+          <div class="archive-filters" role="tablist" aria-label="Project Filter Options">
+            <button type="button" class="archive-filter-btn active" data-filter="all" role="tab"
+              aria-selected="true">ALL</button>
+            <button type="button" class="archive-filter-btn" data-filter="collaborative" role="tab"
+              aria-selected="false">COLLABORATIVE PROJECTS</button>
+            <button type="button" class="archive-filter-btn" data-filter="my-projects" role="tab"
+              aria-selected="false">MY PROJECTS</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid Container -->
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- Celestine University of the Pacific Card (Collaborative) -->
+          <article class="project-card project-card-featured" data-category="collaborative">
+            <div class="project-card-visual" id="open-celestine-modal-visual" role="button" tabindex="0"
+              aria-label="Open Celestine University case study modal">
+              <div class="project-visual-badge">01 — Collaborative Platform</div>
+              <div class="project-img-wrapper">
+                <img src="assets/projects/celestine-banner.png"
+                  alt="Celestine University of the Pacific Official Seal & Insignia" class="project-img-main" loading="lazy">
+                <div class="project-img-secondary-badge">
+                  <img src="assets/projects/celestine-hero.png" alt="Admissions Portal Interface"
+                    class="project-thumb-preview">
+                  <span class="preview-cta">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    Multi-View
+                  </span>
+                </div>
+              </div>
+              <div class="project-visual-overlay">
+                <span class="overlay-text">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  Click to View Full Project Modal
+                </span>
+              </div>
+            </div>
+
+            <div class="project-card-content">
+              <div class="project-card-main-col">
+                <div class="project-meta-badges">
+                  <span class="badge-featured">FEATURED PROJECT</span>
+                  <span class="badge-collaborative"><span class="pill-dot red-dot"></span>COLLABORATIVE PROJECT —
+                    YAKUZOKAI TEAM</span>
+                </div>
+
+                <h3 class="project-title">01 — Celestine University of the Pacific</h3>
+
+                <p class="project-description">
+                  An enterprise-grade academic admissions and institutional management platform architected on a high-throughput <strong>PHP MVCR (Model-View-Controller-Repository)</strong> design pattern. Integrates asynchronous AJAX validation (<code>ajax_validate.php</code>), isolated repository database transactions, a modular enrollment pipeline, and optimized MySQL persistence (<code>celestine_university.sql</code>) engineered for zero downtime.
+                </p>
+              </div>
+
+              <div class="project-card-side-col">
+                <div class="tech-pills-grid project-pills">
+                  <span class="tech-pill"><span class="pill-dot php-dot"></span>PHP 8.x</span>
+                  <span class="tech-pill"><span class="pill-dot mvc-dot"></span>MVCR Architecture</span>
+                  <span class="tech-pill"><span class="pill-dot sql-dot"></span>MySQL DB</span>
+                  <span class="tech-pill"><span class="pill-dot red-dot"></span>Repository Pattern</span>
+                  <span class="tech-pill"><span class="pill-dot fast-dot"></span>AJAX Engine</span>
+                  <span class="tech-pill"><span class="pill-dot js-dot"></span>JavaScript (ES6+)</span>
+                  <span class="tech-pill"><span class="pill-dot bs-dot"></span>Bootstrap 5</span>
+                </div>
+
+                <div class="project-actions">
+                  <button type="button" class="btn btn-primary btn-project-view" id="open-celestine-btn">
+                    View Project
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                  <a href="https://github.com/Yakuzokai/CUP" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary btn-github-repo">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                      </path>
+                    </svg>
+                    GitHub Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Collaborative Projects Bookshelf Showcase (shown under COLLABORATIVE and ALL filters) -->
+          <div class="solo-placeholder-card solo-showcase-card" id="solo-placeholder-card" data-category="collaborative">
+            <div class="placeholder-glow"></div>
+
+            <!-- Bookshelf Header -->
+            <div class="bookshelf-header">
+              <div class="placeholder-icon">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                  <line x1="12" y1="2" x2="12" y2="6"></line>
+                  <line x1="12" y1="18" x2="12" y2="22"></line>
+                </svg>
+              </div>
+              <span class="placeholder-badge">COLLABORATIVE PROJECTS • PRODUCTION ARCHITECTURE ARCHIVE</span>
+              <h3 class="placeholder-title">Collaborative Engineering Projects Showcase</h3>
+              <p class="placeholder-text">
+                Co-engineered production platforms built in collaboration with cross-functional development teams, featuring high-throughput hybrid clients, dynamic hospitality yield engines, and sub-millisecond AI spatial geometry planners.
+              </p>
+            </div>
+
+            <!-- Bookshelf Rack Grid: 3 Projects -->
+            <div class="bookshelf-rack" id="bookshelf-rack">
+
+              <!-- Book 01 / Project 02: NCST SRMS -->
+              <div class="bookshelf-card" data-project-id="ncst-srms" tabindex="0" role="button" aria-label="View NCST SRMS project modal">
+                <div class="bookshelf-visual">
+                  <span class="bookshelf-vol-badge">VOL. 02 • COLLABORATIVE PLATFORM</span>
+                  <img src="assets/projects/ncst-srms-banner.jpg" alt="NCST Student Record Management System" class="bookshelf-img" loading="lazy">
+                  <div class="bookshelf-visual-overlay">
+                    <span class="bookshelf-overlay-text">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      Open Case Study
+                    </span>
+                  </div>
+                </div>
+
+                <div class="bookshelf-content">
+                  <div class="bookshelf-kicker">ACADEMIC WORKFLOWS &amp; FINTECH • TEAM CO-ENGINEERED</div>
+                  <h4 class="bookshelf-project-title highlighted-system-title">02 — NCST Student Record Management System (SRMS)</h4>
+                  <p class="bookshelf-desc">
+                    Synchronized, hybrid school operations platform coupling a Python/PyQt6 desktop client for administrative registrar workflows with a PHP self-service web portal and PayMongo gateway.
+                  </p>
+
+                  <!-- Emphasized Engineering Team Lineup -->
+                  <div class="collaborative-team-lineup">
+                    <div class="team-lineup-header">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                      <span class="team-lineup-label">CO-ENGINEERED TEAM LINEUP</span>
+                    </div>
+                    <div class="team-members-list">
+                      <div class="team-member-item member-lead">
+                        <span class="member-dot lead-dot"></span>
+                        <span class="member-name">Niño Miguel S. Rodriguez <span class="member-tag">(Me)</span></span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Albert Velez</span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Karl Evan Tabunda</span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Francis Lancelot Esquilla</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bookshelf-actions">
+                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn" data-project-target="ncst-srms">
+                      View Project
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Book 02 / Project 03: Fynn Boutique Hotel -->
+              <div class="bookshelf-card" data-project-id="fynn-hotel" tabindex="0" role="button" aria-label="View Fynn Boutique Hotel project modal">
+                <div class="bookshelf-visual">
+                  <span class="bookshelf-vol-badge">VOL. 03 • COLLABORATIVE MONOREPO</span>
+                  <img src="assets/projects/fynn-hotel-banner.jpg" alt="Fynn Boutique Hotel Management & Booking System" class="bookshelf-img" loading="lazy">
+                  <div class="bookshelf-visual-overlay">
+                    <span class="bookshelf-overlay-text">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      Open Case Study
+                    </span>
+                  </div>
+                </div>
+
+                <div class="bookshelf-content">
+                  <div class="bookshelf-kicker">ENTERPRISE HOSPITALITY &amp; YIELD • TEAM CO-ENGINEERED</div>
+                  <h4 class="bookshelf-project-title highlighted-system-title">03 — Fynn Boutique Hotel Management &amp; Booking</h4>
+                  <p class="bookshelf-desc">
+                    Full-stack modular hospitality monorepo with dynamic yield management (RevPAR, ADR, Occupancy), real-time housekeeping SLA tracking, mobile staff dispatch, and 2-tier refunds.
+                  </p>
+
+                  <!-- Emphasized Engineering Team Lineup -->
+                  <div class="collaborative-team-lineup">
+                    <div class="team-lineup-header">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                      <span class="team-lineup-label">CO-ENGINEERED TEAM LINEUP</span>
+                    </div>
+                    <div class="team-members-list">
+                      <div class="team-member-item member-lead">
+                        <span class="member-dot lead-dot"></span>
+                        <span class="member-name">Niño Miguel S. Rodriguez <span class="member-tag">(Me)</span></span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Albert Velez</span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Karl Evan Tabunda</span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Francis Lancelot Esquilla</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bookshelf-actions">
+                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn" data-project-target="fynn-hotel">
+                      View Project
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Book 03 / Project 04: SmartSpace -->
+              <div class="bookshelf-card" data-project-id="smartspace" tabindex="0" role="button" aria-label="View SmartSpace project modal">
+                <div class="bookshelf-visual">
+                  <span class="bookshelf-vol-badge">VOL. 04 • COLLABORATIVE SPATIAL AI</span>
+                  <img src="assets/projects/smartspace-banner.jpg" alt="SmartSpace AI-Assisted Spatial Planning Platform" class="bookshelf-img" loading="lazy">
+                  <div class="bookshelf-visual-overlay">
+                    <span class="bookshelf-overlay-text">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      Open Case Study
+                    </span>
+                  </div>
+                </div>
+
+                <div class="bookshelf-content">
+                  <div class="bookshelf-kicker">SPATIAL COMPUTING &amp; GEOMETRY • TEAM CO-ENGINEERED</div>
+                  <h4 class="bookshelf-project-title highlighted-system-title">04 — SmartSpace: AI Spatial Planning Platform</h4>
+                  <p class="bookshelf-desc">
+                    AI-assisted spatial planner decoupling Google Gemini 2.0 Flash perceptual AI from a deterministic mathematical physics engine at strict 1.00 scale (P95 &lt; 0.4 ms).
+                  </p>
+
+                  <!-- Emphasized Engineering Team Lineup -->
+                  <div class="collaborative-team-lineup">
+                    <div class="team-lineup-header">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                      </svg>
+                      <span class="team-lineup-label">CO-ENGINEERED TEAM LINEUP</span>
+                    </div>
+                    <div class="team-members-list">
+                      <div class="team-member-item member-lead">
+                        <span class="member-dot lead-dot"></span>
+                        <span class="member-name">Niño Miguel S. Rodriguez <span class="member-tag">(Me)</span></span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Albert Velez</span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Karl Evan Tabunda</span>
+                      </div>
+                      <div class="team-member-item">
+                        <span class="member-dot"></span>
+                        <span class="member-name">Francis Lancelot Esquilla</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bookshelf-actions">
+                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn" data-project-target="smartspace">
+                      View Project
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Architectural Bookshelf Shelf Bar -->
+            <div class="bookshelf-shelf-bar"></div>
+          </div>
+
+          <!-- My Projects — Solo Creations & Independent Software Architecture -->
+          <div class="my-projects-staging-card solo-showcase-card" id="my-projects-showcase-card" data-category="my-projects">
+            <div class="placeholder-glow"></div>
+
+            <div class="staging-header">
+              <div class="placeholder-icon staging-pulse-icon">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                  <path d="M2 17l10 5 10-5"></path>
+                  <path d="M2 12l10 5 10-5"></path>
+                </svg>
+              </div>
+              <span class="placeholder-badge">MY PROJECTS • INDEPENDENT SOFTWARE &amp; ARCHITECTURES</span>
+              <h3 class="placeholder-title">Solo Engineering Projects Showcase</h3>
+              <p class="placeholder-text">
+                Independent production web applications, biometric performance command centers, and digital systems authored solely by Niño Miguel Rodriguez—engineered with zero runtime bloat, clinical precision, and client-side persistence.
+              </p>
+            </div>
+
+            <!-- Bookshelf Rack Grid: 3 Projects (1 Live Production + 2 Staged in Pipeline) -->
+            <div class="bookshelf-rack" id="solo-bookshelf-rack">
+
+              <!-- Book 01 / Project 05: MIGUEL.FIT (Performance OS) -->
+              <div class="bookshelf-card bookshelf-card-live" data-project-id="miguelfit" tabindex="0" role="button" aria-label="View MIGUEL.FIT Performance OS case study modal">
+                <div class="bookshelf-visual">
+                  <span class="bookshelf-vol-badge">VOL. 05 • INDEPENDENT PRODUCTION</span>
+                  <img src="assets/projects/miguelfit-today.png" alt="MIGUEL.FIT Performance OS - Biometric Command Center" class="bookshelf-img" loading="lazy">
+                  <div class="bookshelf-visual-overlay">
+                    <span class="bookshelf-overlay-text">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      Open Case Study
+                    </span>
+                  </div>
+                </div>
+
+                <div class="bookshelf-content">
+                  <span class="bookshelf-kicker">VOL. 05 • PERFORMANCE OS // ZERO NOISE</span>
+                  <h4 class="bookshelf-project-title highlighted-system-title">MIGUEL.FIT – Biometric &amp; Tactical Performance OS</h4>
+                  <p class="bookshelf-desc">
+                    An offline-first, client-centric fitness command center engineered with zero frontend bloat. Replaces guesswork with clinically validated mathematical modeling (Mifflin-St Jeor &amp; Epley 1RM), biometric readiness tracking, procedural Web Audio cues, and zero-latency localStorage persistence.
+                  </p>
+
+                  <div class="bookshelf-actions">
+                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn" data-project-target="miguelfit">
+                      View Project
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Book 02 / Project 06: AURA MART (Boutique E-Commerce) -->
+              <div class="bookshelf-card bookshelf-card-live" data-project-id="auramart" tabindex="0" role="button" aria-label="View AURA MART boutique e-commerce case study modal">
+                <div class="bookshelf-visual">
+                  <span class="bookshelf-vol-badge">VOL. 06 • INDEPENDENT PRODUCTION</span>
+                  <img src="assets/projects/auramart-hero.png" alt="AURA MART Boutique E-Commerce Platform" class="bookshelf-img" loading="lazy">
+                  <div class="bookshelf-visual-overlay">
+                    <span class="bookshelf-overlay-text">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      Open Case Study
+                    </span>
+                  </div>
+                </div>
+
+                <div class="bookshelf-content">
+                  <span class="bookshelf-kicker">VOL. 06 • BOUTIQUE E-COMMERCE // SOLO ARCHITECTURE</span>
+                  <h4 class="bookshelf-project-title highlighted-system-title">AURA MART – Atmospheric Boutique E-Commerce</h4>
+                  <p class="bookshelf-desc">
+                    An original boutique e-commerce concept conceived, architected, and engineered by Niño Miguel S. Rodriguez. Features dark-mode glassmorphism, instant catalog filtering, an interactive slide-over cart drawer with dynamic free-shipping progress, and an atomic file-backed JSON REST service.
+                  </p>
+
+                  <div class="bookshelf-actions">
+                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn" data-project-target="auramart">
+                      View Project
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Book 03 / Project 07: The Grazing Bull (Agri-Enterprise Platform) -->
+              <div class="bookshelf-card bookshelf-card-live" data-project-id="grazingbull" tabindex="0" role="button" aria-label="View The Grazing Bull enterprise case study modal">
+                <div class="bookshelf-visual">
+                  <span class="bookshelf-vol-badge">VOL. 07 • ENTERPRISE PRODUCTION</span>
+                  <img src="assets/projects/grazingbull-hero.png" alt="The Grazing Bull - Sustainable Ranching & Cattle Genetics" class="bookshelf-img" loading="lazy">
+                  <div class="bookshelf-visual-overlay">
+                    <span class="bookshelf-overlay-text">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      Open Case Study
+                    </span>
+                  </div>
+                </div>
+
+                <div class="bookshelf-content">
+                  <span class="bookshelf-kicker">VOL. 07 • AGRI-ENTERPRISE // CATTLE GENETICS</span>
+                  <h4 class="bookshelf-project-title highlighted-system-title">The Grazing Bull – Cattle Genetics &amp; Sustainable Ranching</h4>
+                  <p class="bookshelf-desc">
+                    Over 55 years of distinguished ranching heritage transformed into an enterprise AgTech platform. Spearheaded under the leadership of CEO Niño Miguel S. Rodriguez, it showcases world-class cattle genetics, natural pasture grazing, and scientific livestock breeding programs.
+                  </p>
+
+                  <div class="bookshelf-actions">
+                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn" data-project-target="grazingbull">
+                      View Project
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Architectural Bookshelf Shelf Bar -->
+            <div class="bookshelf-shelf-bar"></div>
+
+            <!-- Coming Soon Telemetry / Status Radar Console (Image 5 Reference) -->
+            <div class="coming-soon-console" style="margin-top: 36px;">
+              <div class="console-terminal-top">
+                <div class="console-dots">
+                  <span class="console-dot dot-red"></span>
+                  <span class="console-dot dot-amber"></span>
+                  <span class="console-dot dot-green"></span>
+                </div>
+                <div class="console-title">PIPELINE_MONITOR // PRODUCTION_BRANCH</div>
+                <div class="console-badge-live">
+                  <span class="pulsing-radar-dot"></span>
+                  <span>3 LIVE PRODUCTION ARCHITECTURES</span>
+                </div>
+              </div>
+              
+              <div class="console-body">
+                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-cmd">git status</span>: working tree clean — branch: <span class="c-highlight">main-production</span></div>
+                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Active Deployment 05:</span> MIGUEL.FIT (Performance OS) live on Netlify &rarr; <a href="https://aesthetic-toffee-3de2c5.netlify.app/spa.html" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;"><span class="c-highlight">https://aesthetic-toffee-3de2c5.netlify.app/spa.html</span></a></div>
+                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Active Deployment 06:</span> AURA MART (Atmospheric E-Commerce) live on Netlify &rarr; <a href="https://tangerine-sopapillas-47b121.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;"><span class="c-highlight">https://tangerine-sopapillas-47b121.netlify.app/</span></a></div>
+                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Active Deployment 07:</span> The Grazing Bull (Agri-Enterprise Platform) live on Netlify &rarr; <a href="https://rodriguezninomiguelbsit-12a3.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;"><span class="c-highlight">https://rodriguezninomiguelbsit-12a3.netlify.app/</span></a></div>
+                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Status:</span> All 3 production systems operational with zero runtime bloat and responsive architecture.</div>
+              </div>
+
+              <div class="console-pills-row">
+                <span class="tech-pill"><span class="pill-dot mint-dot"></span>Live Production</span>
+                <span class="tech-pill"><span class="pill-dot red-dot"></span>Full-Stack Web</span>
+                <span class="tech-pill"><span class="pill-dot bs-dot"></span>Bootstrap 5 E-Commerce</span>
+                <span class="tech-pill"><span class="pill-dot js-dot"></span>Cattle Genetics AgTech</span>
+                <span class="tech-pill"><span class="pill-dot node-dot"></span>Node.js REST Services</span>
+              </div>
+            </div>
+
+            <!-- Staging Footer / Connect Notice -->
+            <div class="staging-footer-bar">
+              <div class="staging-note-text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span>Solo creations authored and engineered exclusively by Niño Miguel Rodriguez.</span>
+              </div>
+              <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-github-repo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path>
+                </svg>
+                Explore GitHub
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Things I Build With Section (Reference Images 4 & 5) -->
+    <section id="technologies" class="build-with-section">
+      <div class="build-with-container">
+
+        <div class="build-with-header">
+          <div class="build-with-badge">
+            <span class="pill-dot red-dot"></span>
+            SYSTEM ARCHITECTURE & CAPABILITIES
+          </div>
+          <h2 class="build-with-title">Engineering Arsenal & System Design</h2>
+          <p class="build-with-subtitle">Modern frameworks, cloud primitives, and architectural patterns leveraged to
+            build scalable, high-performance digital products.</p>
+        </div>
+
+        <div class="build-with-grid">
+
+          <!-- Card 1: WEB (added react.js, vue.js per user request) -->
+          <div class="stack-box stack-box-web">
+            <div class="stack-box-header">
+              <span class="stack-box-icon web-icon">■</span>
+              <div class="stack-header-meta">
+                <h3 class="stack-box-title">WEB</h3>
+                <span class="stack-role-badge">Frontend & Full Stack</span>
+              </div>
+              <span class="stack-count-badge">7 Techs</span>
+            </div>
+            <div class="stack-box-divider"></div>
+            <ul class="stack-box-list">
+              <li>PHP</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Bootstrap</li>
+              <li>React.js</li>
+              <li>Vue.js</li>
+            </ul>
+          </div>
+
+          <!-- Card 2: SOFTWARE -->
+          <div class="stack-box stack-box-software">
+            <div class="stack-box-header">
+              <span class="stack-box-icon software-icon">■</span>
+              <div class="stack-header-meta">
+                <h3 class="stack-box-title">SOFTWARE</h3>
+                <span class="stack-role-badge">Systems & OOP</span>
+              </div>
+              <span class="stack-count-badge">2 Techs</span>
+            </div>
+            <div class="stack-box-divider"></div>
+            <ul class="stack-box-list">
+              <li>Java</li>
+              <li>C++</li>
+            </ul>
+          </div>
+
+          <!-- Card 3: DATABASE -->
+          <div class="stack-box stack-box-database">
+            <div class="stack-box-header">
+              <span class="stack-box-icon database-icon">■</span>
+              <div class="stack-header-meta">
+                <h3 class="stack-box-title">DATABASE</h3>
+                <span class="stack-role-badge">Relational & SQL</span>
+              </div>
+              <span class="stack-count-badge">2 Techs</span>
+            </div>
+            <div class="stack-box-divider"></div>
+            <ul class="stack-box-list">
+              <li>MySQL</li>
+              <li>MariaDB</li>
+            </ul>
+          </div>
+
+          <!-- Card 4: TOOLS -->
+          <div class="stack-box stack-box-tools">
+            <div class="stack-box-header">
+              <span class="stack-box-icon tools-icon">■</span>
+              <div class="stack-header-meta">
+                <h3 class="stack-box-title">TOOLS</h3>
+                <span class="stack-role-badge">DevOps & Environments</span>
+              </div>
+              <span class="stack-count-badge">5 Techs</span>
+            </div>
+            <div class="stack-box-divider"></div>
+            <ul class="stack-box-list">
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>VS Code</li>
+              <li>NetBeans</li>
+              <li>XAMPP</li>
+            </ul>
+          </div>
+
+          <!-- Card 5: UI / UX -->
+          <div class="stack-box stack-box-uiux">
+            <div class="stack-box-header">
+              <span class="stack-box-icon uiux-icon">■</span>
+              <div class="stack-header-meta">
+                <h3 class="stack-box-title">UI / UX</h3>
+                <span class="stack-role-badge">Design Systems</span>
+              </div>
+              <span class="stack-count-badge">1 Tech</span>
+            </div>
+            <div class="stack-box-divider"></div>
+            <ul class="stack-box-list">
+              <li>Figma</li>
+            </ul>
+          </div>
+
+          <!-- Card 6: AI (added claude per user request) -->
+          <div class="stack-box stack-box-ai">
+            <div class="stack-box-header">
+              <span class="stack-box-icon ai-icon">■</span>
+              <div class="stack-header-meta">
+                <h3 class="stack-box-title">AI</h3>
+                <span class="stack-role-badge">Cognitive Engineering</span>
+              </div>
+              <span class="stack-count-badge">3 Techs</span>
+            </div>
+            <div class="stack-box-divider"></div>
+            <ul class="stack-box-list">
+              <li>Gemini</li>
+              <li>Codex</li>
+              <li>Claude</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates & Certifications Section (Reference Image 2) -->
+    <section id="certificates" class="cert-section">
+      <div class="cert-container">
+
+        <div class="cert-header">
+          <div class="cert-header-left">
+            <span class="cert-kicker">• Verified Credentials</span>
+            <h2 class="cert-title">Certifications &amp; Professional Training</h2>
+            <p class="cert-subtitle">Industry-accredited credentials validating technical proficiency in modern web architecture, core programming languages, and database management.</p>
+          </div>
+          <div class="cert-header-right">
+            <span class="cert-count-badge">
+              <span class="cert-badge-dot"></span>
+              3 Verified
+            </span>
+          </div>
+        </div>
+
+        <div class="cert-grid">
+
+          <!-- Certificate 1: Introduction to HTML -->
+          <article class="cert-card">
+            <div class="cert-thumb-wrapper">
+              <div class="cert-status-badge">★ COMPLETED</div>
+              <img src="assets/certificates/cert-html.png"
+                alt="Sololearn Introduction to HTML Certificate - Rodriguez, Niño Miguel S" class="cert-thumb-img"
+                loading="lazy">
+              <a href="https://www.sololearn.com/certificates/CC-4O2CYFBD" target="_blank" rel="noopener noreferrer"
+                class="cert-inspect-overlay" aria-label="Inspect Introduction to HTML Certificate">
+                <span class="cert-overlay-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  Inspect Credential
+                </span>
+              </a>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-meta-row">
+                <span class="cert-issuer-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  SOLOLEARN
+                </span>
+                <span class="cert-date">04 February, 2025</span>
+              </div>
+
+              <h3 class="cert-course-title">Introduction to HTML</h3>
+              <p class="cert-description">
+                Official Sololearn course certification verifying understanding of core HTML5 semantic structures, web
+                accessibility, interactive forms, and table architectures.
+              </p>
+
+              <div class="cert-skills-list">
+                <span class="cert-skill-tag">HTML5</span>
+                <span class="cert-skill-tag">Semantic Markup</span>
+                <span class="cert-skill-tag">Web Accessibility</span>
+                <span class="cert-skill-tag">Forms & Tables</span>
+              </div>
+
+              <div class="cert-footer">
+                <span class="cert-id">ID: CC-4O2CYFBD</span>
+                <a href="https://www.sololearn.com/certificates/CC-4O2CYFBD" target="_blank" rel="noopener noreferrer"
+                  class="cert-inspect-link">
+                  Inspect
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Certificate 2: Introduction to CSS -->
+          <article class="cert-card">
+            <div class="cert-thumb-wrapper">
+              <div class="cert-status-badge">★ COMPLETED</div>
+              <img src="assets/certificates/cert-css.png"
+                alt="Sololearn Introduction to CSS Certificate - Rodriguez, Niño Miguel S" class="cert-thumb-img"
+                loading="lazy">
+              <a href="https://www.sololearn.com/certificates/CC-OLCVFE6T" target="_blank" rel="noopener noreferrer"
+                class="cert-inspect-overlay" aria-label="Inspect Introduction to CSS Certificate">
+                <span class="cert-overlay-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  Inspect Credential
+                </span>
+              </a>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-meta-row">
+                <span class="cert-issuer-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  SOLOLEARN
+                </span>
+                <span class="cert-date">22 March, 2025</span>
+              </div>
+
+              <h3 class="cert-course-title">Introduction to CSS</h3>
+              <p class="cert-description">
+                Official Sololearn course certification verifying expertise in CSS cascading rules, box model mechanics,
+                flexbox, grid systems, and responsive styling.
+              </p>
+
+              <div class="cert-skills-list">
+                <span class="cert-skill-tag">CSS3</span>
+                <span class="cert-skill-tag">Box Model</span>
+                <span class="cert-skill-tag">Flexbox & Grid</span>
+                <span class="cert-skill-tag">Responsive Design</span>
+              </div>
+
+              <div class="cert-footer">
+                <span class="cert-id">ID: CC-OLCVFE6T</span>
+                <a href="https://www.sololearn.com/certificates/CC-OLCVFE6T" target="_blank" rel="noopener noreferrer"
+                  class="cert-inspect-link">
+                  Inspect
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Certificate 3: Introduction to JavaScript -->
+          <article class="cert-card">
+            <div class="cert-thumb-wrapper">
+              <div class="cert-status-badge">★ COMPLETED</div>
+              <img src="assets/certificates/cert-js.png"
+                alt="Sololearn Introduction to JavaScript Certificate - Rodriguez, Niño Miguel S" class="cert-thumb-img"
+                loading="lazy">
+              <a href="https://www.sololearn.com/certificates/CC-K9IOJPOR" target="_blank" rel="noopener noreferrer"
+                class="cert-inspect-overlay" aria-label="Inspect Introduction to JavaScript Certificate">
+                <span class="cert-overlay-btn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  Inspect Credential
+                </span>
+              </a>
+            </div>
+
+            <div class="cert-body">
+              <div class="cert-meta-row">
+                <span class="cert-issuer-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  SOLOLEARN
+                </span>
+                <span class="cert-date">01 May, 2025</span>
+              </div>
+
+              <h3 class="cert-course-title">Introduction to JavaScript</h3>
+              <p class="cert-description">
+                Official Sololearn course certification verifying theoretical and practical mastery of core JavaScript
+                fundamentals, DOM manipulation, ES6+ logic, and event handling.
+              </p>
+
+              <div class="cert-skills-list">
+                <span class="cert-skill-tag">JavaScript</span>
+                <span class="cert-skill-tag">DOM Manipulation</span>
+                <span class="cert-skill-tag">ES6+ Logic</span>
+                <span class="cert-skill-tag">Event Handling</span>
+              </div>
+
+              <div class="cert-footer">
+                <span class="cert-id">ID: CC-K9IOJPOR</span>
+                <a href="https://www.sololearn.com/certificates/CC-K9IOJPOR" target="_blank" rel="noopener noreferrer"
+                  class="cert-inspect-link">
+                  Inspect
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Contribution Matrix Section (Reference Images 4 & 5) -->
+    <section id="activity" class="github-matrix-section">
+      <div class="github-matrix-container">
+
+        <div class="matrix-header">
+          <span class="matrix-kicker">• OPEN SOURCE &amp; ECOSYSTEM STEWARDSHIP</span>
+          <h2 class="matrix-title">GitHub / The Work: Turning ideas into functional reality through steady commits and ecosystem stewardship.</h2>
+          <p class="matrix-subtitle">Public engineering commits, repository activity, and full-stack production builds.</p>
+        </div>
+
+        <div class="github-matrix-card">
+
+          <!-- Profile Top Bar -->
+          <div class="matrix-card-header">
+            <div class="matrix-user-info">
+              <div class="matrix-gh-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                  </path>
+                </svg>
+              </div>
+              <div class="matrix-user-meta">
+                <h3 class="matrix-username">@ninomiguel69 on GitHub</h3>
+                <span class="matrix-user-desc">Continuous delivery & production builds</span>
+              </div>
+            </div>
+
+            <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer"
+              class="btn btn-secondary btn-matrix-profile" aria-label="View Niño Miguel GitHub Profile">
+              View GitHub Profile
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Heatmap Display -->
+          <div class="matrix-heatmap-container">
+            <div class="heatmap-header-meta">
+              <span class="heatmap-counter"><strong>27 contributions</strong> in the last year</span>
+              <span class="heatmap-status">Contribution activity • Verified via Git</span>
+            </div>
+
+            <div class="heatmap-scroll-area">
+              <div class="heatmap-months-labels">
+                <span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span>
+              </div>
+
+              <div class="heatmap-body">
+                <div class="heatmap-days-labels">
+                  <span>Mon</span>
+                  <span>Wed</span>
+                  <span>Fri</span>
+                </div>
+
+                <div class="heatmap-grid" id="github-heatmap-grid" aria-label="Contribution Heatmap Calendar">
+                  <!-- Dynamically populated / fallback structured calendar cells -->
+                </div>
+              </div>
+
+              <!-- Legend -->
+              <div class="heatmap-legend-row">
+                <span class="heatmap-subnote">Hover over any square for commit timestamps</span>
+                <div class="heatmap-legend">
+                  <span class="legend-text">Less</span>
+                  <span class="legend-box level-0" title="No contributions"></span>
+                  <span class="legend-box level-1" title="1-2 contributions"></span>
+                  <span class="legend-box level-2" title="3-4 contributions"></span>
+                  <span class="legend-box level-3" title="5-6 contributions"></span>
+                  <span class="legend-box level-4" title="7+ contributions"></span>
+                  <span class="legend-text">More</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Authentic Portfolio Stat Metric Cards -->
+          <div class="matrix-metrics-grid">
+            <!-- Card 1: Core Architecture -->
+            <div class="matrix-metric-card">
+              <span class="metric-label">CORE FULL-STACK STACK</span>
+              <div class="metric-value metric-value-sm">React • PHP MVCR</div>
+              <span class="metric-subtext">Modern JS (ES6+), Vue.js, Bootstrap 5</span>
+            </div>
+
+            <!-- Card 2: Flagship System -->
+            <div class="matrix-metric-card">
+              <span class="metric-label">FLAGSHIP SYSTEM</span>
+              <div class="metric-value metric-value-sm">Project CUP (MVCR)</div>
+              <span class="metric-subtext">Celestine University Portal &amp; Relational DB</span>
+            </div>
+
+            <!-- Card 3: Academic & Certifications -->
+            <div class="matrix-metric-card">
+              <span class="metric-label">ACADEMIC &amp; CREDENTIALS</span>
+              <div class="metric-value metric-value-sm">BSIT • 3x Certified</div>
+              <span class="metric-subtext">SoloLearn HTML, CSS &amp; JavaScript Verified</span>
+            </div>
+
+            <!-- Card 4: Availability & Mindset -->
+            <div class="matrix-metric-card">
+              <span class="metric-label">WORK ETHIC &amp; AVAILABILITY</span>
+              <div class="metric-value metric-value-sm">Open for Roles</div>
+              <span class="metric-subtext">Full-Stack Developer • Hybrid Fitness Discipline</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section (Reference Image 3) -->
+    <section id="resume" class="resume-section">
+      <div class="resume-container">
+
+        <!-- Left Profile Card -->
+        <div class="resume-profile-card">
+          <div class="profile-avatar-box">
+            <div class="avatar-red-glow"></div>
+            <img src="assets/nino-suit.jpg" alt="Niño Miguel S Rodriguez" class="avatar-img">
+          </div>
+
+          <h3 class="profile-name">Niño Miguel S Rodriguez</h3>
+          <span class="profile-badge">Full Stack Development</span>
+
+          <div class="profile-contact-list">
+            <div class="contact-item">
+              <div class="item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="item-text">
+                <span class="label">E-MAIL</span>
+                <span class="value">ninomiguelsrodriguez@gmail.com</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
+              </div>
+              <div class="item-text">
+                <span class="label">PHONE</span>
+                <span class="value">09184245977</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="item-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="item-text">
+                <span class="label">ADDRESS</span>
+                <span class="value">Imus City Cavite, Philippines</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="resume-profile-actions">
+            <button type="button" class="btn btn-primary resume-download-cta open-resume-trigger" id="open-resume-preview-btn" aria-haspopup="dialog"
+              aria-controls="resume-modal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+              </svg>
+              Download CV
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Resume Details Main Card -->
+        <div class="resume-main-card">
+          <div class="resume-tab-header">
+            <span class="tab-title">Resume</span>
+          </div>
+
+          <div class="resume-two-col">
+            <!-- Left Info Column -->
+            <div class="resume-col">
+
+              <!-- Profile block -->
+              <div class="resume-block">
+                <h4 class="block-title"><span class="title-icon">👤</span> Profile</h4>
+                <p class="block-text">
+                  Full Stack Developer specializing in building high-performance, visually intuitive web applications
+                  with React and modern JavaScript architectures. Blends robust frontend design with clean, scalable
+                  logic to turn complex requirements into responsive, user-centric digital products. Thrives in
+                  fast-paced, collaborative engineering teams dedicated to shipping clean code and continuous product
+                  iteration.
+                </p>
+              </div>
+
+              <!-- Education block -->
+              <div class="resume-block">
+                <h4 class="block-title"><span class="title-icon">📖</span> Education</h4>
+                <div class="entry-item">
+                  <p class="entry-role">- Bachelor of Science in Information Technology</p>
+                  <span class="entry-date">2024 - 2028</span>
+                </div>
+                <div class="entry-item">
+                  <p class="entry-role">- Senior Highschool Major in Computer System Servicing Strand</p>
+                  <span class="entry-date">2022 - 2024</span>
+                </div>
+              </div>
+
+              <!-- Work Experience block -->
+              <div class="resume-block">
+                <h4 class="block-title"><span class="title-icon">💼</span> Work Experience</h4>
+                <div class="entry-item">
+                  <p class="entry-role">- Junior Full Stack Web Developer, Project CUP</p>
+                  <span class="entry-date">2023 - Present</span>
+                </div>
+                <div class="entry-item">
+                  <p class="entry-role">- Axie Scholar Lead Team Player</p>
+                  <span class="entry-date">2021 - 2022</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Info Column -->
+            <div class="resume-col">
+
+              <!-- Languages -->
+              <div class="resume-block">
+                <h4 class="block-title"><span class="title-icon">⚔</span> Languages</h4>
+                <p class="bullet-entry">English - Professional Working</p>
+                <p class="bullet-entry">Filipino / Tagalog - Native</p>
+              </div>
+
+              <!-- Soft Skills -->
+              <div class="resume-block">
+                <h4 class="block-title"><span class="title-icon">👥</span> Soft Skills</h4>
+                <p class="bullet-entry">Communication skills</p>
+                <p class="bullet-entry">Attention to detail</p>
+                <p class="bullet-entry">Teamwork</p>
+                <p class="bullet-entry">Problem Solving skills</p>
+                <p class="bullet-entry">Adaptability</p>
+              </div>
+
+              <!-- Technical Skills -->
+              <div class="resume-block">
+                <h4 class="block-title"><span class="title-icon">&lt;&gt;</span> Technical Skills</h4>
+                <p class="bullet-entry">Knowledge of JavaScript, HTML, and CSS</p>
+                <p class="bullet-entry">Understanding of web frameworks (React, Vue.js)</p>
+                <p class="bullet-entry">Modern JavaScript (ES6+)</p>
+                <p class="bullet-entry">Responsive Web Design & Canvas Graphics</p>
+              </div>
+
+              <!-- GitHub -->
+              <div class="resume-block">
+                <h4 class="block-title"><span class="title-icon">🐙</span> GitHub</h4>
+                <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer"
+                  class="link-entry">https://github.com/ninomiguel69</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section (Reference Image 4) -->
+    <section id="contact" class="contact-section">
+      <div class="contact-container">
+        <h2 class="contact-title">I'd love to hear from you!!</h2>
+
+        <form class="contact-form" id="contact-form" action="https://formsubmit.co/ajax/ninomiguelsrodriguez@gmail.com"
+          method="POST" novalidate>
+          <!-- FormSubmit Configuration Fields (Enhanced for Captivating Delivery) -->
+          <input type="hidden" name="_subject" id="form-subject" value="⚡ New Portfolio Inquiry for Niño Miguel">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_replyto" id="form-replyto" value="">
+          <input type="hidden" name="_autoresponse" value="Mabuhay! Thank you for reaching out through my portfolio (http://localhost:3000). Your message has been received directly in my inbox. I will review it and reply as soon as possible! — Niño Miguel S. Rodriguez">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name" class="sr-only">First Name</label>
+              <input type="text" id="first-name" name="firstName" placeholder="First Name" maxlength="40" required autocomplete="given-name">
+              <div class="field-warning" id="first-name-warning" role="alert" aria-live="polite"></div>
+            </div>
+            <div class="form-group">
+              <label for="last-name" class="sr-only">Last Name</label>
+              <input type="text" id="last-name" name="lastName" placeholder="Last Name" maxlength="40" required autocomplete="family-name">
+              <div class="field-warning" id="last-name-warning" role="alert" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="sr-only">E-Mail</label>
+            <input type="email" id="email" name="email" placeholder="E-Mail" maxlength="80" required autocomplete="email">
+            <div class="field-warning" id="email-warning" role="alert" aria-live="polite"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="sr-only">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Message..." maxlength="1000" required></textarea>
+            <div class="field-warning" id="message-warning" role="alert" aria-live="polite"></div>
+          </div>
+
+          <!-- Alert / Status Feedback Container -->
+          <div id="contact-status" class="form-status" role="alert" aria-live="polite"></div>
+
+          <!-- In-Place Captivating Transmission Confirmed Card (Toggled upon success) -->
+          <div id="contact-success-banner" class="contact-success-card" style="display: none;">
+            <div class="success-card-badge">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="success-card-text">
+              <h3 class="success-card-title">Transmission Confirmed &amp; Delivered</h3>
+              <p class="success-card-desc">Your message has been securely delivered to Niño Miguel's direct inbox. A cryptographic receipt has been generated.</p>
+            </div>
+            <div class="success-card-actions">
+              <button type="button" class="btn btn-primary btn-sm" id="view-receipt-modal-trigger">
+                View Transmission Receipt
+              </button>
+              <button type="button" class="btn btn-secondary btn-sm" id="reset-contact-form-btn">
+                Send Another Note
+              </button>
+            </div>
+          </div>
+
+          <div class="form-submit" id="contact-submit-wrapper">
+            <button type="submit" class="btn btn-submit" id="contact-submit-btn">
+              <span class="btn-text">Submit Message</span>
+              <svg class="btn-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" style="display:none;" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-dasharray="32" stroke-linecap="round"></circle>
+              </svg>
+            </button>
+          </div>
+
+          <div class="contact-direct-wrap">
+            <p class="direct-email-note">
+              Direct inbox:
+              <a href="mailto:ninomiguelsrodriguez@gmail.com" class="direct-email-link">
+                ninomiguelsrodriguez@gmail.com
+              </a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Collaborative Banner (Images 2, 3, 4) -->
+    <section class="cta-banner-section">
+      <div class="cta-banner-card">
+        <div class="cta-text">
+          <h2 class="cta-headline">Let's work together on your next project</h2>
+          <p class="cta-subtext">Collaboration is key! Let's join forces and combine our skills to tackle your next
+            project with a powerful synergy that guarantees success.</p>
+        </div>
+        <div class="cta-action">
+          <a href="#contact" class="btn btn-primary">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer (Images 2, 3, 4) -->
+    <footer class="footer">
+      <!-- Chrome Dino Runner Game: Dancing Niño Miguel Edition -->
+      <div class="footer-dino-stage" id="footer-dino-stage" role="region" aria-label="Interactive Dancing Dino Runner Animation">
+        <div class="dino-stage-header">
+          <div class="dino-badge-wrap">
+            <span class="dino-badge"><span class="dino-dot"></span>CHROME RUNNER</span>
+            <span class="dino-mode">ARCADE DANCE MIGUEL TRIBUTE</span>
+          </div>
+          <div class="dino-score-panel" id="dino-score-panel">
+            <span class="dino-hi-score">HI 02026</span>
+            <span class="dino-live-score" id="dino-live-score">00420</span>
+          </div>
+        </div>
+
+        <div class="dino-track-wrapper" id="dino-track-wrapper">
+          <div class="dino-ground-line"></div>
+          <div class="dino-runner-actor" id="dino-runner-actor" title="Click or tap to jump!">
+            <img src="assets/miguel-dancer.webp?v=2" alt="Niño Miguel Dancing and Running" class="dino-dancer-gif" id="dino-dancer-gif">
+            <div class="dino-dancer-shadow"></div>
+          </div>
+          <!-- Retro decorative pixel obstacles along the track -->
+          <div class="dino-obstacle obs-1" style="left: 20%;"></div>
+          <div class="dino-obstacle obs-2" style="left: 52%;"></div>
+          <div class="dino-obstacle obs-3" style="left: 78%;"></div>
+        </div>
+      </div>
+
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="assets/tiger-logo.svg" alt="Niño Miguel Logo" width="36" height="36">
+        </div>
+
+        <div class="footer-copyright">
+          <p>© 2026 Niño Miguel S Rodriguez. All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-socials">
+          <!-- GitHub -->
+          <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer" class="social-icon"
+            aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+              </path>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/ninomiguel6o9?stkn=eXJjMWZxdXRqdDRt" target="_blank" rel="noopener noreferrer" class="social-icon"
+            aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/ninomiguel.rodriguez#" target="_blank" rel="noopener noreferrer" class="social-icon"
+            aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/rodriguez-ni%C3%B1o-miguel-s-24b76b418" target="_blank" rel="noopener noreferrer" class="social-icon"
+            aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Celestine University Interactive Modal Dialog (Reference Images 2, 3, 4) -->
+    <div id="project-modal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true"
+      aria-labelledby="modal-title">
+      <div class="modal-container">
+        <div class="modal-card">
+
+          <!-- Modal Top Bar -->
+          <div class="modal-header">
+            <div class="modal-title-wrap">
+              <span class="modal-kicker" id="modal-kicker">01 — FEATURED COLLABORATIVE CASE STUDY • ACADEMIC MVCR ARCHITECTURE</span>
+              <h3 id="modal-title" class="modal-title">01 — Celestine University of the Pacific (CUP)</h3>
+            </div>
+            <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- In-Modal Project Switcher Navigation (Collaborative Projects Only) -->
+          <div class="modal-project-nav" id="modal-project-nav">
+            <span class="modal-nav-label" id="modal-nav-label">COLLABORATIVE ARCHIVES:</span>
+            <div class="modal-project-tabs" id="modal-project-tabs">
+              <button type="button" class="modal-proj-tab active" data-proj-id="celestine">01 — Celestine</button>
+              <button type="button" class="modal-proj-tab" data-proj-id="ncst-srms">02 — NCST SRMS</button>
+              <button type="button" class="modal-proj-tab" data-proj-id="fynn-hotel">03 — Fynn Hotel</button>
+              <button type="button" class="modal-proj-tab" data-proj-id="smartspace">04 — SmartSpace</button>
+            </div>
+          </div>
+
+          <!-- Modal Scrollable Content Body -->
+          <div class="modal-body">
+
+            <!-- Captivating Description -->
+            <div class="modal-lead-box">
+              <p class="modal-lead-text" id="modal-lead-text">
+                <strong>Celestine University of the Pacific (CUP)</strong> is a comprehensive, enterprise-grade academic
+                management ecosystem engineered in close collaboration with the <strong>Yakuzokai</strong> development
+                team. Built from the ground up on a robust <strong>PHP Model-View-Controller-Repository (MVCR)</strong> architecture and an optimized relational MySQL schema (<code>celestine_university.sql</code>), CUP modernizes institutional operations across online applicant intake, real-time asynchronous validation (<code>ajax_validate.php</code>), automated course enrollments (<code>Enrollment/</code>), and fault-tolerant student records management.
+              </p>
+              <p class="modal-secondary-text" id="modal-secondary-text">
+                The system decouples data queries into a dedicated Repository layer (<code>repositories/</code>), isolating business controllers (<code>controllers/</code>) and domain models (<code>models/</code>) from presentation views (<code>views/</code>). With centralized request routing (<code>routes/</code>, <code>.htaccess</code>), custom exception recovery (<code>errors/</code>), structured audit logging (<code>logs/</code>), and secure document storage (<code>storage/</code>, <code>uploads/</code>), CUP guarantees zero data corruption, sub-second query performance, and rock-solid system stability.
+              </p>
+            </div>
+
+            <!-- Interactive Viewport Gallery Switcher -->
+            <div class="modal-gallery-section">
+              <div class="gallery-tabs-header">
+                <span class="gallery-label">INTERFACE PREVIEWS:</span>
+                <div class="gallery-tab-buttons" id="modal-gallery-tabs">
+                  <button type="button" class="gallery-tab-btn active" data-img="hero">
+                    <span class="tab-indicator"></span> 1. Coastal Admissions Portal
+                  </button>
+                  <button type="button" class="gallery-tab-btn" data-img="global">
+                    <span class="tab-indicator"></span> 2. Global Campuses System
+                  </button>
+                </div>
+              </div>
+
+              <div class="modal-display-frame">
+                <img id="modal-display-img" src="assets/projects/celestine-hero.png"
+                  alt="Celestine University of the Pacific Coastal Admissions Portal" class="modal-display-image">
+                <div class="modal-image-caption" id="modal-image-caption">
+                  <strong>View 1:</strong> Digital Admissions & Campus Portal — Featuring live applicant metrics (4,200+ Students, 150+ Faculty, 98% Graduation Rate) and modern application gateway.
+                </div>
+              </div>
+            </div>
+
+            <!-- Architecture & Key Features Grid -->
+            <div class="modal-highlights-grid" id="modal-highlights-grid">
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <h4>Enterprise PHP MVCR Architecture</h4>
+                <p>Strict separation of concerns isolating database transactions in Repositories (<code>repositories/</code>), domain entities (<code>models/</code>), business logic (<code>controllers/</code>), and dynamic UI (<code>views/</code>) for high throughput and zero architectural failures.</p>
+              </div>
+
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <h4>Asynchronous Intake &amp; Validation Engine</h4>
+                <p>Real-time student registration and applicant verification powered by <code>ajax_validate.php</code> and modular <code>Enrollment/</code> pipelines, eliminating latency and submission failures.</p>
+              </div>
+
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                    </path>
+                  </svg>
+                </div>
+                <h4>Relational MySQL &amp; Secure Storage</h4>
+                <p>Synchronized <code>celestine_university.sql</code> relational database schema fortified by <code>.env</code> environment security, structured <code>logs/</code> audit trails, and isolated <code>storage/</code> document uploads.</p>
+              </div>
+
+              <div class="highlight-card">
+                <div class="highlight-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <h4>Centralized Routing &amp; Fault Tolerance</h4>
+                <p>Unified request routing via Apache <code>.htaccess</code> and <code>routes/</code> dispatcher, combined with custom <code>errors/</code> handlers ensuring seamless user recovery without system crashes.</p>
+              </div>
+            </div>
+
+            <!-- Technologies Employed -->
+            <div class="modal-tech-stack">
+              <h4 class="stack-title">Technologies & Frameworks</h4>
+              <div class="tech-pills-grid" id="modal-tech-pills">
+                <span class="tech-pill"><span class="pill-dot php-dot"></span>PHP 8.x (Core Backend)</span>
+                <span class="tech-pill"><span class="pill-dot mvc-dot"></span>MVCR Architecture</span>
+                <span class="tech-pill"><span class="pill-dot sql-dot"></span>MySQL (celestine_university.sql)</span>
+                <span class="tech-pill"><span class="pill-dot red-dot"></span>Repository Pattern (Data Access Layer)</span>
+                <span class="tech-pill"><span class="pill-dot fast-dot"></span>AJAX Async Validation (ajax_validate.php)</span>
+                <span class="tech-pill"><span class="pill-dot node-dot"></span>RESTful API Architecture (api/)</span>
+                <span class="tech-pill"><span class="pill-dot mint-dot"></span>Modular Enrollment Engine (Enrollment/)</span>
+                <span class="tech-pill"><span class="pill-dot yield-dot"></span>Apache URL Rewriting (.htaccess &amp; routes/)</span>
+                <span class="tech-pill"><span class="pill-dot mint-dot"></span>Environment Security (.env &amp; config/)</span>
+                <span class="tech-pill"><span class="pill-dot fast-dot"></span>System Audit &amp; Error Logging (logs/ &amp; errors/)</span>
+                <span class="tech-pill"><span class="pill-dot red-dot"></span>Secure Document Storage (storage/ &amp; uploads/)</span>
+                <span class="tech-pill"><span class="pill-dot js-dot"></span>JavaScript (ES6+)</span>
+                <span class="tech-pill"><span class="pill-dot bs-dot"></span>Bootstrap 5</span>
+                <span class="tech-pill"><span class="pill-dot html-dot"></span>HTML5 / Semantic UI</span>
+                <span class="tech-pill"><span class="pill-dot css-dot"></span>CSS3 Flexbox/Grid</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Modal Footer Actions -->
+          <div class="modal-footer">
+            <div class="modal-footer-links" id="modal-footer-links">
+              <a href="https://github.com/Yakuzokai/CUP" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
+                  </path>
+                </svg>
+                GitHub Repository
+              </a>
+            </div>
+            <button type="button" class="btn btn-primary" id="modal-close-footer-btn">
+              Done / Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Career-Grade Interactive Resume Preview & Multi-Format Download Modal -->
+    <div id="resume-modal" class="modal-backdrop resume-modal-backdrop" aria-hidden="true" role="dialog"
+      aria-modal="true" aria-labelledby="resume-modal-title">
+      <div class="modal-container resume-modal-container">
+        <div class="modal-card resume-modal-card">
+
+          <!-- Modal Top Bar -->
+          <div class="modal-header resume-modal-header">
+            <div class="modal-title-wrap">
+              <span class="modal-kicker">CURRICULUM VITAE & CAREER DOSSIER</span>
+              <h3 id="resume-modal-title" class="modal-title">Niño Miguel S. Rodriguez — Official Resume</h3>
+            </div>
+            <div class="resume-header-controls">
+              <span class="resume-badge-verified">
+                <span class="badge-dot-green"></span> ATS Standard
+              </span>
+              <button type="button" class="modal-close-btn" id="resume-modal-close-btn" aria-label="Close Resume Preview">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Download Format Quick Selector Bar -->
+          <div class="resume-format-selector-bar">
+            <div class="format-bar-label">
+              <span class="format-bar-icon">📥</span>
+              <span>SELECT EXPORT FORMAT:</span>
+            </div>
+            <div class="format-options-group">
+              <button type="button" class="format-btn format-pdf-btn" id="download-resume-pdf">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+                PDF Document (.pdf)
+              </button>
+              <button type="button" class="format-btn format-print-btn" id="print-resume-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                Direct Print
+              </button>
+            </div>
+          </div>
+
+          <!-- Document Paper Sheet (Printable / ATS-Friendly View) -->
+          <div class="resume-paper-scroll">
+            <div class="resume-paper" id="printable-resume">
+
+              <!-- Document Header with 2x2 Official Portrait -->
+              <header class="paper-header">
+                <div class="paper-header-inner">
+                  <div class="paper-photo-wrap">
+                    <img src="assets/nino-profile-2x2.jpg" alt="Niño Miguel S. Rodriguez" class="paper-photo-2x2" width="112" height="112">
+                  </div>
+                  <div class="paper-header-text">
+                    <h1 class="paper-name">NIÑO MIGUEL S. RODRIGUEZ</h1>
+                    <div class="paper-title-tag">Full-Stack Web Developer &amp; Systems Engineer</div>
+                    <div class="paper-contact-row">
+                      <span>📍 Imus City Cavite, Philippines</span>
+                      <span>✉️ <a href="mailto:ninomiguelsrodriguez@gmail.com">ninomiguelsrodriguez@gmail.com</a></span>
+                      <span>📞 09184245977</span>
+                      <span>🐙 <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer">github.com/ninomiguel69</a></span>
+                    </div>
+                  </div>
+                </div>
+              </header>
+
+              <hr class="paper-divider">
+
+              <!-- Professional Summary -->
+              <section class="paper-section">
+                <h2 class="paper-sec-title">PROFESSIONAL SUMMARY</h2>
+                <p class="paper-text">
+                  Dedicated Full-Stack Web Developer passionate about building high-performance, visually engaging, and
+                  architecturally robust digital applications. Driven by relentless self-improvement and high discipline
+                  forged through dedicated hybrid fitness, bringing consistency, precision, and executive focus to every
+                  codebase. Experienced in crafting modular PHP MVC systems, reactive frontend components (React, Next.js,
+                  Vue.js), and responsive accessible interfaces adhering to modern web standards.
+                </p>
+              </section>
+
+              <!-- Technical Competencies -->
+              <section class="paper-section">
+                <h2 class="paper-sec-title">CORE TECHNICAL COMPETENCIES</h2>
+                <div class="paper-competencies-grid">
+                  <div class="paper-comp-row">
+                    <strong>Frontend Engineering:</strong>
+                    <span>HTML5, CSS3, JavaScript (ES6+), React.js, Next.js, Vue.js, Bootstrap 5, Sass, Flexbox/Grid</span>
+                  </div>
+                  <div class="paper-comp-row">
+                    <strong>Backend &amp; Databases:</strong>
+                    <span>PHP (MVC Design Pattern), MySQL, MariaDB, SQL Query Optimization, Full-Stack Architecture</span>
+                  </div>
+                  <div class="paper-comp-row">
+                    <strong>Developer Tooling:</strong>
+                    <span>Git, GitHub, Visual Studio Code, NetBeans, XAMPP, Canvas API, RESTful APIs, Vite</span>
+                  </div>
+                  <div class="paper-comp-row">
+                    <strong>Engineering Practices:</strong>
+                    <span>Responsive Web Design, Modern UI/UX Implementation, Performance Optimization, Cross-Browser Compatibility</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Work Experience -->
+              <section class="paper-section">
+                <h2 class="paper-sec-title">TECHNICAL &amp; PROFESSIONAL EXPERIENCE</h2>
+
+                <div class="paper-job">
+                  <div class="paper-job-head">
+                    <div class="paper-job-role"><strong>Junior Full Stack Web Developer</strong> — <em>Project CUP (Celestine University of the Pacific)</em></div>
+                    <span class="paper-job-date">2023 – Present</span>
+                  </div>
+                  <ul class="paper-bullet-list">
+                    <li>Engineered enterprise-grade academic admissions &amp; campus portal utilizing modular PHP MVCR (Model-View-Controller-Repository) architecture, decoupled repository data access layer, and relational MySQL schema (<code>celestine_university.sql</code>).</li>
+                    <li>Developed responsive interface with Bootstrap 5 and customized design tokens, delivering intuitive enrollment flows across mobile and desktop viewports.</li>
+                    <li>Architected global campus directory and automated review intake pipelines in collaboration with the Yakuzokai development team.</li>
+                  </ul>
+                </div>
+
+                <div class="paper-job">
+                  <div class="paper-job-head">
+                    <div class="paper-job-role"><strong>Axie Scholar Lead Team Player</strong></div>
+                    <span class="paper-job-date">2021 – 2022</span>
+                  </div>
+                  <ul class="paper-bullet-list">
+                    <li>Coordinated daily performance milestones, strategic resource allocation, and team mechanics under high-pressure competitive environments.</li>
+                    <li>Demonstrated exceptional adaptability, communication skills, and disciplined consistency across collaborative operations.</li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- Education -->
+              <section class="paper-section">
+                <h2 class="paper-sec-title">EDUCATION</h2>
+
+                <div class="paper-job">
+                  <div class="paper-job-head">
+                    <div class="paper-job-role"><strong>Bachelor of Science in Information Technology (BSIT)</strong></div>
+                    <span class="paper-job-date">2024 – 2028</span>
+                  </div>
+                  <p class="paper-subnote">Undergraduate IT degree focusing on software engineering, database administration, and systems architecture.</p>
+                </div>
+
+                <div class="paper-job">
+                  <div class="paper-job-head">
+                    <div class="paper-job-role"><strong>Senior High School — Computer System Servicing (CSS) Major</strong></div>
+                    <span class="paper-job-date">2022 – 2024</span>
+                  </div>
+                  <p class="paper-subnote">Technical-vocational strand specializing in hardware diagnostics, network configurations, and system servicing.</p>
+                </div>
+              </section>
+
+              <!-- Certifications -->
+              <section class="paper-section">
+                <h2 class="paper-sec-title">VERIFIED CERTIFICATIONS &amp; ACCREDITATIONS</h2>
+                <div class="paper-certs-grid">
+                  <div class="paper-cert-item">
+                    <span class="paper-cert-name">SoloLearn: Introduction to HTML</span>
+                    <span class="paper-cert-id">Credential ID: CC-4O2CYFBD (Verified March 2025)</span>
+                  </div>
+                  <div class="paper-cert-item">
+                    <span class="paper-cert-name">SoloLearn: Introduction to CSS</span>
+                    <span class="paper-cert-id">Credential ID: CC-OLCVFE6T (Verified March 2025)</span>
+                  </div>
+                  <div class="paper-cert-item">
+                    <span class="paper-cert-name">SoloLearn: Introduction to JavaScript</span>
+                    <span class="paper-cert-id">Credential ID: CC-K9IOJPOR (Verified March 2025)</span>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+          </div>
+
+          <!-- Modal Footer -->
+          <div class="modal-footer resume-modal-footer">
+            <span class="resume-footer-note">All credentials officially verified &amp; available for academic inspection</span>
+            <button type="button" class="btn btn-primary" id="resume-modal-close-footer-btn">
+              Done / Close Preview
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Captivating Transmission Received & Verification Modal -->
+    <div id="contact-success-modal" class="modal-backdrop contact-success-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="receipt-modal-title">
+      <div class="modal-container contact-success-container">
+        <div class="modal-card receipt-card">
+          
+          <!-- Glowing Holographic Header -->
+          <div class="receipt-header">
+            <div class="receipt-kicker-wrap">
+              <span class="pulse-dot green-dot" aria-hidden="true"></span>
+              <span class="receipt-kicker">TRANSMISSION CONFIRMED &amp; RECEIVED</span>
+            </div>
+            <button type="button" class="modal-close-btn" id="receipt-modal-close-btn" aria-label="Close Confirmation Modal">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Receipt Body -->
+          <div class="receipt-body">
+            
+            <!-- Animated Checkmark & Brand Beacon -->
+            <div class="receipt-badge-wrap">
+              <div class="receipt-beacon-ring" aria-hidden="true"></div>
+              <div class="receipt-badge-circle">
+                <svg class="receipt-check-svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <h3 id="receipt-modal-title" class="receipt-headline">Transmission Logged in Direct Inbox</h3>
+              <p class="receipt-subheadline">
+                Thank you, <strong id="receipt-sender-name-display">Friend</strong>! Your inquiry has been securely delivered to <span class="highlight-inbox">ninomiguelsrodriguez@gmail.com</span>.
+              </p>
+            </div>
+
+            <!-- Official Cryptographic Dispatch Receipt -->
+            <div class="receipt-slip" id="receipt-slip">
+              <div class="receipt-slip-bar">
+                <div class="receipt-slip-tag">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  <span>OFFICIAL DISPATCH RECEIPT</span>
+                </div>
+                <span class="receipt-status-pill">
+                  <span class="status-live-dot" aria-hidden="true"></span>
+                  DELIVERED &amp; QUEUED
+                </span>
+              </div>
+
+              <div class="receipt-meta-grid">
+                <div class="receipt-meta-cell">
+                  <span class="meta-label">TRANSMISSION ID</span>
+                  <span class="meta-value meta-mono" id="receipt-ticket-id">#NMS-2026-9221</span>
+                </div>
+                <div class="receipt-meta-cell">
+                  <span class="meta-label">SENDER IDENTITY</span>
+                  <span class="meta-value" id="receipt-sender-name">Client Name</span>
+                </div>
+                <div class="receipt-meta-cell">
+                  <span class="meta-label">VERIFIED SENDER EMAIL</span>
+                  <span class="meta-value meta-email" id="receipt-sender-email">client@domain.com</span>
+                </div>
+                <div class="receipt-meta-cell">
+                  <span class="meta-label">TIMESTAMP (LOCAL)</span>
+                  <span class="meta-value meta-mono" id="receipt-timestamp">Sep 22, 2026, 10:45 AM</span>
+                </div>
+              </div>
+
+              <!-- Message Quote Box -->
+              <div class="receipt-quote-container">
+                <div class="quote-header">
+                  <span class="quote-label">INQUIRY EXCERPT</span>
+                  <span class="quote-badge">VERIFIED SUBMISSION</span>
+                </div>
+                <blockquote class="receipt-quote-text" id="receipt-message-body">
+                  "Message content will appear here..."
+                </blockquote>
+              </div>
+
+              <div class="receipt-guarantee-note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span><strong>Direct Review Commitment:</strong> I personally review all incoming transmissions. You can expect a response within 24 hours.</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Receipt Actions -->
+          <div class="modal-footer receipt-footer">
+            <div class="receipt-actions-left">
+              <button type="button" class="btn btn-secondary btn-copy-receipt" id="receipt-copy-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span id="copy-btn-text">Copy Receipt</span>
+              </button>
+            </div>
+            <div class="receipt-actions-right">
+              <button type="button" class="btn btn-secondary" id="receipt-send-another-btn">
+                Send Another Note
+              </button>
+              <button type="button" class="btn btn-primary" id="receipt-close-footer-btn">
+                Done &amp; Explore
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Ambient Floating Toast Notification -->
+    <div id="transmission-toast" class="transmission-toast" role="status" aria-live="polite" aria-atomic="true">
+      <div class="toast-glow-edge" aria-hidden="true"></div>
+      <div class="toast-icon-wrap" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <div class="toast-content">
+        <strong class="toast-title">Transmission Delivered</strong>
+        <p class="toast-desc" id="toast-desc">Message received and securely queued in Niño's inbox.</p>
+      </div>
+      <button type="button" class="toast-close-btn" id="toast-close-btn" aria-label="Dismiss notification">&times;</button>
+    </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
