@@ -1874,25 +1874,177 @@ function initResumeModal() {
 }
 
 // ==========================================================================
-// Interactive Chrome Dino Runner: Dancing Niño Miguel Edition
+// Interactive Chrome Dino Runner: Dancing Niño Miguel Edition (Auto-Leap + Arcade Polish)
 // ==========================================================================
 function initDinoDanceRunner() {
   const stage = document.getElementById('footer-dino-stage');
   const track = document.getElementById('dino-track-wrapper');
   const actor = document.getElementById('dino-runner-actor');
   const liveScoreEl = document.getElementById('dino-live-score');
+  const floatScoresEl = document.getElementById('dino-float-scores');
+  const soundToggleBtn = document.getElementById('dino-sound-toggle');
+  const soundIconEl = document.getElementById('sound-icon');
 
   if (!stage || !actor) return;
 
+  const obstacles = Array.from(document.querySelectorAll('.dino-obstacle'));
   let currentScore = 420;
   let isJumping = false;
+  let soundEnabled = true;
+  let audioCtx = null;
+  let lastJumpTime = 0;
+  let lastObstacleJumped = null;
+
+  // Sound toggle button
+  if (soundToggleBtn) {
+    soundToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      soundEnabled = !soundEnabled;
+      soundToggleBtn.classList.toggle('sound-muted', !soundEnabled);
+      if (soundIconEl) {
+        soundIconEl.textContent = soundEnabled ? '🔊' : '🔇';
+      }
+      const label = soundToggleBtn.querySelector('.sound-label');
+      if (label) {
+        label.textContent = soundEnabled ? '8-BIT AUDIO ON' : 'AUDIO MUTED';
+      }
+    });
+  }
+
+  // Web Audio API 8-bit retro arcade jump sound
+  function playArcadeJumpSound() {
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) audioCtx = new AudioContextClass();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'square'; // Classic 8-bit arcade tone
+      osc.frequency.setValueAtTime(160, now);
+      osc.frequency.exponentialRampToValueAtTime(620, now + 0.14);
+
+      gain.gain.setValueAtTime(0.08, now); // Gentle volume, never harsh
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.19);
+    } catch (_) {
+      // Audio context might fail on restricted autoplay, fail gracefully
+    }
+  }
+
+  // Floating combo popup in track
+  const praiseWords = ['+100 PTS!', 'AUTO-LEAP!', 'PERFECT JUMP!', 'CLEAN MOVE!', 'DANCE JUMP!', 'COMBO x2!'];
+  function spawnScorePopup(xPos) {
+    if (!floatScoresEl) return;
+    const text = praiseWords[Math.floor(Math.random() * praiseWords.length)];
+    const pop = document.createElement('div');
+    pop.className = 'dino-popup-score';
+    pop.textContent = text;
+    if (xPos !== undefined) {
+      pop.style.left = `${Math.max(10, Math.min(xPos, floatScoresEl.clientWidth - 90))}px`;
+    }
+    floatScoresEl.appendChild(pop);
+    setTimeout(() => {
+      pop.remove();
+    }, 1100);
+  }
+
+  // Jump Trigger Logic
+  function triggerJump(isAuto = false, relatedObs = null) {
+    if (isJumping) return;
+    const now = Date.now();
+    if (now - lastJumpTime < 580) return; // Cooldown to finish jump arc
+    lastJumpTime = now;
+    isJumping = true;
+    actor.classList.add('dino-jumping');
+
+    playArcadeJumpSound();
+
+    if (isAuto && relatedObs) {
+      relatedObs.classList.add('dino-obstacle-passed');
+      setTimeout(() => {
+        relatedObs.classList.remove('dino-obstacle-passed');
+      }, 700);
+
+      // Add bonus score
+      currentScore += 100;
+      if (liveScoreEl) {
+        liveScoreEl.textContent = String(currentScore).padStart(5, '0');
+        liveScoreEl.style.color = '#00f0ff';
+        liveScoreEl.style.textShadow = '0 0 14px rgba(0, 240, 255, 0.9)';
+        setTimeout(() => {
+          liveScoreEl.style.color = '#ffffff';
+          liveScoreEl.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.45)';
+        }, 600);
+      }
+
+      const actorRect = actor.getBoundingClientRect();
+      const trackRect = track.getBoundingClientRect();
+      const relativeX = actorRect.left - trackRect.left + (actorRect.width / 2);
+      spawnScorePopup(relativeX);
+    }
+
+    setTimeout(() => {
+      actor.classList.remove('dino-jumping');
+      isJumping = false;
+    }, 650);
+  }
+
+  // Collision / Proximity Detection Loop for Automatic Jumping over Crosses
+  let prevActorLeft = null;
+  const obsCooldowns = new Map();
+
+  function checkObstacleProximity() {
+    if (track && actor && obstacles.length > 0) {
+      const actorRect = actor.getBoundingClientRect();
+      const currentActorLeft = actorRect.left;
+
+      if (prevActorLeft !== null) {
+        const isMovingRight = currentActorLeft >= prevActorLeft;
+        const actorCenter = actorRect.left + (actorRect.width / 2);
+        const now = Date.now();
+
+        obstacles.forEach((obs) => {
+          const obsRect = obs.getBoundingClientRect();
+          const obsCenter = obsRect.left + (obsRect.width / 2);
+          const obsId = obs.getAttribute('data-obs-id') || obs.className || 'obs';
+          const dirKey = isMovingRight ? `${obsId}_R` : `${obsId}_L`;
+          const lastJumped = obsCooldowns.get(dirKey) || 0;
+
+          // Only trigger if cooldown passed (1.4s between re-jumping in same direction)
+          if (now - lastJumped > 1400) {
+            const distanceAhead = isMovingRight ? (obsCenter - actorCenter) : (actorCenter - obsCenter);
+            // Trigger auto-leap when approaching cross obstacle (12px to 75px range)
+            if (distanceAhead >= 12 && distanceAhead <= 75) {
+              obsCooldowns.set(dirKey, now);
+              triggerJump(true, obs);
+            }
+          }
+        });
+      }
+      prevActorLeft = currentActorLeft;
+    }
+    requestAnimationFrame(checkObstacleProximity);
+  }
+  requestAnimationFrame(checkObstacleProximity);
 
   // Real-time ticking score counter just like Chrome Dino
   setInterval(() => {
     currentScore++;
     if (liveScoreEl) {
       liveScoreEl.textContent = String(currentScore).padStart(5, '0');
-      // Milestone flash every 100 points
       if (currentScore % 100 === 0) {
         liveScoreEl.style.color = '#ff2a3a';
         liveScoreEl.style.textShadow = '0 0 14px rgba(255, 42, 58, 0.9)';
@@ -1904,22 +2056,15 @@ function initDinoDanceRunner() {
     }
   }, 180);
 
-  function triggerJump() {
-    if (isJumping) return;
-    isJumping = true;
-    actor.classList.add('dino-jumping');
-
-    setTimeout(() => {
-      actor.classList.remove('dino-jumping');
-      isJumping = false;
-    }, 650);
-  }
-
-  // Click / tap to jump
+  // Click / tap to jump manually
   if (track) {
     track.addEventListener('click', (e) => {
+      if (e.target.closest('#dino-sound-toggle')) return;
       e.preventDefault();
-      triggerJump();
+      triggerJump(false);
+      const trackRect = track.getBoundingClientRect();
+      const relativeX = e.clientX - trackRect.left;
+      spawnScorePopup(relativeX);
     });
   }
 
@@ -1930,7 +2075,258 @@ function initDinoDanceRunner() {
       const inView = rect.top < window.innerHeight && rect.bottom > 0;
       if (inView) {
         e.preventDefault();
-        triggerJump();
+        triggerJump(false);
+      }
+    }
+  });
+}
+
+// ==========================================================================
+// Permanent Eradication of Netlify Watermark & Badge
+// ==========================================================================
+function eradicateNetlifyWatermark() {
+  function cleanup() {
+    // 1. Selector based cleanup for Netlify badges/iframes/scripts
+    const elements = document.querySelectorAll(
+      '[class*="netlify-badge"], [id*="netlify-badge"], [data-netlify-badge], .netlify-badge, #netlify-badge, .netlify-badge-wrap'
+    );
+    elements.forEach(el => el.remove());
+
+    // 2. Direct scan for external netlify.com badges
+    document.querySelectorAll('a[href*="netlify.com"]').forEach(link => {
+      // Don't remove our project links (e.g. app.netlify.app), only netlify.com badges
+      if (link.hostname === 'www.netlify.com' || link.hostname === 'netlify.com' || (link.textContent && link.textContent.toLowerCase().includes('powered by netlify'))) {
+        link.remove();
+      }
+    });
+
+    // 3. Scan for any floating elements containing "Powered by Netlify"
+    document.querySelectorAll('body > a, body > div').forEach(node => {
+      const text = (node.textContent || '').trim().toLowerCase();
+      if (text.includes('powered by netlify')) {
+        node.remove();
+      }
+    });
+  }
+
+  cleanup();
+  const observer = new MutationObserver(cleanup);
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// ==========================================================================
+// Mobile Navigation Drawer (Captivating Futuristic HUD)
+// ==========================================================================
+function initMobileNavigation() {
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const closeBtn = document.getElementById('mobile-nav-close');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+  const links = document.querySelectorAll('.mobile-link');
+
+  if (!toggleBtn || !drawer) return;
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    toggleBtn.classList.add('open');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    toggleBtn.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      closeDrawer();
+    });
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
+}
+
+// ==========================================================================
+// Interactive Arsenal Category Filter Bar
+// ==========================================================================
+function initArsenalFilter() {
+  const filterBtns = document.querySelectorAll('.arsenal-filter-btn');
+  const cards = document.querySelectorAll('#build-with-grid .bento-card, #build-with-grid .stack-box');
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = '';
+          requestAnimationFrame(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1)';
+          });
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(12px) scale(0.96)';
+          setTimeout(() => {
+            const currentFilter = document.querySelector('.arsenal-filter-btn.active')?.getAttribute('data-filter');
+            if (currentFilter !== 'all' && card.getAttribute('data-category') !== currentFilter) {
+              card.style.display = 'none';
+            }
+          }, 240);
+        }
+      });
+    });
+  });
+}
+
+// ==========================================================================
+// Vercel-Inspired Bento Grid: Radial Cursor Spotlight & Proof-of-Work Telemetry Popovers
+// ==========================================================================
+function initBentoSpotlightAndPopovers() {
+  const cards = document.querySelectorAll('.bento-card');
+  const popover = document.getElementById('bento-pow-popover');
+  const popProject = document.getElementById('pow-popover-project');
+  const popRole = document.getElementById('pow-popover-role');
+  const popDesc = document.getElementById('pow-popover-desc');
+  const popMetric = document.getElementById('pow-popover-metric');
+
+  // 1. Cursor-following radial spotlight for each Bento Card
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // 2. Interactive Proof-of-Work Popovers for Tech Chips
+  if (!popover) return;
+  const chips = document.querySelectorAll('.bento-chip');
+  let hideTimeout = null;
+  let activeChip = null;
+
+  function showPopover(chip) {
+    if (hideTimeout) clearTimeout(hideTimeout);
+    activeChip = chip;
+    chips.forEach(c => c.classList.remove('bento-chip-active'));
+    chip.classList.add('bento-chip-active');
+
+    const project = chip.getAttribute('data-pow-project') || 'Production System';
+    const role = chip.getAttribute('data-pow-role') || 'Full-Stack Implementation';
+    const desc = chip.getAttribute('data-pow-desc') || 'Architectural telemetry details.';
+    const metric = chip.getAttribute('data-pow-metric') || '3NF Normalized';
+
+    if (popProject) popProject.textContent = project;
+    if (popRole) popRole.textContent = role;
+    if (popDesc) popDesc.textContent = desc;
+    if (popMetric) popMetric.textContent = metric;
+
+    // Position popover relative to chip viewport
+    const rect = chip.getBoundingClientRect();
+    const popWidth = Math.min(320, window.innerWidth - 30);
+    const popHeight = 155;
+
+    let left = rect.left + (rect.width / 2) - (popWidth / 2);
+    let top = rect.top - popHeight - 12;
+
+    // Smart viewport boundary adjustment
+    if (top < 15) {
+      // Flip below chip if no space above
+      top = rect.bottom + 12;
+    }
+    if (left < 14) left = 14;
+    if (left + popWidth > window.innerWidth - 14) {
+      left = window.innerWidth - popWidth - 14;
+    }
+
+    popover.style.left = `${left}px`;
+    popover.style.top = `${top}px`;
+    popover.classList.add('active');
+    popover.setAttribute('aria-hidden', 'false');
+  }
+
+  function hidePopover() {
+    hideTimeout = setTimeout(() => {
+      popover.classList.remove('active');
+      popover.setAttribute('aria-hidden', 'true');
+      if (activeChip) {
+        activeChip.classList.remove('bento-chip-active');
+        activeChip = null;
+      }
+    }, 160);
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener('mouseenter', () => showPopover(chip));
+    chip.addEventListener('mouseleave', hidePopover);
+    chip.addEventListener('focus', () => showPopover(chip));
+    chip.addEventListener('blur', hidePopover);
+    chip.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPopover(chip);
+    });
+    chip.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showPopover(chip);
+      }
+    });
+  });
+
+  popover.addEventListener('mouseenter', () => {
+    if (hideTimeout) clearTimeout(hideTimeout);
+  });
+  popover.addEventListener('mouseleave', hidePopover);
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.bento-chip') && !e.target.closest('#bento-pow-popover')) {
+      popover.classList.remove('active');
+      popover.setAttribute('aria-hidden', 'true');
+      if (activeChip) {
+        activeChip.classList.remove('bento-chip-active');
+        activeChip = null;
+      }
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popover.classList.contains('active')) {
+      popover.classList.remove('active');
+      popover.setAttribute('aria-hidden', 'true');
+      if (activeChip) {
+        activeChip.classList.remove('bento-chip-active');
+        activeChip = null;
       }
     }
   });
@@ -1944,4 +2340,10 @@ initGitHubHeatmap();
 initContactForm();
 initResumeModal();
 initDinoDanceRunner();
+initMobileNavigation();
+initArsenalFilter();
+initBentoSpotlightAndPopovers();
+eradicateNetlifyWatermark();
+
+
 

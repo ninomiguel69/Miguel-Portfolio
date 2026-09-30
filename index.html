@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="assets/tiger-logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -42,6 +42,7 @@
     <div class="header-container">
       <a href="#home" class="logo-link" aria-label="Home">
         <img src="assets/tiger-logo.svg" alt="Niño Miguel Logo" class="brand-logo" width="42" height="42">
+        <span class="brand-name-mobile">NIÑO MIGUEL</span>
       </a>
       <nav class="navbar" id="navbar">
         <a href="#home" class="nav-item active">HOME</a>
@@ -54,8 +55,58 @@
         <a href="#resume" class="nav-item">RESUME</a>
         <a href="#contact" class="nav-item">CONTACT</a>
       </nav>
+      <!-- Mobile Navigation Hamburger Toggle Button -->
+      <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Drawer Menu (Captivating Futuristic HUD Design) -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-top">
+        <div class="mobile-brand-wrap">
+          <img src="assets/tiger-logo.svg" alt="Niño Miguel Logo" width="34" height="34">
+          <div class="mobile-brand-meta">
+            <span class="mobile-brand-title">NIÑO MIGUEL</span>
+            <span class="mobile-brand-role">Web Developer & IT Specialist</span>
+          </div>
+        </div>
+        <button type="button" class="mobile-drawer-close-btn" id="mobile-nav-close" aria-label="Close navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <nav class="mobile-drawer-links" id="mobile-drawer-links">
+        <a href="#home" class="mobile-link active"><span class="m-link-num">01</span><span class="m-link-label">HOME</span></a>
+        <a href="#about" class="mobile-link"><span class="m-link-num">02</span><span class="m-link-label">ABOUT ME</span></a>
+        <a href="#services" class="mobile-link"><span class="m-link-num">03</span><span class="m-link-label">SERVICES</span></a>
+        <a href="#projects" class="mobile-link"><span class="m-link-num">04</span><span class="m-link-label">PROJECTS</span></a>
+        <a href="#technologies" class="mobile-link"><span class="m-link-num">05</span><span class="m-link-label">ARSENAL</span></a>
+        <a href="#certificates" class="mobile-link"><span class="m-link-num">06</span><span class="m-link-label">CERTIFICATES</span></a>
+        <a href="#activity" class="mobile-link"><span class="m-link-num">07</span><span class="m-link-label">ACTIVITY</span></a>
+        <a href="#resume" class="mobile-link"><span class="m-link-num">08</span><span class="m-link-label">RESUME</span></a>
+        <a href="#contact" class="mobile-link mobile-link-highlight"><span class="m-link-num">09</span><span class="m-link-label">CONTACT ME</span></a>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <span class="m-footer-status"><span class="m-dot-online"></span> Available for Opportunities</span>
+        <div class="m-footer-socials">
+          <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/rodriguez-ni%C3%B1o-miguel-s-24b76b418" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Portfolio Content Container (Overlaid seamlessly on the scroll animation) -->
   <main class="main-content">
@@ -826,133 +877,635 @@
       </div>
     </section>
 
-    <!-- Things I Build With Section (Reference Images 4 & 5) -->
+    <!-- Things I Build With Section (Vercel-Inspired Asymmetrical Bento Grid) -->
     <section id="technologies" class="build-with-section">
       <div class="build-with-container">
 
         <div class="build-with-header">
-          <div class="build-with-badge">
-            <span class="pill-dot red-dot"></span>
-            SYSTEM ARCHITECTURE & CAPABILITIES
+          <div class="bento-meta-badge">
+            <span class="bento-status-dot"></span>
+            <span class="bento-status-code">SYS.ARCH // FULL-STACK ARSENAL</span>
           </div>
-          <h2 class="build-with-title">Engineering Arsenal & System Design</h2>
-          <p class="build-with-subtitle">Modern frameworks, cloud primitives, and architectural patterns leveraged to
-            build scalable, high-performance digital products.</p>
+          <h2 class="build-with-title">Engineering Arsenal &amp; System Design</h2>
+          <p class="build-with-subtitle">
+            An asymmetrical technical matrix pairing full-stack reactive runtimes with relational data architecture, strict developer tooling, and modern design workflows. Hover any chip for authentic Proof-of-Work telemetry.
+          </p>
+
+          <!-- Interactive Bento Arsenal Category Filter Bar -->
+          <div class="arsenal-filter-bar" id="arsenal-filter-bar" role="tablist" aria-label="Filter Arsenal Technologies">
+            <button type="button" class="arsenal-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+              <span class="filter-dot dot-all"></span>All Technologies (20)
+            </button>
+            <button type="button" class="arsenal-filter-btn" data-filter="web" role="tab" aria-selected="false">
+              <span class="filter-dot dot-web"></span>Full-Stack Engine (8)
+            </button>
+            <button type="button" class="arsenal-filter-btn" data-filter="database" role="tab" aria-selected="false">
+              <span class="filter-dot dot-database"></span>Database &amp; Systems (4)
+            </button>
+            <button type="button" class="arsenal-filter-btn" data-filter="tools" role="tab" aria-selected="false">
+              <span class="filter-dot dot-tools"></span>DevOps &amp; Tooling (5)
+            </button>
+            <button type="button" class="arsenal-filter-btn" data-filter="uiux" role="tab" aria-selected="false">
+              <span class="filter-dot dot-uiux"></span>UI/UX Systems (3)
+            </button>
+            <button type="button" class="arsenal-filter-btn" data-filter="ai" role="tab" aria-selected="false">
+              <span class="filter-dot dot-ai"></span>AI Engineering (3)
+            </button>
+          </div>
         </div>
 
-        <div class="build-with-grid">
+        <!-- Asymmetrical Vercel-Inspired Bento Grid -->
+        <div class="bento-arsenal-grid" id="build-with-grid">
 
-          <!-- Card 1: WEB (added react.js, vue.js per user request) -->
-          <div class="stack-box stack-box-web">
-            <div class="stack-box-header">
-              <span class="stack-box-icon web-icon">■</span>
-              <div class="stack-header-meta">
-                <h3 class="stack-box-title">WEB</h3>
-                <span class="stack-role-badge">Frontend & Full Stack</span>
+          <!-- CARD 1: PRIMARY FULL-STACK ENGINE (DOUBLE-WIDTH HERO CARD) -->
+          <div class="bento-card bento-card-hero bento-card-fullstack" data-category="web" tabindex="0">
+            <div class="bento-spotlight-overlay"></div>
+            <div class="bento-card-content">
+              <div class="bento-card-topbar">
+                <div class="bento-pill-indicator">
+                  <span class="bento-indicator-pulse"></span>
+                  <span class="bento-indicator-text">ENGINE // 01 &bull; PRIMARY CORE</span>
+                </div>
+                <div class="bento-card-stat">8 ARCHITECTURAL PRIMITIVES</div>
               </div>
-              <span class="stack-count-badge">7 Techs</span>
+
+              <div class="bento-card-title-group">
+                <h3 class="bento-card-title">Full-Stack Web Engine</h3>
+                <p class="bento-card-desc">
+                  High-throughput reactive frontends coordinated with performant server-side MVC backends, zero-layout jitter, and secure session state orchestration.
+                </p>
+              </div>
+
+              <!-- Technical Standards Telemetry Strip -->
+              <div class="bento-standards-strip">
+                <span class="bento-standard-pill"><span class="standard-dot"></span>MVC Architecture</span>
+                <span class="bento-standard-pill"><span class="standard-dot"></span>Component VDOM</span>
+                <span class="bento-standard-pill"><span class="standard-dot"></span>RESTful Contracts</span>
+                <span class="bento-standard-pill"><span class="standard-dot"></span>Client State Hooks</span>
+              </div>
+
+              <!-- Interactive Pill Chips Grid -->
+              <div class="bento-chips-collection">
+                <!-- React.js -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Celestine CUP E-Commerce"
+                  data-pow-role="Interactive Product Configurator"
+                  data-pow-desc="Built reactive customizable ordering canvas using custom hooks, state lifting, and optimized VDOM reconciliation with zero re-render overhead."
+                  data-pow-metric="Reactive State Hooks • VDOM Optimization">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="-11.5 -10.23174 23 20.46348" width="16" height="16" fill="currentColor">
+                      <circle cx="0" cy="0" r="2.05"/>
+                      <g stroke="currentColor" stroke-width="1" fill="none">
+                        <ellipse rx="11" ry="4.2"/>
+                        <ellipse rx="11" ry="4.2" transform="rotate(60)"/>
+                        <ellipse rx="11" ry="4.2" transform="rotate(120)"/>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">React.js</span>
+                    <span class="bento-chip-sub">Component VDOM</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- Vue.js -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="NCST Student Records System"
+                  data-pow-role="Component SPA Architecture"
+                  data-pow-desc="Engineered modular administrative dashboard with two-way data binding, responsive routing, and reactive data tables for academic records."
+                  data-pow-metric="Modular SPA • Two-Way Data Binding">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M2 3h3.5L12 14.5 18.5 3H22L12 21 2 3zm4.5 0h3L12 7.5 14.5 3h3L12 12 6.5 3z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Vue.js</span>
+                    <span class="bento-chip-sub">Reactive State</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- PHP 8.x -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="NCST SRMS &amp; Enterprise APIs"
+                  data-pow-role="MVC Backend &amp; Auth Handlers"
+                  data-pow-desc="Developed custom MVC routing framework with PDO parameterized queries, Argon2id password encryption, and role-based session ACL security."
+                  data-pow-metric="MVC Architecture • PDO Sanitization">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12.8 9.3h1.8c1.3 0 2.2.7 2.2 2 0 1.4-1 2.1-2.3 2.1h-1.3l-.4 2.6h-2.1l1.8-8.7zm1.3 2.7h.6c.4 0 .7-.2.7-.6 0-.4-.3-.6-.7-.6h-.4l-.2 1.2zm-8.7-2.7h1.8c1.3 0 2.2.7 2.2 2 0 1.4-1 2.1-2.3 2.1H5.5l-.4 2.6H3l1.8-8.7zm1.3 2.7h.6c.4 0 .7-.2.7-.6 0-.4-.3-.6-.7-.6h-.4l-.2 1.2zm11.9 4h2.1l-.9 4.7h-2.1l.9-4.7zm.8-4h2.1l-.5 2.6h-2.1l.5-2.6z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">PHP 8.x</span>
+                    <span class="bento-chip-sub">MVC &amp; Secure PDO</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- Tailwind CSS -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Production Design Systems"
+                  data-pow-role="Semantic Design Tokens"
+                  data-pow-desc="Constructed fluid typography, deep obsidian dark mode color tokens, responsive container scales, and fine micro-interaction styling."
+                  data-pow-metric="Utility Tokens • Fluid Typography">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Tailwind CSS</span>
+                    <span class="bento-chip-sub">Design Token Engine</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- JavaScript ES6+ -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Portfolio Engine &amp; Dino Runner"
+                  data-pow-role="Real-Time Audio &amp; Collision Physics"
+                  data-pow-desc="Implemented Web Audio API 8-bit sound synthesis, requestAnimationFrame proximity loops, and dynamic DOM event orchestration with zero external libraries."
+                  data-pow-metric="Web Audio API • Zero-Dependency ES6+">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M3 3h18v18H3V3zm10.7 13.5c0 1.9-1.2 2.8-3.1 2.8-1.7 0-2.8-.8-3.3-1.8l1.6-1c.4.6.8 1 1.6 1 .8 0 1.3-.4 1.3-1.1V10h2v6.5zm5.7-1c0 2-1.3 2.8-3.3 2.8-1.8 0-3-.9-3.5-2l1.6-1c.4.7 1 1.2 1.9 1.2.8 0 1.3-.4 1.3-.9 0-.6-.5-.8-1.5-1.2-1.5-.6-2.5-1.2-2.5-2.6 0-1.6 1.3-2.6 3.1-2.6 1.5 0 2.5.6 3.1 1.6l-1.5 1c-.3-.5-.7-.8-1.5-.8-.7 0-1.1.4-1.1.8 0 .5.4.7 1.4 1.1 1.7.7 2.5 1.3 2.5 2.6z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">JavaScript ES6+</span>
+                    <span class="bento-chip-sub">Async &amp; DOM Physics</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- HTML5 -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Accessible Web Standards"
+                  data-pow-role="Semantic Structure &amp; SEO"
+                  data-pow-desc="Engineered semantic HTML5 DOM hierarchy, rich microdata schema metadata, and WCAG AA accessibility compliance."
+                  data-pow-metric="Semantic DOM • WCAG AA Compliance">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M3 2l1.8 17.5L12 22l7.2-2.5L21 2H3zm15 6h-8.8l.2 2.5h8.3l-.7 7.2L12 19.3l-5-1.6-.3-3.7h2.5l.2 1.8 2.6.7 2.6-.7.4-4H6.5L5.7 6h12.6l-.3 2z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">HTML5</span>
+                    <span class="bento-chip-sub">Semantic Structure</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- CSS3 & Motion -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Frosted Glassmorphism"
+                  data-pow-role="Hardware-Accelerated Styling"
+                  data-pow-desc="Crafted cubic-bezier 60fps animations, frosted glassmorphism overlays, and cursor-following spotlight shaders."
+                  data-pow-metric="GPU-Accelerated • 60fps Curves">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M3 2l1.8 17.5L12 22l7.2-2.5L21 2H3zm14.7 6.2l-.2 2.3H8.3l.2 2.5h8.6l-.7 7.2L12 19.3l-4.4-1.5-.3-3.8h2.5l.2 1.8 2 .7 2-.7.3-3.6H6.1L5.3 4.2h12.7l-.3 4z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">CSS3 &amp; Motion</span>
+                    <span class="bento-chip-sub">Glassmorphism UI</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- Bootstrap 5 -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Enterprise Administrative Portals"
+                  data-pow-role="Rapid Grid &amp; Modal Architecture"
+                  data-pow-desc="Implemented utility grid frameworks, accessible modal overlays, and responsive tabular dashboards."
+                  data-pow-metric="Responsive Grid • Modal Systems">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.2 14.5H8.8V7.5h4.3c1.7 0 2.7.9 2.7 2.1 0 1-.6 1.7-1.5 1.9 1.1.2 1.9 1.1 1.9 2.3 0 1.6-1.3 2.7-3 2.7zm-2.2-7.4v1.8h1.9c.7 0 1.2-.4 1.2-1 0-.6-.5-.9-1.2-.9H11zm0 3.4v2.1h2.2c.8 0 1.3-.4 1.3-1.1 0-.7-.5-1-1.3-1H11z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Bootstrap 5</span>
+                    <span class="bento-chip-sub">Utility Grids</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+              </div>
             </div>
-            <div class="stack-box-divider"></div>
-            <ul class="stack-box-list">
-              <li>PHP</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-              <li>Bootstrap</li>
-              <li>React.js</li>
-              <li>Vue.js</li>
-            </ul>
           </div>
 
-          <!-- Card 2: SOFTWARE -->
-          <div class="stack-box stack-box-software">
-            <div class="stack-box-header">
-              <span class="stack-box-icon software-icon">■</span>
-              <div class="stack-header-meta">
-                <h3 class="stack-box-title">SOFTWARE</h3>
-                <span class="stack-role-badge">Systems & OOP</span>
+          <!-- CARD 2: RELATIONAL DATABASE & SYSTEMS (FOCUSED CARD) -->
+          <div class="bento-card bento-card-data" data-category="database" tabindex="0">
+            <div class="bento-spotlight-overlay"></div>
+            <div class="bento-card-content">
+              <div class="bento-card-topbar">
+                <div class="bento-pill-indicator">
+                  <span class="bento-indicator-pulse"></span>
+                  <span class="bento-indicator-text">DATA // 02 &bull; PERSISTENCE</span>
+                </div>
+                <div class="bento-card-stat">4 ENGINES</div>
               </div>
-              <span class="stack-count-badge">2 Techs</span>
+
+              <div class="bento-card-title-group">
+                <h3 class="bento-card-title">Relational Database &amp; OOP</h3>
+                <p class="bento-card-desc">
+                  Strict 3NF schema normalization, indexed foreign keys, ACID compliance, and robust enterprise object models.
+                </p>
+              </div>
+
+              <div class="bento-chips-collection bento-chips-vertical">
+                <!-- MySQL -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Celestine CUP E-Commerce"
+                  data-pow-role="Relational Schema Design &amp; Transactions"
+                  data-pow-desc="Architected 3NF normalized MySQL database with foreign key constraints, composite index lookup optimizations, and ACID transactional order processing."
+                  data-pow-metric="3NF Normalization • ACID Transactions">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">MySQL</span>
+                    <span class="bento-chip-sub">Indexed Relational Schemas</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- MariaDB -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="NCST Academic Grading System"
+                  data-pow-role="High-Concurrency Relational Store"
+                  data-pow-desc="Configured local MariaDB server instances for high-throughput concurrent academic data queries and student grade record verification."
+                  data-pow-metric="High Concurrency • InnoDB Storage">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4 21l3.5-.96C9.01 20.61 10.46 21 12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-1.38 0-2.65-.42-3.71-1.14l-.27-.18-2.07.57.57-2.01-.2-.31C5.52 14.83 5 13.48 5 12c0-3.86 3.14-7 7-7s7 3.14 7 7-3.14 7-7 7z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">MariaDB</span>
+                    <span class="bento-chip-sub">ACID Storage Engines</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- Java 17+ -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="NCST Desktop Systems"
+                  data-pow-role="Enterprise OOP &amp; JDBC Database Persistence"
+                  data-pow-desc="Developed desktop student records application leveraging strict OOP principles (encapsulation, polymorphism, abstract classes) and JDBC connection pooling."
+                  data-pow-metric="Enterprise OOP • JDBC Connection Pools">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                      <line x1="6" y1="1" x2="6" y2="4"/>
+                      <line x1="10" y1="1" x2="10" y2="4"/>
+                      <line x1="14" y1="1" x2="14" y2="4"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Java 17+</span>
+                    <span class="bento-chip-sub">Enterprise OOP &amp; JDBC</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- C++ -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Algorithms &amp; Data Structures"
+                  data-pow-role="Low-Level Memory &amp; Complexity Analysis"
+                  data-pow-desc="Engineered memory-managed sorting algorithms, pointers, dynamic memory allocation, and algorithmic time complexity optimizations."
+                  data-pow-metric="Memory Pointers • Algorithmic Efficiency">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="9"/>
+                      <path d="M10 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3"/>
+                      <line x1="14" y1="12" x2="18" y2="12"/>
+                      <line x1="16" y1="10" x2="16" y2="14"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">C++</span>
+                    <span class="bento-chip-sub">Memory &amp; Data Structures</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+              </div>
             </div>
-            <div class="stack-box-divider"></div>
-            <ul class="stack-box-list">
-              <li>Java</li>
-              <li>C++</li>
-            </ul>
           </div>
 
-          <!-- Card 3: DATABASE -->
-          <div class="stack-box stack-box-database">
-            <div class="stack-box-header">
-              <span class="stack-box-icon database-icon">■</span>
-              <div class="stack-header-meta">
-                <h3 class="stack-box-title">DATABASE</h3>
-                <span class="stack-role-badge">Relational & SQL</span>
+          <!-- CARD 3: DEV TOOLING & PIPELINES (FOCUSED CARD) -->
+          <div class="bento-card bento-card-tools" data-category="tools" tabindex="0">
+            <div class="bento-spotlight-overlay"></div>
+            <div class="bento-card-content">
+              <div class="bento-card-topbar">
+                <div class="bento-pill-indicator">
+                  <span class="bento-indicator-pulse"></span>
+                  <span class="bento-indicator-text">DEVOPS // 03 &bull; PIPELINES</span>
+                </div>
+                <div class="bento-card-stat">5 TOOLS</div>
               </div>
-              <span class="stack-count-badge">2 Techs</span>
+
+              <div class="bento-card-title-group">
+                <h3 class="bento-card-title">Dev Tooling &amp; Environments</h3>
+                <p class="bento-card-desc">
+                  Trunk-based branch hygiene, atomic commits, IDE workspace tuning, and local virtualization daemons.
+                </p>
+              </div>
+
+              <div class="bento-chips-collection">
+                <!-- Git -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Version Control Workflows"
+                  data-pow-role="Branching Hygiene &amp; Semantic Commits"
+                  data-pow-desc="Trunk-based development, semantic commit conventions, interactive rebasing, and conflict-free release merges."
+                  data-pow-metric="Semantic Commits • Trunk-Based Flow">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="6" y1="3" x2="6" y2="15"/>
+                      <circle cx="18" cy="6" r="3"/>
+                      <circle cx="6" cy="18" r="3"/>
+                      <path d="M18 9a9 9 0 0 1-9 9"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Git</span>
+                    <span class="bento-chip-sub">Version Control</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- GitHub -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Repository &amp; CI/CD Pipelines"
+                  data-pow-role="Collaborative Management"
+                  data-pow-desc="Continuous automated deployments, pull request reviews, repository access policies, and issue lifecycle tracking."
+                  data-pow-metric="CI/CD Workflows • PR Reviews">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">GitHub</span>
+                    <span class="bento-chip-sub">Repos &amp; Actions</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- VS Code -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Developer Workspace Diagnostics"
+                  data-pow-role="Editor Runtime &amp; Profiling"
+                  data-pow-desc="Optimized local tooling environment with strict ESLint formatting, TypeScript server protocols, and integrated debugging profiles."
+                  data-pow-metric="LSP Diagnostics • Custom Profiles">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M16 18l6-6-6-6"/>
+                      <path d="M8 6l-6 6 6 6"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">VS Code</span>
+                    <span class="bento-chip-sub">IDE Runtime</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- NetBeans -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Java Enterprise Development"
+                  data-pow-role="GUI &amp; JVM Profiling"
+                  data-pow-desc="Compiled and debugged Java swing application suites with memory heap analysis and thread inspection."
+                  data-pow-metric="JVM Heap Profiling • GUI Modules">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <line x1="9" y1="9" x2="15" y2="15"/>
+                      <line x1="15" y1="9" x2="9" y2="15"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">NetBeans</span>
+                    <span class="bento-chip-sub">Java IDE Profiler</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- XAMPP -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Local Staging Virtualization"
+                  data-pow-role="Apache &amp; MySQL Daemon Management"
+                  data-pow-desc="Configured isolated local staging servers with Apache virtual host routing, MariaDB socket handling, and PHP modules."
+                  data-pow-metric="Apache VirtualHosts • MariaDB Daemons">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                      <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                      <line x1="6" y1="6" x2="6.01" y2="6"/>
+                      <line x1="6" y1="18" x2="6.01" y2="18"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">XAMPP</span>
+                    <span class="bento-chip-sub">Local Staging Daemon</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+              </div>
             </div>
-            <div class="stack-box-divider"></div>
-            <ul class="stack-box-list">
-              <li>MySQL</li>
-              <li>MariaDB</li>
-            </ul>
           </div>
 
-          <!-- Card 4: TOOLS -->
-          <div class="stack-box stack-box-tools">
-            <div class="stack-box-header">
-              <span class="stack-box-icon tools-icon">■</span>
-              <div class="stack-header-meta">
-                <h3 class="stack-box-title">TOOLS</h3>
-                <span class="stack-role-badge">DevOps & Environments</span>
+          <!-- CARD 4: UI/UX & DESIGN SYSTEMS (FOCUSED CARD) -->
+          <div class="bento-card bento-card-design" data-category="uiux" tabindex="0">
+            <div class="bento-spotlight-overlay"></div>
+            <div class="bento-card-content">
+              <div class="bento-card-topbar">
+                <div class="bento-pill-indicator">
+                  <span class="bento-indicator-pulse"></span>
+                  <span class="bento-indicator-text">DESIGN // 04 &bull; WORKFLOW</span>
+                </div>
+                <div class="bento-card-stat">3 DISCIPLINES</div>
               </div>
-              <span class="stack-count-badge">5 Techs</span>
+
+              <div class="bento-card-title-group">
+                <h3 class="bento-card-title">UI/UX &amp; Design Systems</h3>
+                <p class="bento-card-desc">
+                  Design tokens, component hierarchies, auto-layout wireframes, and fluid micro-interaction systems.
+                </p>
+              </div>
+
+              <div class="bento-chips-collection bento-chips-vertical">
+                <!-- Figma -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Celestine CUP &amp; Portfolio Redesign"
+                  data-pow-role="Component Architecture &amp; Hi-Fi Prototypes"
+                  data-pow-desc="Crafted atomic UI design systems with responsive auto-layout components, variant properties, 8pt spacing grids, and high-fidelity click-through prototypes."
+                  data-pow-metric="Atomic Design • 8pt Grid System">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+                      <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+                      <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/>
+                      <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
+                      <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Figma</span>
+                    <span class="bento-chip-sub">Design Systems &amp; Wireframes</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- Design Tokens -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Obsidian Dark Canvas Architecture"
+                  data-pow-role="WCAG AAA Accessible Color Modeling"
+                  data-pow-desc="Engineered deep matte obsidian canvas (#08080a) with frosted glassmorphism overlays and fine 1px structural borders."
+                  data-pow-metric="WCAG AAA Contrast • Obsidian Canvas">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Design Tokens</span>
+                    <span class="bento-chip-sub">Obsidian Color Space</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- Motion Design -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Tactile Micro-Interactions"
+                  data-pow-role="Hardware Shaders &amp; Bézier Curves"
+                  data-pow-desc="Designed 60fps cubic-bezier transitions, cursor spotlight tracking, tactile button elevation, and HUD drawer animations."
+                  data-pow-metric="60fps Bézier • Cursor Radial Spotlight">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Motion Design</span>
+                    <span class="bento-chip-sub">Bézier &amp; Micro-Animations</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+              </div>
             </div>
-            <div class="stack-box-divider"></div>
-            <ul class="stack-box-list">
-              <li>Git</li>
-              <li>GitHub</li>
-              <li>VS Code</li>
-              <li>NetBeans</li>
-              <li>XAMPP</li>
-            </ul>
           </div>
 
-          <!-- Card 5: UI / UX -->
-          <div class="stack-box stack-box-uiux">
-            <div class="stack-box-header">
-              <span class="stack-box-icon uiux-icon">■</span>
-              <div class="stack-header-meta">
-                <h3 class="stack-box-title">UI / UX</h3>
-                <span class="stack-role-badge">Design Systems</span>
+          <!-- CARD 5: AI COGNITIVE ENGINEERING (FOCUSED CARD) -->
+          <div class="bento-card bento-card-ai" data-category="ai" tabindex="0">
+            <div class="bento-spotlight-overlay"></div>
+            <div class="bento-card-content">
+              <div class="bento-card-topbar">
+                <div class="bento-pill-indicator">
+                  <span class="bento-indicator-pulse"></span>
+                  <span class="bento-indicator-text">AI // 05 &bull; COGNITION</span>
+                </div>
+                <div class="bento-card-stat">3 PRIMITIVES</div>
               </div>
-              <span class="stack-count-badge">1 Tech</span>
-            </div>
-            <div class="stack-box-divider"></div>
-            <ul class="stack-box-list">
-              <li>Figma</li>
-            </ul>
-          </div>
 
-          <!-- Card 6: AI (added claude per user request) -->
-          <div class="stack-box stack-box-ai">
-            <div class="stack-box-header">
-              <span class="stack-box-icon ai-icon">■</span>
-              <div class="stack-header-meta">
-                <h3 class="stack-box-title">AI</h3>
-                <span class="stack-role-badge">Cognitive Engineering</span>
+              <div class="bento-card-title-group">
+                <h3 class="bento-card-title">AI &amp; Cognitive Engineering</h3>
+                <p class="bento-card-desc">
+                  Multimodal computer vision, programmatic prompt synthesis, and agentic workflows for scalable software development.
+                </p>
               </div>
-              <span class="stack-count-badge">3 Techs</span>
+
+              <div class="bento-chips-collection bento-chips-vertical">
+                <!-- Google Gemini -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Multimodal Code &amp; Vision Analysis"
+                  data-pow-role="Visual Inspection &amp; Rapid Refactoring"
+                  data-pow-desc="Leveraged Gemini multimodal vision to perform pixel-level UI audits, diagnose responsive alignment anomalies, and synthesize clean architectures."
+                  data-pow-metric="Multimodal Vision • Contextual Synthesis">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2z"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Google Gemini</span>
+                    <span class="bento-chip-sub">Multimodal Analysis</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- Claude 3.5 Sonnet -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Deep System Architecture"
+                  data-pow-role="Algorithmic Tuning &amp; Refactoring"
+                  data-pow-desc="Employed Claude 3.5 for complex state modeling, strict typing patterns, algorithmic memory optimization, and structural documentation."
+                  data-pow-metric="Algorithmic Tuning • State Modeling">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <circle cx="12" cy="12" r="4"/>
+                      <path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07l-2.83 2.83M7.76 16.24l-2.83 2.83m14.14 0l-2.83-2.83M7.76 7.76L4.93 4.93"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">Claude 3.5</span>
+                    <span class="bento-chip-sub">Architecture Validation</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+
+                <!-- OpenAI Codex -->
+                <div class="bento-chip" tabindex="0" role="button"
+                  data-pow-project="Automated Script Scaffolding"
+                  data-pow-role="Code Synthesis &amp; Automation"
+                  data-pow-desc="Accelerated boilerplate scaffolding, regular expression generation, and automation scripts for media processing pipelines."
+                  data-pow-metric="Boilerplate Scaffolding • Script Automation">
+                  <div class="bento-chip-icon">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="16 18 22 12 16 6"/>
+                      <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                  </div>
+                  <div class="bento-chip-meta">
+                    <span class="bento-chip-name">OpenAI Codex</span>
+                    <span class="bento-chip-sub">Synthesis &amp; Scaffolding</span>
+                  </div>
+                  <span class="bento-chip-pow-tag">POW</span>
+                </div>
+              </div>
             </div>
-            <div class="stack-box-divider"></div>
-            <ul class="stack-box-list">
-              <li>Gemini</li>
-              <li>Codex</li>
-              <li>Claude</li>
-            </ul>
           </div>
 
         </div>
+
+        <!-- Floating Proof-of-Work Interactive HUD Popover -->
+        <div class="bento-pow-popover" id="bento-pow-popover" role="tooltip" aria-hidden="true">
+          <div class="pow-popover-glow"></div>
+          <div class="pow-popover-header">
+            <span class="pow-tag-badge"><span class="pow-dot"></span>PROOF OF WORK</span>
+            <span class="pow-metric-badge" id="pow-popover-metric">3NF Normalized</span>
+          </div>
+          <div class="pow-popover-title-row">
+            <span class="pow-project-label" id="pow-popover-project">Celestine CUP</span>
+            <span class="pow-role-label" id="pow-popover-role">Lead Engine</span>
+          </div>
+          <p class="pow-popover-desc" id="pow-popover-desc">
+            Technical implementation telemetry.
+          </p>
+          <div class="pow-popover-footer">
+            <span class="pow-footer-hint">CLICK OR HOVER CHIPS FOR DEEP TELEMETRY</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1548,23 +2101,32 @@
           <div class="dino-badge-wrap">
             <span class="dino-badge"><span class="dino-dot"></span>CHROME RUNNER</span>
             <span class="dino-mode">ARCADE DANCE MIGUEL TRIBUTE</span>
+            <button type="button" class="dino-sound-toggle" id="dino-sound-toggle" aria-label="Toggle retro arcade jump audio" title="Click to toggle 8-bit sound effects">
+              <span class="sound-icon" id="sound-icon">🔊</span>
+              <span class="sound-label">8-BIT AUDIO ON</span>
+            </button>
           </div>
           <div class="dino-score-panel" id="dino-score-panel">
+            <span class="dino-auto-badge">⚡ AUTO-LEAP</span>
             <span class="dino-hi-score">HI 02026</span>
             <span class="dino-live-score" id="dino-live-score">00420</span>
           </div>
         </div>
 
-        <div class="dino-track-wrapper" id="dino-track-wrapper">
+        <div class="dino-track-wrapper" id="dino-track-wrapper" title="Click or tap to jump manually!">
           <div class="dino-ground-line"></div>
+          <!-- Retro floating score & particle overlays -->
+          <div class="dino-float-scores" id="dino-float-scores" aria-hidden="true"></div>
+          
           <div class="dino-runner-actor" id="dino-runner-actor" title="Click or tap to jump!">
-            <img src="assets/miguel-dancer.webp?v=2" alt="Niño Miguel Dancing and Running" class="dino-dancer-gif" id="dino-dancer-gif">
+            <div class="dino-dancer-glow"></div>
+            <img src="assets/miguel-dancer.webp?v=5" alt="Niño Miguel Dancing and Running" class="dino-dancer-gif" id="dino-dancer-gif">
             <div class="dino-dancer-shadow"></div>
           </div>
           <!-- Retro decorative pixel obstacles along the track -->
-          <div class="dino-obstacle obs-1" style="left: 20%;"></div>
-          <div class="dino-obstacle obs-2" style="left: 52%;"></div>
-          <div class="dino-obstacle obs-3" style="left: 78%;"></div>
+          <div class="dino-obstacle obs-1" id="obs-1" style="left: 20%;" data-obs-id="1"></div>
+          <div class="dino-obstacle obs-2" id="obs-2" style="left: 52%;" data-obs-id="2"></div>
+          <div class="dino-obstacle obs-3" id="obs-3" style="left: 78%;" data-obs-id="3"></div>
         </div>
       </div>
 
