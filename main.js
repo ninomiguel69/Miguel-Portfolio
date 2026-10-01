@@ -2026,8 +2026,8 @@ function initDinoDanceRunner() {
           // Only trigger if cooldown passed (1.4s between re-jumping in same direction)
           if (now - lastJumped > 1400) {
             const distanceAhead = isMovingRight ? (obsCenter - actorCenter) : (actorCenter - obsCenter);
-            // Trigger auto-leap when approaching cross obstacle (12px to 75px range)
-            if (distanceAhead >= 12 && distanceAhead <= 75) {
+            // Trigger auto-leap when approaching cross obstacle (38px to 85px range for centered hurdle jump)
+            if (distanceAhead >= 38 && distanceAhead <= 85) {
               obsCooldowns.set(dirKey, now);
               triggerJump(true, obs);
             }
@@ -2255,15 +2255,30 @@ function initBentoSpotlightAndPopovers() {
     // Position popover relative to chip viewport
     const rect = chip.getBoundingClientRect();
     const popWidth = Math.min(320, window.innerWidth - 30);
-    const popHeight = 155;
+    const popHeight = popover.offsetHeight || 160;
 
     let left = rect.left + (rect.width / 2) - (popWidth / 2);
-    let top = rect.top - popHeight - 12;
+    
+    // Check if positioning above chip would collide with the parent card header or top of viewport
+    const card = chip.closest('.bento-card');
+    let placeBelow = false;
+    
+    if (rect.top - popHeight - 14 < 15) {
+      placeBelow = true;
+    } else if (card) {
+      const cardRect = card.getBoundingClientRect();
+      // If placing above would cover the card's title group/header and there is space below
+      if (rect.top - popHeight - 10 < cardRect.top + 75 && (rect.bottom + popHeight + 14 < window.innerHeight)) {
+        placeBelow = true;
+      }
+    }
 
-    // Smart viewport boundary adjustment
-    if (top < 15) {
-      // Flip below chip if no space above
-      top = rect.bottom + 12;
+    let top = placeBelow ? (rect.bottom + 12) : (rect.top - popHeight - 12);
+
+    // Viewport bounds protection
+    if (top < 10) top = 10;
+    if (top + popHeight > window.innerHeight - 10) {
+      top = Math.max(10, window.innerHeight - popHeight - 10);
     }
     if (left < 14) left = 14;
     if (left + popWidth > window.innerWidth - 14) {

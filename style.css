@@ -2579,14 +2579,8 @@ body > div:last-child[class*="netlify"] {
 .build-with-section {
   padding: 50px 0 110px;
   position: relative;
-  background-color: #08080a !important;
-  /* Ambient cyan-to-violet mesh glow preventing any background portrait bleed */
-  background-image: 
-    radial-gradient(ellipse 650px 420px at 12% 18%, rgba(0, 240, 255, 0.045) 0%, transparent 70%),
-    radial-gradient(ellipse 700px 480px at 88% 82%, rgba(139, 92, 246, 0.045) 0%, transparent 70%),
-    radial-gradient(ellipse 900px 300px at 50% 50%, rgba(255, 42, 58, 0.015) 0%, transparent 80%) !important;
+  background: transparent !important;
   z-index: 10;
-  isolation: isolate;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -2658,13 +2652,13 @@ body > div:last-child[class*="netlify"] {
 .arsenal-filter-bar {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin-top: 26px;
   flex-wrap: wrap;
-  padding: 6px;
+  padding: 6px 8px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
+  border-radius: 14px;
   width: fit-content;
   max-width: 100%;
 }
@@ -2674,13 +2668,13 @@ body > div:last-child[class*="netlify"] {
   align-items: center;
   gap: 8px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: #94a3b8;
   background: transparent;
   border: 1px solid transparent;
-  padding: 7px 16px;
+  padding: 6px 14px;
   border-radius: 999px;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -2775,6 +2769,7 @@ body > div:last-child[class*="netlify"] {
   transform: translateY(-3px);
   border-color: rgba(255, 255, 255, 0.18);
   box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.75), 0 0 24px rgba(0, 240, 255, 0.04);
+  z-index: 5;
 }
 
 .bento-card-content {
@@ -2937,6 +2932,7 @@ body > div:last-child[class*="netlify"] {
   border-color: rgba(0, 240, 255, 0.4);
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 14px rgba(0, 240, 255, 0.1);
+  z-index: 20;
 }
 
 .bento-chip-icon {
@@ -3014,7 +3010,7 @@ body > div:last-child[class*="netlify"] {
    ========================================================================== */
 .bento-pow-popover {
   position: fixed;
-  z-index: 99999;
+  z-index: 999999;
   width: 320px;
   background: rgba(9, 11, 15, 0.96);
   backdrop-filter: blur(18px);
@@ -3023,7 +3019,7 @@ body > div:last-child[class*="netlify"] {
   border-radius: 12px;
   padding: 16px 18px;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85), 0 0 24px rgba(0, 240, 255, 0.14);
-  pointer-events: none;
+  pointer-events: none !important;
   opacity: 0;
   transform: translateY(8px) scale(0.97);
   transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1),
@@ -3033,7 +3029,7 @@ body > div:last-child[class*="netlify"] {
 .bento-pow-popover.active {
   opacity: 1;
   transform: translateY(0) scale(1);
-  pointer-events: auto;
+  pointer-events: none !important;
 }
 
 .pow-popover-glow {
@@ -3171,7 +3167,8 @@ body > div:last-child[class*="netlify"] {
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     padding: 6px 4px;
-    border-radius: var(--radius-sm);
+    border-radius: 12px;
+    flex-wrap: nowrap;
   }
 
   .arsenal-filter-bar::-webkit-scrollbar {
@@ -3181,6 +3178,7 @@ body > div:last-child[class*="netlify"] {
   .arsenal-filter-btn {
     font-size: 11.5px;
     padding: 6px 12px;
+    flex-shrink: 0;
   }
 }
 
@@ -5012,11 +5010,11 @@ body > div:last-child[class*="netlify"] {
 .dino-dancer-glow {
   position: absolute;
   bottom: -2px;
-  width: 52px;
-  height: 12px;
-  background: radial-gradient(ellipse, rgba(255, 42, 58, 0.65) 0%, rgba(255, 42, 58, 0.18) 55%, transparent 75%);
+  width: 50px;
+  height: 10px;
+  background: radial-gradient(ellipse, rgba(0, 240, 255, 0.32) 0%, rgba(0, 240, 255, 0.08) 50%, transparent 75%);
   border-radius: 50%;
-  filter: blur(4px);
+  filter: blur(3px);
   pointer-events: none;
   animation: dinoGlowPulse 1.2s ease-in-out infinite alternate;
 }
@@ -5034,7 +5032,7 @@ body > div:last-child[class*="netlify"] {
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 10px rgba(255, 42, 58, 0.35));
+  filter: none !important;
   pointer-events: none;
   transform-origin: center bottom;
   will-change: transform;
