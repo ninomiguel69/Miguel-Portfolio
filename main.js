@@ -648,7 +648,7 @@ function initProjectModal() {
         { dot: 'red-dot', name: 'P95 < 0.4ms Geometry Engine' },
         { dot: 'html-dot', name: 'WebGL Strict 1.000 Scale' }
       ],
-      footerLinks: '<a href="https://github.com/Yakuzokai/smartspace" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-launch-live"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg> View GitHub Repository</a><span class="modal-badge-meta"><span class="pill-dot red-dot"></span> Collaborative Spatial AI &amp; WebGL • Team Co-Engineered</span>'
+      footerLinks: '<a href="https://github.com/Yakuzokai/smartspace" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-launch-live"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg> View GitHub Repository</a>'
     },
 
     miguelfit: {
@@ -951,6 +951,11 @@ function initProjectModal() {
     // 7. Update Footer Links
     if (modalFooterLinks) {
       modalFooterLinks.innerHTML = data.footerLinks;
+      const modalFooter = modalFooterLinks.closest('.modal-footer');
+      if (modalFooter) {
+        const linkBtns = modalFooterLinks.querySelectorAll('.btn');
+        modalFooter.classList.toggle('has-two-links', linkBtns.length >= 2);
+      }
     }
 
     // 8. Reset modal scroll to top
@@ -2291,14 +2296,19 @@ function initBentoSpotlightAndPopovers() {
     popover.setAttribute('aria-hidden', 'false');
   }
 
+  function dismissPopoverImmediate() {
+    if (hideTimeout) clearTimeout(hideTimeout);
+    popover.classList.remove('active');
+    popover.setAttribute('aria-hidden', 'true');
+    if (activeChip) {
+      activeChip.classList.remove('bento-chip-active');
+      activeChip = null;
+    }
+  }
+
   function hidePopover() {
     hideTimeout = setTimeout(() => {
-      popover.classList.remove('active');
-      popover.setAttribute('aria-hidden', 'true');
-      if (activeChip) {
-        activeChip.classList.remove('bento-chip-active');
-        activeChip = null;
-      }
+      dismissPopoverImmediate();
     }, 160);
   }
 
@@ -2309,12 +2319,21 @@ function initBentoSpotlightAndPopovers() {
     chip.addEventListener('blur', hidePopover);
     chip.addEventListener('click', (e) => {
       e.stopPropagation();
-      showPopover(chip);
+      // If tapping active chip again, toggle it closed
+      if (activeChip === chip && popover.classList.contains('active')) {
+        dismissPopoverImmediate();
+      } else {
+        showPopover(chip);
+      }
     });
     chip.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        showPopover(chip);
+        if (activeChip === chip && popover.classList.contains('active')) {
+          dismissPopoverImmediate();
+        } else {
+          showPopover(chip);
+        }
       }
     });
   });
@@ -2323,26 +2342,40 @@ function initBentoSpotlightAndPopovers() {
     if (hideTimeout) clearTimeout(hideTimeout);
   });
   popover.addEventListener('mouseleave', hidePopover);
+  
+  // Clicking the popover box itself dismisses it
+  popover.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dismissPopoverImmediate();
+  });
+
+  // Touching the screen, touch-scrolling, or window-scrolling immediately dismisses the box
+  window.addEventListener('scroll', dismissPopoverImmediate, { passive: true });
+  window.addEventListener('touchmove', dismissPopoverImmediate, { passive: true });
+  window.addEventListener('wheel', dismissPopoverImmediate, { passive: true });
+
+  // Touching or clicking outside dismisses immediately
+  document.addEventListener('touchstart', (e) => {
+    if (!e.target.closest('.bento-chip')) {
+      dismissPopoverImmediate();
+    }
+  }, { passive: true });
+
+  document.addEventListener('pointerdown', (e) => {
+    if (!e.target.closest('.bento-chip')) {
+      dismissPopoverImmediate();
+    }
+  });
 
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.bento-chip') && !e.target.closest('#bento-pow-popover')) {
-      popover.classList.remove('active');
-      popover.setAttribute('aria-hidden', 'true');
-      if (activeChip) {
-        activeChip.classList.remove('bento-chip-active');
-        activeChip = null;
-      }
+    if (!e.target.closest('.bento-chip')) {
+      dismissPopoverImmediate();
     }
   });
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && popover.classList.contains('active')) {
-      popover.classList.remove('active');
-      popover.setAttribute('aria-hidden', 'true');
-      if (activeChip) {
-        activeChip.classList.remove('bento-chip-active');
-        activeChip = null;
-      }
+      dismissPopoverImmediate();
     }
   });
 }
