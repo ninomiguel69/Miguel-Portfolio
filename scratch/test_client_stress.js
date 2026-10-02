@@ -17,21 +17,14 @@ const requiredElements = [
   'cmd-palette-input',
   'cmd-palette-results',
   'cmd-palette-close-btn',
-  'project-coverflow-wrapper',
-  'coverflow-track',
-  'coverflow-prev',
-  'coverflow-next',
-  'coverflow-tech-tags',
-  'coverflow-project-title',
-  'coverflow-project-desc',
-  'coverflow-case-study-btn',
-  'coverflow-live-btn',
-  'coverflow-counter-top',
-  'coverflow-progress-bar',
-  'coverflow-dots',
   'project-modal',
   'resume-modal',
-  'animation-canvas'
+  'animation-canvas',
+  'projects',
+  'projects-grid',
+  'open-celestine-btn',
+  'solo-placeholder-card',
+  'my-projects-showcase-card'
 ];
 
 console.log('--- TEST 1: Checking Required Element IDs in index.html ---');
@@ -108,86 +101,42 @@ if (searchIndexMatch) {
   failed++;
 }
 
-// TEST 3: 3D Coverflow Mathematics & Bounds Stress Test
-console.log('\n--- TEST 3: 3D Coverflow Transform Mathematics Stress Test ---');
-const projectList = [
-  { id: 'smartspace', category: 'collaborative' },
-  { id: 'celestine', category: 'collaborative' },
-  { id: 'miguelfit', category: 'my-projects' },
-  { id: 'ncst-srms', category: 'collaborative' },
-  { id: 'fynn-hotel', category: 'collaborative' },
-  { id: 'auramart', category: 'my-projects' },
-  { id: 'grazingbull', category: 'my-projects' }
-];
+// TEST 3: Project Archive DOM & Data-Target Verification
+console.log('\n--- TEST 3: Project Archive Integrity & Card Completeness ---');
+const bookshelfSlugs = ['ncst-srms', 'fynn-hotel', 'smartspace', 'miguelfit', 'auramart', 'grazingbull'];
+let missingCards = [];
 
-let mathErrors = 0;
-for (let activeIndex = -5; activeIndex <= 15; activeIndex++) {
-  // Wrap index safely like goToSlide
-  let safeIndex = activeIndex;
-  if (projectList.length > 0) {
-    if (safeIndex < 0) safeIndex = projectList.length - 1;
-    if (safeIndex >= projectList.length) safeIndex = 0;
+for (const slug of bookshelfSlugs) {
+  const hasCard = html.includes(`data-project-id="${slug}"`);
+  if (!hasCard) {
+    missingCards.push(slug);
   }
-
-  projectList.forEach((_, idx) => {
-    const offset = idx - safeIndex;
-    const absOffset = Math.abs(offset);
-    const sign = Math.sign(offset);
-
-    let transform = '';
-    let opacity = 0;
-    let zIndex = 0;
-
-    if (offset === 0) {
-      transform = 'translate3d(0, 0, 70px) rotateY(0deg) scale(1)';
-      opacity = 1;
-      zIndex = 20;
-    } else if (absOffset === 1) {
-      const tx = sign * 62;
-      const rotY = -sign * 32;
-      const sc = 0.82;
-      transform = `translate3d(${tx}%, 0, -80px) rotateY(${rotY}deg) scale(${sc})`;
-      opacity = 0.62;
-      zIndex = 10;
-    } else if (absOffset === 2) {
-      const tx = sign * 115;
-      const rotY = -sign * 45;
-      const sc = 0.68;
-      transform = `translate3d(${tx}%, 0, -180px) rotateY(${rotY}deg) scale(${sc})`;
-      opacity = 0.24;
-      zIndex = 5;
-    } else {
-      const tx = sign * 140;
-      transform = `translate3d(${tx}%, 0, -280px) scale(0.5)`;
-      opacity = 0;
-      zIndex = 1;
-    }
-
-    if (!transform || isNaN(opacity) || isNaN(zIndex)) {
-      mathErrors++;
-    }
-  });
 }
 
-if (mathErrors === 0) {
-  console.log(`  ✅ 3D Transform calculations verified across all viewport indices with 0 math errors.`);
+// Also check featured Celestine project
+const hasCelestine = html.includes('open-celestine-btn');
+if (!hasCelestine) {
+  missingCards.push('celestine');
+}
+
+if (missingCards.length === 0) {
+  console.log(`  ✅ All 7 project showcases (1 Featured + 6 Bookshelf cards) verified in DOM.`);
   passed++;
 } else {
-  console.error(`  ❌ 3D Coverflow math produced ${mathErrors} invalid calculations.`);
+  console.error(`  ❌ Missing project cards for:`, missingCards);
   failed++;
 }
 
-// TEST 4: Category Filtering Consistency
-console.log('\n--- TEST 4: Coverflow Category Filter Integrity ---');
-const allCount = projectList.length;
-const collabCount = projectList.filter(p => p.category === 'collaborative').length;
-const soloCount = projectList.filter(p => p.category === 'my-projects').length;
+// TEST 4: Category Filtering Partition Consistency
+console.log('\n--- TEST 4: Category Partition Verification ---');
+const collabSlugs = ['celestine', 'ncst-srms', 'fynn-hotel', 'smartspace'];
+const soloSlugs = ['miguelfit', 'auramart', 'grazingbull'];
 
-if (collabCount === 4 && soloCount === 3 && (collabCount + soloCount === allCount)) {
-  console.log(`  ✅ Perfect category partition: 4 Collaborative + 3 Solo = 7 Total Projects.`);
+if (collabSlugs.length === 4 && soloSlugs.length === 3 && (collabSlugs.length + soloSlugs.length === 7)) {
+  console.log(`  ✅ Category partitions verified: 4 Collaborative + 3 Solo = 7 Total.`);
   passed++;
 } else {
-  console.error(`  ❌ Unexpected project counts: Collab=${collabCount}, Solo=${soloCount}`);
+  console.error(`  ❌ Partition mismatch.`);
   failed++;
 }
 

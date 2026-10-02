@@ -369,10 +369,6 @@ function initProjectArchive() {
       hideElement(soloShowcase);
       showElement(myProjectsCard, 'block');
     }
-
-    if (typeof window.filterProjectCoverflow === 'function') {
-      window.filterProjectCoverflow(filter);
-    }
   }
 
   filterBtns.forEach(btn => {
@@ -1979,11 +1975,16 @@ function initDinoDanceRunner() {
     }, 1100);
   }
 
+  // Jump Timing Constants: Perfectly tuned 720ms athletic leap with 50% apex (360ms)
+  const JUMP_DURATION_MS = 720;
+  const JUMP_APEX_RATIO = 0.50; // True crest over the hump at 50%
+  const JUMP_APEX_MS = JUMP_DURATION_MS * JUMP_APEX_RATIO;
+
   // Jump Trigger Logic
   function triggerJump(isAuto = false, relatedObs = null) {
     if (isJumping) return;
     const now = Date.now();
-    if (now - lastJumpTime < 580) return; // Cooldown to finish jump arc
+    if (now - lastJumpTime < JUMP_DURATION_MS - 60) return; // Cooldown to finish jump arc
     lastJumpTime = now;
     isJumping = true;
     actor.classList.add('dino-jumping');
@@ -1991,36 +1992,39 @@ function initDinoDanceRunner() {
     playArcadeJumpSound();
 
     if (isAuto && relatedObs) {
-      relatedObs.classList.add('dino-obstacle-passed');
+      // Synchronize electric flash & combo points precisely when Miguel is soaring directly above the hump (at apex!)
       setTimeout(() => {
-        relatedObs.classList.remove('dino-obstacle-passed');
-      }, 700);
-
-      // Add bonus score
-      currentScore += 100;
-      if (liveScoreEl) {
-        liveScoreEl.textContent = String(currentScore).padStart(5, '0');
-        liveScoreEl.style.color = '#00f0ff';
-        liveScoreEl.style.textShadow = '0 0 14px rgba(0, 240, 255, 0.9)';
+        relatedObs.classList.add('dino-obstacle-passed');
         setTimeout(() => {
-          liveScoreEl.style.color = '#ffffff';
-          liveScoreEl.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.45)';
-        }, 600);
-      }
+          relatedObs.classList.remove('dino-obstacle-passed');
+        }, 650);
 
-      const actorRect = actor.getBoundingClientRect();
-      const trackRect = track.getBoundingClientRect();
-      const relativeX = actorRect.left - trackRect.left + (actorRect.width / 2);
-      spawnScorePopup(relativeX);
+        // Add bonus score
+        currentScore += 100;
+        if (liveScoreEl) {
+          liveScoreEl.textContent = String(currentScore).padStart(5, '0');
+          liveScoreEl.style.color = '#00f0ff';
+          liveScoreEl.style.textShadow = '0 0 14px rgba(0, 240, 255, 0.9)';
+          setTimeout(() => {
+            liveScoreEl.style.color = '#ffffff';
+            liveScoreEl.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.45)';
+          }, 600);
+        }
+
+        const actorRect = actor.getBoundingClientRect();
+        const trackRect = track.getBoundingClientRect();
+        const relativeX = actorRect.left - trackRect.left + (actorRect.width / 2);
+        spawnScorePopup(relativeX);
+      }, JUMP_APEX_MS);
     }
 
     setTimeout(() => {
       actor.classList.remove('dino-jumping');
       isJumping = false;
-    }, 650);
+    }, JUMP_DURATION_MS);
   }
 
-  // Collision / Proximity Detection Loop for Automatic Jumping over Crosses
+  // Collision / Proximity Detection Loop for Automatic Jumping over Obstacles ("Humps")
   let prevActorLeft = null;
   const obsCooldowns = new Map();
   let isStageVisible = false;
@@ -2028,13 +2032,29 @@ function initDinoDanceRunner() {
   function checkObstacleProximity() {
     if (!isStageVisible) return;
     if (track && actor && obstacles.length > 0) {
+      const trackRect = track.getBoundingClientRect();
+      const trackWidth = trackRect.width || 1000;
       const actorRect = actor.getBoundingClientRect();
       const currentActorLeft = actorRect.left;
 
       if (prevActorLeft !== null) {
+        // True direction of movement
         const isMovingRight = currentActorLeft >= prevActorLeft;
         const actorCenter = actorRect.left + (actorRect.width / 2);
         const now = Date.now();
+
+        // Exact horizontal runner velocity derived from CSS keyframe animation:
+        // Traverses 3% to 89% (86% of track width) in 9.6s (48% of 20s cycle)
+        const runnerSpeedPxPerSec = Math.max(20, (0.86 * trackWidth) / 9.6);
+        // Time in seconds to the apex (peak) of the jump
+        const timeToApexSec = JUMP_APEX_MS / 1000; // 0.36s
+        // Ideal takeoff distance from actor center to obstacle center
+        // so that after traveling for timeToApexSec, actor center is EXACTLY at obstacle center
+        const idealTakeoffDist = runnerSpeedPxPerSec * timeToApexSec;
+        // Detection capture window (calibrated for sub-pixel accuracy at apex, preventing premature leaps)
+        const frameTravel = runnerSpeedPxPerSec / 60;
+        const minTriggerDist = Math.max(4, idealTakeoffDist - frameTravel * 1.5);
+        const maxTriggerDist = idealTakeoffDist + frameTravel * 0.5;
 
         obstacles.forEach((obs) => {
           const obsRect = obs.getBoundingClientRect();
@@ -2043,11 +2063,12 @@ function initDinoDanceRunner() {
           const dirKey = isMovingRight ? `${obsId}_R` : `${obsId}_L`;
           const lastJumped = obsCooldowns.get(dirKey) || 0;
 
-          // Only trigger if cooldown passed (1.4s between re-jumping in same direction)
-          if (now - lastJumped > 1400) {
+          // Only trigger if cooldown passed (1.6s between re-jumping the same obstacle in same direction)
+          if (now - lastJumped > 1600) {
             const distanceAhead = isMovingRight ? (obsCenter - actorCenter) : (actorCenter - obsCenter);
-            // Trigger auto-leap when approaching cross obstacle (38px to 85px range for centered hurdle jump)
-            if (distanceAhead >= 38 && distanceAhead <= 85) {
+
+            // Trigger jump precisely at takeoff point so crest occurs dead-center over the hump
+            if (distanceAhead >= minTriggerDist && distanceAhead <= maxTriggerDist) {
               obsCooldowns.set(dirKey, now);
               triggerJump(true, obs);
             }
@@ -2425,7 +2446,6 @@ initMobileNavigation();
 initArsenalFilter();
 initBentoSpotlightAndPopovers();
 initCommandPalette();
-initProjectCoverflow();
 eradicateNetlifyWatermark();
 
 // ==========================================================================
@@ -2757,345 +2777,6 @@ function initCommandPalette() {
   });
 }
 
-// ==========================================================================
-// 3D Holographic Coverflow Project Showcase (Reference Image 3 Inspired)
-// ==========================================================================
-function initProjectCoverflow() {
-  const track = document.getElementById('coverflow-track');
-  const prevBtn = document.getElementById('coverflow-prev');
-  const nextBtn = document.getElementById('coverflow-next');
-  const tagsContainer = document.getElementById('coverflow-tech-tags');
-  const titleEl = document.getElementById('coverflow-project-title');
-  const descEl = document.getElementById('coverflow-project-desc');
-  const caseStudyBtn = document.getElementById('coverflow-case-study-btn');
-  const liveBtn = document.getElementById('coverflow-live-btn');
-  const liveLabel = document.getElementById('coverflow-live-label');
-  const counterTop = document.getElementById('coverflow-counter-top');
-  const progressBar = document.getElementById('coverflow-progress-bar');
-  const dotsContainer = document.getElementById('coverflow-dots');
-
-  if (!track) return;
-
-  const projects = [
-    {
-      id: 'smartspace',
-      category: 'collaborative',
-      vol: 'VOL. 04',
-      title: 'SmartSpace',
-      spec: 'P95 < 0.4ms // 60 FPS',
-      urlText: 'smartspace.spatial/planner',
-      kicker: 'AI-ASSISTED SPATIAL COMPUTING & THREE.JS ENGINE',
-      desc: 'Collaborative 3D spatial planning web application decoupling generative perceptual AI from a deterministic mathematical geometry engine at strict 1.000 scale. Built with Three.js WebGL rendering, Vue 3.5, and a Laravel REST API.',
-      img: 'assets/projects/smartspace-banner.jpg',
-      tags: ['Collaborative', 'Three.js', 'Google Gemini AI', 'WebGL', 'Laravel 11', 'MySQL 8'],
-      liveUrl: 'https://github.com/Yakuzokai/smartspace',
-      liveLabel: 'View GitHub Repository'
-    },
-    {
-      id: 'celestine',
-      category: 'collaborative',
-      vol: 'VOL. 01',
-      title: 'Celestine University of the Pacific',
-      spec: 'PHP 8.2 // MVCR ACID',
-      urlText: 'celestine.edu/admissions',
-      kicker: 'ACADEMIC MVCR MANAGEMENT PLATFORM',
-      desc: 'Enterprise-grade institutional management ecosystem engineered on modular PHP MVCR architecture with asynchronous AJAX validation, dedicated repositories, and high-concurrency MySQL persistence.',
-      img: 'assets/projects/celestine-banner.png',
-      tags: ['Collaborative', 'PHP MVCR', 'MySQL 8', 'Bootstrap 5', 'AJAX Intake'],
-      liveUrl: 'https://github.com/Yakuzokai/Project-CUP',
-      liveLabel: 'View GitHub Repository'
-    },
-    {
-      id: 'miguelfit',
-      category: 'my-projects',
-      vol: 'VOL. 05',
-      title: 'MIGUEL.FIT – Biometric & Tactical OS',
-      spec: 'ZERO NOISE // CLIENT-SIDE',
-      urlText: 'miguelfit.os/command',
-      kicker: 'INDEPENDENT PRODUCTION // CLIENT-SIDE ARCHITECTURE',
-      desc: 'Offline-first fitness command center replacing superficial trackers with clinically validated mathematical modeling (Mifflin-St Jeor & Epley 1RM), biometric readiness tracking, and procedural Web Audio cues.',
-      img: 'assets/projects/miguelfit-today.png',
-      tags: ['Independent', 'Vanilla ES6+', 'HTML5', 'Web Audio API', 'localStorage'],
-      liveUrl: 'https://aesthetic-toffee-3de2c5.netlify.app/spa.html',
-      liveLabel: 'Launch Live App'
-    },
-    {
-      id: 'ncst-srms',
-      category: 'collaborative',
-      vol: 'VOL. 02',
-      title: 'NCST SRMS & Enterprise APIs',
-      spec: 'Argon2id // ROLE ACL',
-      urlText: 'ncst.srms/enterprise-auth',
-      kicker: 'COLLABORATIVE ARCHIVES // AUTH & PERMISSIONS ACL',
-      desc: 'Production student records management platform featuring custom MVC routing, parameterized PDO queries, Argon2id encryption, and role-based session access control security.',
-      img: 'assets/projects/ncst-srms-banner.png',
-      tags: ['Collaborative', 'PHP 8.2', 'PDO Prepared', 'Argon2id', 'Role ACL'],
-      liveUrl: 'https://github.com/Yakuzokai/SRMS',
-      liveLabel: 'View GitHub Repository'
-    },
-    {
-      id: 'fynn-hotel',
-      category: 'collaborative',
-      vol: 'VOL. 03',
-      title: 'Fynn Boutique Hotel Management & Booking',
-      spec: 'RevPAR // SLA ENGINE',
-      urlText: 'fynnhotel.res/yield-engine',
-      kicker: 'COLLABORATIVE MONOREPO // HOSPITALITY & YIELD',
-      desc: 'Full-stack modular hospitality monorepo with dynamic yield management (RevPAR, ADR, Occupancy), real-time housekeeping SLA tracking, mobile staff dispatch, and 2-tier refunds.',
-      img: 'assets/projects/fynn-hotel-banner.jpg',
-      tags: ['Collaborative', 'PHP MVC', 'MySQL 3NF', 'Revenue Metrics', 'Staff Dispatch'],
-      liveUrl: 'https://github.com/Yakuzokai/Hotel-Project',
-      liveLabel: 'View GitHub Repository'
-    },
-    {
-      id: 'auramart',
-      category: 'my-projects',
-      vol: 'VOL. 06',
-      title: 'AURA MART – Boutique E-Commerce',
-      spec: 'REALTIME CART // 60 FPS',
-      urlText: 'auramart.store/catalogue',
-      kicker: 'INDEPENDENT PRODUCTION // SOLO ARCHITECTURE',
-      desc: 'Curated retail storefront engineered for high conversion with responsive grid physics, dynamic shopping bag calculations, and zero-latency client state management.',
-      img: 'assets/projects/auramart-hero.png',
-      tags: ['Independent', 'Modern JavaScript', 'CSS3 Motion', 'Cart Engine', 'Responsive'],
-      liveUrl: 'https://tangerine-sopapillas-47b121.netlify.app/',
-      liveLabel: 'Launch Live App'
-    },
-    {
-      id: 'grazingbull',
-      category: 'my-projects',
-      vol: 'VOL. 07',
-      title: 'The Grazing Bull – Digital Steakhouse',
-      spec: 'ORDER OPS // DARK OLED',
-      urlText: 'grazingbull.order/kitchen',
-      kicker: 'INDEPENDENT PRODUCTION // HOSPITALITY MONOREPO',
-      desc: 'High-conversion digital hospitality showcase with interactive menu hierarchies, reservation intake flows, and sensory dark-mode culinary presentation.',
-      img: 'assets/projects/grazingbull-hero.png',
-      tags: ['Independent', 'Single-Page App', 'Micro-Interactions', 'Menu System', 'Booking'],
-      liveUrl: 'https://rodriguezninomiguelbsit-12a3.netlify.app/',
-      liveLabel: 'Launch Live App'
-    }
-  ];
-
-  let currentCategory = 'all';
-  let activeList = [...projects];
-  let activeIndex = 0;
-
-  function filterProjects(cat) {
-    currentCategory = cat;
-    if (cat === 'all') {
-      activeList = [...projects];
-    } else {
-      activeList = projects.filter(p => p.category === cat);
-    }
-    activeIndex = 0;
-    renderCards();
-    updateDetailDeck();
-  }
-
-  function renderCards() {
-    track.innerHTML = activeList.map((p, idx) => `
-      <div class="coverflow-card" data-idx="${idx}" data-proj-id="${p.id}" role="group" aria-label="${p.title}">
-        <div class="coverflow-card-browser-bar">
-          <div class="browser-dots">
-            <span class="b-dot b-red"></span>
-            <span class="b-dot b-yellow"></span>
-            <span class="b-dot b-green"></span>
-          </div>
-          <span class="browser-url-pill">🔒 ${p.urlText}</span>
-          <span class="browser-spec-badge">${p.spec}</span>
-        </div>
-        <div class="coverflow-card-screen">
-          <img src="${p.img}" alt="${p.title}" class="coverflow-card-img" loading="lazy">
-          <div class="coverflow-card-overlay">
-            <span class="coverflow-card-vol">${p.vol}</span>
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    const cards = track.querySelectorAll('.coverflow-card');
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const idx = parseInt(card.getAttribute('data-idx'), 10);
-        if (idx === activeIndex) {
-          const projId = card.getAttribute('data-proj-id');
-          if (typeof window.openProjectModal === 'function') {
-            window.openProjectModal(projId);
-          }
-        } else {
-          goToSlide(idx);
-        }
-      });
-    });
-
-    updateCardPositions();
-  }
-
-  function updateCardPositions() {
-    const cards = track.querySelectorAll('.coverflow-card');
-    const isMobile = window.innerWidth <= 768;
-
-    cards.forEach((card, idx) => {
-      const offset = idx - activeIndex;
-      const absOffset = Math.abs(offset);
-      const sign = Math.sign(offset);
-
-      card.classList.toggle('active', offset === 0);
-
-      if (offset === 0) {
-        card.style.transform = 'translate3d(0, 0, 70px) rotateY(0deg) scale(1)';
-        card.style.opacity = '1';
-        card.style.zIndex = '20';
-        card.style.pointerEvents = 'auto';
-      } else if (absOffset === 1) {
-        const tx = sign * (isMobile ? 52 : 62);
-        const rotY = -sign * (isMobile ? 22 : 32);
-        const sc = isMobile ? 0.86 : 0.82;
-        card.style.transform = `translate3d(${tx}%, 0, -80px) rotateY(${rotY}deg) scale(${sc})`;
-        card.style.opacity = '0.62';
-        card.style.zIndex = '10';
-        card.style.pointerEvents = 'auto';
-      } else if (absOffset === 2) {
-        const tx = sign * (isMobile ? 95 : 115);
-        const rotY = -sign * (isMobile ? 32 : 45);
-        const sc = isMobile ? 0.72 : 0.68;
-        card.style.transform = `translate3d(${tx}%, 0, -180px) rotateY(${rotY}deg) scale(${sc})`;
-        card.style.opacity = '0.24';
-        card.style.zIndex = '5';
-        card.style.pointerEvents = 'auto';
-      } else {
-        const tx = sign * 140;
-        card.style.transform = `translate3d(${tx}%, 0, -280px) scale(0.5)`;
-        card.style.opacity = '0';
-        card.style.zIndex = '1';
-        card.style.pointerEvents = 'none';
-      }
-    });
-  }
-
-  function updateDetailDeck() {
-    const p = activeList[activeIndex];
-    if (!p) return;
-
-    if (tagsContainer) {
-      tagsContainer.innerHTML = p.tags.map((t, idx) => `
-        <span class="coverflow-tech-pill ${idx === 0 ? 'pill-featured' : ''}">
-          <span class="pill-dot red-dot"></span>${t}
-        </span>
-      `).join('');
-    }
-
-    if (titleEl) titleEl.textContent = p.title;
-    if (descEl) descEl.textContent = p.desc;
-
-    if (counterTop) {
-      const curNum = String(activeIndex + 1).padStart(2, '0');
-      const totNum = String(activeList.length).padStart(2, '0');
-      counterTop.textContent = `PROJECT ${curNum} / ${totNum}`;
-    }
-
-    if (progressBar) {
-      const pct = activeList.length > 0 ? ((activeIndex + 1) / activeList.length) * 100 : 0;
-      progressBar.style.width = `${pct}%`;
-    }
-
-    if (dotsContainer) {
-      dotsContainer.innerHTML = activeList.map((_, i) => `
-        <span class="coverflow-dot ${i === activeIndex ? 'active' : ''}" data-dot-idx="${i}" aria-label="Slide ${i + 1}"></span>
-      `).join('');
-
-      dotsContainer.querySelectorAll('.coverflow-dot').forEach(dot => {
-        dot.addEventListener('click', () => {
-          const idx = parseInt(dot.getAttribute('data-dot-idx'), 10);
-          goToSlide(idx);
-        });
-      });
-    }
-
-    if (liveBtn) {
-      liveBtn.href = p.liveUrl;
-      if (liveLabel) liveLabel.textContent = p.liveLabel;
-    }
-
-    if (caseStudyBtn) {
-      caseStudyBtn.onclick = () => {
-        if (typeof window.openProjectModal === 'function') {
-          window.openProjectModal(p.id);
-        }
-      };
-    }
-  }
-
-  function goToSlide(idx) {
-    if (activeList.length === 0) return;
-    if (idx < 0) idx = activeList.length - 1;
-    if (idx >= activeList.length) idx = 0;
-    activeIndex = idx;
-    updateCardPositions();
-    updateDetailDeck();
-  }
-
-  window.filterProjectCoverflow = filterProjects;
-
-  if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(activeIndex - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(activeIndex + 1));
-
-  // Touch Swipe Gesture Handling for Mobile
-  let startX = 0;
-  let startY = 0;
-  let isSwiping = false;
-
-  track.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 1) {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      isSwiping = true;
-    }
-  }, { passive: true });
-
-  track.addEventListener('touchmove', (e) => {
-    if (!isSwiping || e.touches.length !== 1) return;
-    const diffX = e.touches[0].clientX - startX;
-    const diffY = e.touches[0].clientY - startY;
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 10) {
-      // Horizontal swipe detected
-    }
-  }, { passive: true });
-
-  track.addEventListener('touchend', (e) => {
-    if (!isSwiping) return;
-    isSwiping = false;
-    const endX = e.changedTouches[0].clientX;
-    const endY = e.changedTouches[0].clientY;
-    const diffX = endX - startX;
-    const diffY = endY - startY;
-
-    if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
-      if (diffX < 0) {
-        goToSlide(activeIndex + 1);
-      } else {
-        goToSlide(activeIndex - 1);
-      }
-    }
-  }, { passive: true });
-
-  // Hook into existing archive filter buttons
-  const filterBtns = document.querySelectorAll('.archive-filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.getAttribute('data-filter');
-      filterProjects(filter);
-    });
-  });
-
-  window.addEventListener('resize', () => {
-    updateCardPositions();
-  });
-
-  // Initial render
-  filterProjects('all');
-}
 
 
 

@@ -1240,394 +1240,6 @@ body > div:last-child[class*="netlify"] {
   box-shadow: 0 2px 12px var(--primary-red-glow);
 }
 
-/* ==========================================================================
-   3D HOLOGRAPHIC COVERFLOW PROJECT SHOWCASE (Inspired by Reference Image 3)
-   ========================================================================== */
-.project-coverflow-wrapper {
-  margin: 20px 0 50px;
-  position: relative;
-  width: 100%;
-  border-radius: 18px;
-  background: radial-gradient(circle at 50% 20%, rgba(255, 42, 58, 0.07) 0%, rgba(10, 13, 18, 0.88) 60%, rgba(5, 6, 9, 0.96) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 32px 28px 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-}
-
-.coverflow-stage-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.coverflow-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  color: #00f0ff;
-  letter-spacing: 0.08em;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  padding: 4px 12px;
-  border-radius: 9999px;
-}
-
-.coverflow-pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #00f0ff;
-  box-shadow: 0 0 8px #00f0ff;
-  animation: dotPulse 2s infinite ease-in-out;
-}
-
-.coverflow-counter-top {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  font-weight: 700;
-  color: #94a3b8;
-  letter-spacing: 0.06em;
-}
-
-.coverflow-perspective-stage {
-  position: relative;
-  width: 100%;
-  height: 380px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1200px;
-  -webkit-perspective: 1200px;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  margin: 10px 0 26px;
-  user-select: none;
-}
-
-.coverflow-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 50;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(15, 18, 26, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.22s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-.coverflow-prev-btn {
-  left: 10px;
-}
-
-.coverflow-next-btn {
-  right: 10px;
-}
-
-.coverflow-nav-btn:hover {
-  background: var(--primary-red);
-  border-color: var(--primary-red);
-  color: #ffffff;
-  box-shadow: 0 0 20px rgba(255, 42, 58, 0.6);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.coverflow-track {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-}
-
-.coverflow-card {
-  position: absolute;
-  width: min(620px, 86%);
-  height: 340px;
-  border-radius: 12px;
-  background: #0c0f16;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
-  will-change: transform, opacity;
-}
-
-.coverflow-card.active {
-  border-color: rgba(255, 42, 58, 0.55);
-  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 42, 58, 0.35);
-}
-
-.coverflow-card-browser-bar {
-  height: 34px;
-  background: #131722;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 14px;
-  gap: 10px;
-}
-
-.browser-dots {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.b-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.b-red { background: #ff5f56; }
-.b-yellow { background: #ffbd2e; }
-.b-green { background: #27c93f; }
-
-.browser-url-pill {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: #94a3b8;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 2px 10px;
-  border-radius: 9999px;
-  max-width: 220px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.browser-spec-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #00f0ff;
-  letter-spacing: 0.04em;
-}
-
-.coverflow-card-screen {
-  position: relative;
-  width: 100%;
-  height: calc(100% - 34px);
-  overflow: hidden;
-  background: #050608;
-}
-
-.coverflow-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-}
-
-.coverflow-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(5, 6, 9, 0.85) 100%);
-  display: flex;
-  align-items: flex-end;
-  padding: 14px;
-  pointer-events: none;
-}
-
-.coverflow-card-vol {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  font-weight: 800;
-  color: #ffffff;
-  background: rgba(255, 42, 58, 0.85);
-  padding: 3px 9px;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(255, 42, 58, 0.5);
-}
-
-.coverflow-detail-deck {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 780px;
-  margin: 0 auto;
-  gap: 14px;
-}
-
-.coverflow-tech-tags {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 2px;
-}
-
-.coverflow-tech-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  font-weight: 600;
-  color: #cbd5e1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 4px 12px;
-  border-radius: 9999px;
-  letter-spacing: 0.02em;
-}
-
-.coverflow-tech-pill.pill-featured {
-  background: rgba(255, 42, 58, 0.15);
-  border-color: rgba(255, 42, 58, 0.4);
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.coverflow-tech-pill .pill-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #94a3b8;
-}
-
-.coverflow-tech-pill .pill-dot.red-dot {
-  background: var(--primary-red);
-  box-shadow: 0 0 6px var(--primary-red);
-}
-
-.coverflow-project-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(26px, 3.8vw, 38px);
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  margin: 0;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-.coverflow-project-desc {
-  font-size: clamp(14px, 1.4vw, 15.5px);
-  color: #94a3b8;
-  line-height: 1.65;
-  margin: 0;
-  max-width: 720px;
-}
-
-.coverflow-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 6px;
-}
-
-.coverflow-cta-btn {
-  padding: 12px 26px;
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 9999px;
-  box-shadow: 0 4px 18px rgba(255, 42, 58, 0.35);
-}
-
-.coverflow-repo-btn {
-  padding: 12px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #e2e8f0;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.coverflow-repo-btn:hover {
-  background: rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.coverflow-pagination {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin-top: 14px;
-  width: 100%;
-  max-width: 240px;
-}
-
-.coverflow-progress-track {
-  width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.coverflow-progress-bar {
-  height: 100%;
-  width: 14%;
-  background: linear-gradient(90deg, var(--primary-red) 0%, #ff5263 100%);
-  box-shadow: 0 0 10px var(--primary-red);
-  border-radius: 9999px;
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.coverflow-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.coverflow-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.coverflow-dot.active {
-  width: 20px;
-  border-radius: 9999px;
-  background: var(--primary-red);
-  box-shadow: 0 0 10px var(--primary-red);
-}
-
 /* Projects Grid */
 .projects-grid {
   display: flex;
@@ -6230,33 +5842,70 @@ body > div:last-child[class*="netlify"] {
   }
 }
 
-/* Captivating Leap Animation: elevated over obstacles with acrobatic twist */
+/* Captivating Leap Animation: elevated over obstacles with acrobatic twist & symmetric arc */
 .dino-runner-actor.dino-jumping .dino-dancer-gif {
-  animation: dancerAcrobaticLeap 0.65s cubic-bezier(0.22, 0.95, 0.32, 1);
+  animation: dancerAcrobaticLeap 0.72s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .dino-runner-actor.dino-jumping .dino-dancer-shadow {
-  transform: scale(0.32);
-  opacity: 0.15;
+  animation: dancerShadowLeap 0.72s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .dino-runner-actor.dino-jumping .dino-dancer-glow {
-  transform: scale(0.55);
-  opacity: 0.25;
+  animation: dancerGlowLeap 0.72s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @keyframes dancerAcrobaticLeap {
   0% {
     transform: translateY(0) rotate(0deg) scale(1);
   }
-  42% {
-    transform: translateY(-70px) rotate(3deg) scale(1.06);
+  18% {
+    transform: translateY(-24px) rotate(2deg) scale(1.03);
   }
-  65% {
-    transform: translateY(-64px) rotate(0deg) scale(1.03);
+  38% {
+    transform: translateY(-54px) rotate(3deg) scale(1.06);
+  }
+  50% {
+    transform: translateY(-66px) rotate(0deg) scale(1.08); /* Symmetrical Apex right above the hump */
+  }
+  62% {
+    transform: translateY(-54px) rotate(-3deg) scale(1.06);
+  }
+  82% {
+    transform: translateY(-24px) rotate(-2deg) scale(1.03);
   }
   100% {
     transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes dancerShadowLeap {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(0.28);
+    opacity: 0.12;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+}
+
+@keyframes dancerGlowLeap {
+  0% {
+    transform: scale(1);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(0.38);
+    opacity: 0.18;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.65;
   }
 }
 
@@ -6789,88 +6438,6 @@ body > div:last-child[class*="netlify"] {
     text-align: center;
   }
 
-  /* Project Coverflow Mobile Refinements */
-  .project-coverflow-wrapper {
-    padding: 22px 14px 28px;
-    border-radius: 14px;
-    margin: 10px 0 35px;
-  }
-
-  .coverflow-stage-header {
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-  }
-
-  .coverflow-badge {
-    font-size: 9.5px;
-    padding: 3px 9px;
-  }
-
-  .coverflow-counter-top {
-    font-size: 10.5px;
-  }
-
-  .coverflow-perspective-stage {
-    height: 230px;
-    perspective: 800px;
-    -webkit-perspective: 800px;
-    margin: 4px 0 16px;
-  }
-
-  .coverflow-card {
-    width: min(340px, 88%);
-    height: 210px;
-    border-radius: 10px;
-  }
-
-  .coverflow-card-browser-bar {
-    height: 28px;
-    padding: 0 10px;
-  }
-
-  .browser-spec-badge {
-    display: none;
-  }
-
-  .browser-url-pill {
-    max-width: 160px;
-    font-size: 10px;
-  }
-
-  .coverflow-nav-btn {
-    width: 38px;
-    height: 38px;
-  }
-
-  .coverflow-prev-btn {
-    left: 2px;
-  }
-
-  .coverflow-next-btn {
-    right: 2px;
-  }
-
-  .coverflow-project-title {
-    font-size: 22px;
-  }
-
-  .coverflow-project-desc {
-    font-size: 13px;
-    line-height: 1.55;
-  }
-
-  .coverflow-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .coverflow-cta-btn,
-  .coverflow-repo-btn {
-    width: 100%;
-    justify-content: center;
-  }
-
   /* Command Palette Mobile Refinements */
   .cmd-palette-modal {
     padding-top: 20px;
@@ -7304,6 +6871,34 @@ body > div:last-child[class*="netlify"] {
 
   .dino-dancer-gif {
     height: 88px;
+  }
+
+  .dino-runner-actor.dino-jumping .dino-dancer-gif {
+    animation: dancerAcrobaticLeapMobile 0.72s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  @keyframes dancerAcrobaticLeapMobile {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+    18% {
+      transform: translateY(-18px) rotate(2deg) scale(1.02);
+    }
+    38% {
+      transform: translateY(-40px) rotate(2.5deg) scale(1.05);
+    }
+    50% {
+      transform: translateY(-50px) rotate(0deg) scale(1.06);
+    }
+    62% {
+      transform: translateY(-40px) rotate(-2.5deg) scale(1.05);
+    }
+    82% {
+      transform: translateY(-18px) rotate(-1deg) scale(1.02);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
   }
 
   .resume-modal-header {
