@@ -56,6 +56,15 @@
         <a href="#resume" class="nav-item">RESUME</a>
         <a href="#contact" class="nav-item">CONTACT</a>
       </nav>
+      <!-- Quick Search (Ctrl+K) Trigger Pill (Reference Image 2) -->
+      <button type="button" class="header-search-btn" id="header-search-btn" aria-label="Search portfolio (Ctrl+K)">
+        <svg class="search-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span class="search-btn-text">Search...</span>
+        <kbd class="search-btn-kbd">ctrl k</kbd>
+      </button>
       <!-- Mobile Navigation Hamburger Toggle Button -->
       <button type="button" class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu"
         aria-expanded="false">
@@ -84,6 +93,17 @@
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
+        </button>
+      </div>
+      <!-- Mobile Drawer Search Trigger (Ctrl+K) -->
+      <div class="mobile-drawer-search-wrap">
+        <button type="button" class="mobile-drawer-search-btn" id="mobile-drawer-search-btn" aria-label="Quick search portfolio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span class="mobile-search-text">Search projects, skills...</span>
+          <kbd class="mobile-search-kbd">ctrl k</kbd>
         </button>
       </div>
       <nav class="mobile-drawer-links" id="mobile-drawer-links">
@@ -420,6 +440,68 @@
               aria-selected="false">COLLABORATIVE PROJECTS</button>
             <button type="button" class="archive-filter-btn" data-filter="my-projects" role="tab"
               aria-selected="false">MY PROJECTS</button>
+          </div>
+        </div>
+
+        <!-- 3D Holographic Coverflow Showcase (Inspired by Reference Image 3) -->
+        <div class="project-coverflow-wrapper" id="project-coverflow-wrapper">
+          <div class="coverflow-stage-header">
+            <div class="coverflow-badge">
+              <span class="coverflow-pulse-dot"></span>
+              <span>3D HOLOGRAPHIC ARCHIVE // INTERACTIVE COVERFLOW</span>
+            </div>
+            <div class="coverflow-controls-top">
+              <span class="coverflow-counter-top" id="coverflow-counter-top">PROJECT 01 / 07</span>
+            </div>
+          </div>
+
+          <div class="coverflow-perspective-stage">
+            <!-- Prev Button -->
+            <button type="button" class="coverflow-nav-btn coverflow-prev-btn" id="coverflow-prev" aria-label="Previous project slide">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <!-- 3D Track -->
+            <div class="coverflow-track" id="coverflow-track" role="region" aria-label="3D Project Cards">
+              <!-- Rendered dynamically by JavaScript -->
+            </div>
+
+            <!-- Next Button -->
+            <button type="button" class="coverflow-nav-btn coverflow-next-btn" id="coverflow-next" aria-label="Next project slide">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Dynamic Holographic Detail Deck -->
+          <div class="coverflow-detail-deck" id="coverflow-detail-deck">
+            <div class="coverflow-tech-tags" id="coverflow-tech-tags"></div>
+            <h3 class="coverflow-project-title" id="coverflow-project-title"></h3>
+            <p class="coverflow-project-desc" id="coverflow-project-desc"></p>
+            <div class="coverflow-actions" id="coverflow-actions">
+              <button type="button" class="btn btn-primary coverflow-cta-btn" id="coverflow-case-study-btn">
+                <span>View In-Depth Case Study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary coverflow-repo-btn" id="coverflow-live-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path>
+                </svg>
+                <span id="coverflow-live-label">Repository</span>
+              </a>
+            </div>
+            <div class="coverflow-pagination" id="coverflow-pagination">
+              <div class="coverflow-progress-track">
+                <div class="coverflow-progress-bar" id="coverflow-progress-bar"></div>
+              </div>
+              <div class="coverflow-dots" id="coverflow-dots"></div>
+            </div>
           </div>
         </div>
 
@@ -2834,6 +2916,38 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Jump Spotlight & Command Palette Dialog (Reference Images 1 & 2) -->
+  <div id="command-palette-modal" class="cmd-palette-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Command Search Palette">
+    <div class="cmd-palette-container">
+      <div class="cmd-palette-card">
+        <!-- Palette Search Input Bar -->
+        <div class="cmd-palette-header">
+          <svg class="cmd-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="cmd-palette-input" class="cmd-palette-input" placeholder="Search projects, skills, journey, contact..." autocomplete="off" spellcheck="false" aria-label="Search projects and sections">
+          <button type="button" id="cmd-palette-close-btn" class="cmd-esc-badge" aria-label="Close search dialog">ESC</button>
+        </div>
+
+        <!-- Scrollable Search Results List (Dynamically Populated) -->
+        <div class="cmd-palette-body" id="cmd-palette-results" role="listbox">
+          <!-- Populated by JavaScript matching Reference Image 1 -->
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="cmd-palette-footer">
+          <div class="cmd-footer-keys">
+            <span class="cmd-key-group"><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+            <span class="cmd-key-group"><kbd>↵</kbd> Select</span>
+            <span class="cmd-key-group"><kbd>esc</kbd> Close</span>
+          </div>
+          <span class="cmd-quick-jump-label">Quick Jump</span>
+        </div>
       </div>
     </div>
   </div>

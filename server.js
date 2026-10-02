@@ -43,9 +43,27 @@ const server = http.createServer((req, res) => {
   }
 
   const safePath = path.normalize(path.join(__dirname, reqPath));
+  const relativePath = path.relative(__dirname, safePath).replace(/\\/g, '/');
 
-  // Security check: ensure path is within directory (case-insensitive for Windows)
-  if (!safePath.toLowerCase().startsWith(__dirname.toLowerCase())) {
+  // Security check 1: ensure path is strictly within directory
+  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+    res.writeHead(403, { 'Content-Type': 'text/plain' });
+    res.end('Forbidden');
+    return;
+  }
+
+  // Security check 2: block sensitive project files and directories
+  const blockedPatterns = [
+    /^\.git/i,
+    /^\.env/i,
+    /^node_modules/i,
+    /^package\.json$/i,
+    /^package-lock\.json$/i,
+    /^server\.js$/i,
+    /^scratch/i
+  ];
+
+  if (blockedPatterns.some(pattern => pattern.test(relativePath))) {
     res.writeHead(403, { 'Content-Type': 'text/plain' });
     res.end('Forbidden');
     return;
@@ -75,6 +93,11 @@ const server = http.createServer((req, res) => {
         'Content-Type': contentType,
         'Access-Control-Allow-Origin': '*'
       });
+      file.on('error', () => {
+        if (!res.headersSent) res.writeHead(500);
+        res.end();
+      });
+      req.on('close', () => file.destroy());
       file.pipe(res);
       return;
     }
@@ -95,6 +118,11 @@ const server = http.createServer((req, res) => {
 
     res.writeHead(200, headers);
     const stream = fs.createReadStream(safePath);
+    stream.on('error', () => {
+      if (!res.headersSent) res.writeHead(500);
+      res.end();
+    });
+    req.on('close', () => stream.destroy());
     stream.pipe(res);
   });
 });
