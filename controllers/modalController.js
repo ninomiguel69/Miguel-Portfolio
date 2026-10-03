@@ -10,7 +10,7 @@ export function initProjectModal(appState) {
   const elements = getModalElements();
   const { modal, closeBtn, closeFooterBtn } = elements;
 
-  if (!modal) return;
+  if (!modal) return null;
 
   function openModal() {
     modal.classList.add('open');
@@ -32,54 +32,30 @@ export function initProjectModal(appState) {
     });
   }
 
-  // Celestine Openers
-  const celestineBtns = [
-    document.getElementById('open-celestine-btn'),
-    document.getElementById('open-celestine-modal-visual')
-  ].filter(Boolean);
+  // Globally accessible modal opener
+  window.openProjectModal = (projectId) => {
+    loadProject(projectId);
+    openModal();
+  };
 
-  celestineBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      loadProject('celestine');
-      openModal();
-    });
+  // Wire all modal opener buttons and interactive viewports
+  const projectModalBtns = document.querySelectorAll('.open-project-modal-btn, [data-project-target]');
+  projectModalBtns.forEach(btn => {
+    const handleTrigger = (e) => {
+      e.stopPropagation();
+      const targetProj = btn.getAttribute('data-project-target') || btn.getAttribute('data-project-id');
+      if (targetProj && projectsData[targetProj]) {
+        loadProject(targetProj);
+        openModal();
+      }
+    };
+
+    btn.addEventListener('click', handleTrigger);
     btn.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        loadProject('celestine');
-        openModal();
+        handleTrigger(e);
       }
-    });
-  });
-
-  // Bookshelf Cards
-  const bookshelfCards = document.querySelectorAll('.bookshelf-card');
-  bookshelfCards.forEach(card => {
-    const projId = card.getAttribute('data-project-id');
-    card.addEventListener('click', () => {
-      if (!projId) return;
-      loadProject(projId);
-      openModal();
-    });
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        if (!projId) return;
-        e.preventDefault();
-        loadProject(projId);
-        openModal();
-      }
-    });
-  });
-
-  // Project Modal Buttons
-  const projectModalBtns = document.querySelectorAll('.open-project-modal-btn');
-  projectModalBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const targetProj = btn.getAttribute('data-project-target');
-      loadProject(targetProj);
-      openModal();
     });
   });
 
@@ -99,16 +75,9 @@ export function initProjectModal(appState) {
     }
   });
 
-  // Expose global programmatic opener for Command Palette and Router
-  window.openProjectModal = function(projectId) {
-    if (!projectId) return;
-    loadProject(projectId);
-    openModal();
-  };
-
   return {
-    open: openModal,
-    close: closeModal,
+    openModal,
+    closeModal,
     loadProject
   };
 }

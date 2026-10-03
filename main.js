@@ -3,15 +3,15 @@
  * High-performance portfolio web application for Niño Miguel S. Rodriguez
  * 
  * - Models:      ./models/ (appState.js, projectsData.js)
- * - Views:       ./views/  (canvasView.js, modalView.js, heatmapView.js, dinoView.js)
- * - Controllers: ./controllers/ (canvasController.js, modalController.js, contactController.js, dinoController.js, uiController.js)
+ * - Views:       ./views/  (hero3dView.js, modalView.js, heatmapView.js, dinoView.js)
+ * - Controllers: ./controllers/ (hero3dController.js, modalController.js, contactController.js, dinoController.js, uiController.js)
  * - Routes:      ./routes/ (router.js, serverRoutes.js)
  */
 
-import { appState, TOTAL_FRAMES } from './models/appState.js';
+import { appState } from './models/appState.js';
 import { projectsData } from './models/projectsData.js';
 import { renderGitHubHeatmap } from './views/heatmapView.js';
-import { initCanvasEngine } from './controllers/canvasController.js';
+import { initHero3DEngine } from './controllers/hero3dController.js';
 import { initProjectModal } from './controllers/modalController.js';
 import { initContactForm } from './controllers/contactController.js';
 import { initDinoDanceRunner } from './controllers/dinoController.js';
@@ -23,8 +23,8 @@ window.appState = appState;
 window.projectsData = projectsData;
 
 function initApplication() {
-  // 1. Initialize 300-Frame Hardware Accelerated Canvas Engine
-  const canvasEngine = initCanvasEngine(appState);
+  // 1. Initialize Real-Time 3D Hero Prism Engine (Three.js WebGL)
+  const hero3dEngine = initHero3DEngine(appState);
 
   // 2. Initialize Project Modal Controller & Accessibility
   const modalController = initProjectModal(appState);

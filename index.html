@@ -20,23 +20,14 @@
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Fixed Hardware-Accelerated Canvas for Scroll Animation -->
-  <canvas id="animation-canvas"></canvas>
-
-  <!-- Ambient Contrast Scrim (Ensures video scrubs fluidly behind translucent content) -->
-  <div class="bg-scrim" aria-hidden="true"></div>
-
-  <!-- Minimalist Loading Screen (fades out immediately when frames are loaded) -->
-  <div id="loader" class="loader-overlay" aria-label="Loading animation frames">
-    <div class="loader-content">
-      <div class="loader-track">
-        <div id="loader-bar" class="loader-bar"></div>
-      </div>
-      <div id="loader-text" class="loader-text">Loading 0%</div>
-    </div>
+  <!-- Real-Time 3D Hero Background (Crystalline Prism Floating Above Atmospheric Hand Backdrop) -->
+  <div class="hero-3d-background-wrap" aria-hidden="true">
+    <div class="hero-backdrop-image"></div>
+    <canvas id="hero-3d-canvas" class="hero-3d-canvas"></canvas>
+    <div class="hero-ambient-vignette"></div>
   </div>
+
 
   <!-- Navigation Header -->
   <header class="header">
@@ -173,14 +164,19 @@
     <section id="home" class="hero-section">
       <div class="hero-container">
         <div class="hero-text-col">
-          <p class="hero-greeting">Hello, My Name Is</p>
+          <p class="hero-greeting">// 01 — JUNIOR WEB DEVELOPER &amp; IT SPECIALIST</p>
           <h1 class="hero-name">NIÑO MIGUEL<br>S RODRIGUEZ</h1>
           <p class="hero-tagline">A passionate Information Technology Student and dedicated Junior Web Developer,
             architecting modern digital solutions. Specializing in crafting responsive, elegant User Interfaces and
-            leveraging a modern tech stack to build efficient web experiences. Always driven by the ever-evolving world
-            of technology and its limitless possibilities.</p>
+            leveraging an MVCR tech stack to build efficient web experiences with clinical precision.</p>
+          
           <div class="hero-actions">
-            <a href="#projects" class="btn btn-secondary">View My Projects</a>
+            <!-- Dual-Part Split CTA Button (gertix.studio reference style) -->
+            <a href="#projects" class="hero-split-btn" id="hero-explore-btn">
+              <span class="split-btn-text">EXPLORE PROJECT ARCHIVE</span>
+              <span class="split-btn-icon">→</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
             <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer"
               class="btn btn-secondary btn-hero-github" aria-label="Niño Miguel GitHub Profile">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -190,18 +186,49 @@
               </svg>
               GitHub
             </a>
-            <a href="#contact" class="btn btn-primary">Contact me</a>
+          </div>
+
+          <div class="hero-telemetry-strip">
+            <span class="telemetry-pill"><span class="pill-dot mint-dot"></span>07 Production Platforms</span>
+            <span class="telemetry-pill"><span class="pill-dot red-dot"></span>MVCR Architecture</span>
+            <span class="telemetry-pill"><span class="pill-dot fast-dot"></span>Real-Time 3D WebGL</span>
           </div>
         </div>
 
         <div class="hero-visual-col">
-          <div class="hero-card-frame">
+          <div class="hero-card-frame hero-card-frame-3d">
             <div class="red-backdrop-box"></div>
             <img src="assets/nino-suit.jpg" alt="Niño Miguel S Rodriguez" class="hero-photo" loading="eager">
+            <div class="hero-3d-hint-badge">
+              <span class="hint-dot"></span>
+              <span class="hint-text">3D WebGL Active • Move Mouse &amp; Scroll</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Marquee Ticker Tape Strip (gertix.studio reference style) -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <span class="marquee-item">FULL-STACK ARCHITECTURE →</span>
+        <span class="marquee-item">MVCR PATTERN →</span>
+        <span class="marquee-item">ENTERPRISE SOLUTIONS ✦</span>
+        <span class="marquee-item">SECURE RBAC SYSTEMS ✦</span>
+        <span class="marquee-item">HIGH-PERFORMANCE WEB APPS ✦</span>
+        <span class="marquee-item">RESTFUL API DESIGN →</span>
+        <span class="marquee-item">CLIENT-CENTRIC PERSISTENCE ✦</span>
+        <span class="marquee-item">60FPS SILKY SMOOTH EXPERIENCES →</span>
+        <span class="marquee-item">FULL-STACK ARCHITECTURE →</span>
+        <span class="marquee-item">MVCR PATTERN →</span>
+        <span class="marquee-item">ENTERPRISE SOLUTIONS ✦</span>
+        <span class="marquee-item">SECURE RBAC SYSTEMS ✦</span>
+        <span class="marquee-item">HIGH-PERFORMANCE WEB APPS ✦</span>
+        <span class="marquee-item">RESTFUL API DESIGN →</span>
+        <span class="marquee-item">CLIENT-CENTRIC PERSISTENCE ✦</span>
+        <span class="marquee-item">60FPS SILKY SMOOTH EXPERIENCES →</span>
+      </div>
+    </div>
 
     <!-- About Me Section (Reference Image 2 Top) -->
     <section id="about" class="about-section">
@@ -419,605 +446,474 @@
       </div>
     </section>
 
-    <!-- Project Archive Section (Reference Images 1, 2, 3, 5) -->
+    <!-- Project Archive Section (Editorial Architectural Layout - gertix.studio reference) -->
     <section id="projects" class="projects-section">
       <div class="projects-container">
 
         <!-- Header with Filter Controls -->
         <div class="archive-header-row">
           <div class="archive-title-group">
-            <span class="section-tag">▸ Project Showcase</span>
-            <h2 class="section-title">Project Archive</h2>
-            <p class="archive-subtitle">Selected applications, digital architectures, and collaborative engineering
-              projects.</p>
+            <span class="section-tag">// 04 — SELECTED ARCHITECTURAL CASE STUDIES</span>
+            <h2 class="section-title">PROJECT ARCHIVE</h2>
+            <p class="archive-subtitle">
+              Enterprise systems, high-throughput web applications, and collaborative digital platforms engineered with clinical precision.
+            </p>
           </div>
 
-          <!-- Filter Tabs: ALL, COLLABORATIVE, MY PROJECTS -->
+          <!-- Filter Tabs: ALL, COLLABORATIVE, SOLO -->
           <div class="archive-filters" role="tablist" aria-label="Project Filter Options">
-            <button type="button" class="archive-filter-btn active" data-filter="all" role="tab"
-              aria-selected="true">ALL</button>
-            <button type="button" class="archive-filter-btn" data-filter="collaborative" role="tab"
-              aria-selected="false">COLLABORATIVE PROJECTS</button>
-            <button type="button" class="archive-filter-btn" data-filter="my-projects" role="tab"
-              aria-selected="false">MY PROJECTS</button>
+            <button type="button" class="archive-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+              ALL ARCHITECTURES [07]
+            </button>
+            <button type="button" class="archive-filter-btn" data-filter="collaborative" role="tab" aria-selected="false">
+              COLLABORATIVE [04]
+            </button>
+            <button type="button" class="archive-filter-btn" data-filter="my-projects" role="tab" aria-selected="false">
+              SOLO ARCHITECTURES [03]
+            </button>
           </div>
         </div>
 
-        <!-- Projects Grid Container -->
-        <div class="projects-grid" id="projects-grid">
+        <!-- Editorial Project Rows (Scrollable Architectural List) -->
+        <div class="archive-list" id="projects-grid">
 
-          <!-- Celestine University of the Pacific Card (Collaborative) -->
-          <article class="project-card project-card-featured" data-category="collaborative">
-            <div class="project-card-visual" id="open-celestine-modal-visual" role="button" tabindex="0"
-              aria-label="Open Celestine University case study modal">
-              <div class="project-visual-badge">01 — Collaborative Platform</div>
-              <div class="project-img-wrapper">
-                <img src="assets/projects/celestine-banner.png"
-                  alt="Celestine University of the Pacific Official Seal & Insignia" class="project-img-main"
-                  loading="lazy">
-                <div class="project-img-secondary-badge">
-                  <img src="assets/projects/celestine-hero.png" alt="Admissions Portal Interface"
-                    class="project-thumb-preview">
-                  <span class="preview-cta">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    Multi-View
-                  </span>
+          <!-- PROJECT 01: CELESTINE UNIVERSITY OF THE PACIFIC -->
+          <article class="archive-row" data-category="collaborative" data-project-id="celestine">
+            <div class="archive-row-inner">
+              <!-- Left Column: Editorial Specifications -->
+              <div class="archive-col-info">
+                <div class="archive-num-kicker-row">
+                  <span class="archive-num">01</span>
+                  <span class="archive-kicker">COLLABORATIVE PLATFORM // YAKUZOKAI TEAM</span>
                 </div>
-              </div>
-              <div class="project-visual-overlay">
-                <span class="overlay-text">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
-                  Click to View Full Project Modal
-                </span>
-              </div>
-            </div>
+                <h3 class="archive-title">CELESTINE UNIVERSITY OF THE PACIFIC</h3>
 
-            <div class="project-card-content">
-              <div class="project-card-main-col">
-                <div class="project-meta-badges">
-                  <span class="badge-featured">FEATURED PROJECT</span>
-                  <span class="badge-collaborative">COLLABORATIVE PROJECT —
-                    YAKUZOKAI TEAM</span>
+                <div class="archive-tags-wrap">
+                  <span class="archive-tag archive-tag-active">PHP 8.2</span>
+                  <span class="archive-tag">MVCR ARCHITECTURE</span>
+                  <span class="archive-tag">MYSQL ENTERPRISE</span>
+                  <span class="archive-tag">REPOSITORY PATTERN</span>
+                  <span class="archive-tag">AJAX VALIDATION</span>
+                  <span class="archive-tag">BOOTSTRAP 5</span>
                 </div>
 
-                <h3 class="project-title">01 — Celestine University of the Pacific</h3>
-
-                <p class="project-description">
-                  An enterprise-grade academic admissions and institutional management platform architected on a
-                  high-throughput <strong>PHP MVCR (Model-View-Controller-Repository)</strong> design pattern.
-                  Integrates asynchronous AJAX validation (<code>ajax_validate.php</code>), isolated repository database
-                  transactions, a modular enrollment pipeline, and optimized MySQL persistence
-                  (<code>celestine_university.sql</code>) engineered for zero downtime.
+                <p class="archive-description">
+                  An enterprise-grade academic admissions and institutional management platform architected on a high-throughput <strong>PHP MVCR (Model-View-Controller-Repository)</strong> design pattern. Integrates asynchronous AJAX validation (<code>ajax_validate.php</code>), isolated repository database transactions, a modular enrollment pipeline, and optimized MySQL persistence engineered for zero downtime.
                 </p>
+
+                <!-- Dual-Part Split CTA Button -->
+                <div class="archive-actions-wrap">
+                  <div class="archive-split-btn open-project-modal-btn" data-project-target="celestine" role="button" tabindex="0" aria-label="View Celestine University Case Study & Architecture">
+                    <span class="split-btn-text">VIEW CASE STUDY &amp; ARCHITECTURE</span>
+                    <span class="split-btn-icon">→</span>
+                  </div>
+                  <a href="https://github.com/Yakuzokai/CUP" target="_blank" rel="noopener noreferrer" class="archive-repo-link" aria-label="GitHub Repository">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path>
+                    </svg>
+                    <span>SOURCE REPO</span>
+                  </a>
+                </div>
               </div>
 
-              <div class="project-card-side-col">
-                <div class="tech-pills-grid project-pills">
-                  <span class="tech-pill"><span class="pill-dot php-dot"></span>PHP 8.x</span>
-                  <span class="tech-pill"><span class="pill-dot mvc-dot"></span>MVCR Architecture</span>
-                  <span class="tech-pill"><span class="pill-dot sql-dot"></span>MySQL DB</span>
-                  <span class="tech-pill"><span class="pill-dot red-dot"></span>Repository Pattern</span>
-                  <span class="tech-pill"><span class="pill-dot fast-dot"></span>AJAX Engine</span>
-                  <span class="tech-pill"><span class="pill-dot js-dot"></span>JavaScript (ES6+)</span>
-                  <span class="tech-pill"><span class="pill-dot bs-dot"></span>Bootstrap 5</span>
-                </div>
+              <!-- Right Column: Architectural Viewport Box -->
+              <div class="archive-col-viewport">
+                <div class="archive-viewport-box open-project-modal-btn" data-project-target="celestine" role="button" tabindex="0" aria-label="Open Celestine University case study modal">
+                  <span class="corner-crosshair top-left">+</span>
+                  <span class="corner-crosshair top-right">+</span>
+                  <span class="corner-crosshair bottom-left">+</span>
+                  <span class="corner-crosshair bottom-right">+</span>
+                  
+                  <div class="viewport-hud-bar">
+                    <span class="hud-id">SYSTEM-ID: CUP-01 // PRODUCTION-READY</span>
+                    <span class="hud-action">EXPAND ARCHITECTURE ↗</span>
+                  </div>
 
-                <div class="project-actions">
-                  <button type="button" class="btn btn-primary btn-project-view" id="open-celestine-btn">
-                    View Project
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"></line>
-                      <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                  </button>
-                  <a href="https://github.com/Yakuzokai/CUP" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-secondary btn-github-repo">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
-                      </path>
-                    </svg>
-                    GitHub Repository
-                  </a>
+                  <div class="viewport-img-frame">
+                    <img src="assets/projects/celestine-hero.png" alt="Celestine University of the Pacific" class="viewport-img" loading="lazy">
+                  </div>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Collaborative Projects Bookshelf Showcase (shown under COLLABORATIVE and ALL filters) -->
-          <div class="solo-placeholder-card solo-showcase-card" id="solo-placeholder-card"
-            data-category="collaborative">
-            <div class="placeholder-glow"></div>
+          <!-- PROJECT 02: NCST STUDENT RECORD MANAGEMENT SYSTEM (SRMS) -->
+          <article class="archive-row" data-category="collaborative" data-project-id="ncst-srms">
+            <div class="archive-row-inner">
+              <div class="archive-col-info">
+                <div class="archive-num-kicker-row">
+                  <span class="archive-num">02</span>
+                  <span class="archive-kicker">ACADEMIC WORKFLOWS &amp; FINTECH // HYBRID CLIENT</span>
+                </div>
+                <h3 class="archive-title">NCST STUDENT RECORD MANAGEMENT SYSTEM</h3>
 
-            <!-- Bookshelf Header -->
-            <div class="bookshelf-header">
-              <div class="placeholder-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"></polyline>
-                  <polyline points="8 6 2 12 8 18"></polyline>
-                  <line x1="12" y1="2" x2="12" y2="6"></line>
-                  <line x1="12" y1="18" x2="12" y2="22"></line>
-                </svg>
-              </div>
-              <span class="placeholder-badge">COLLABORATIVE PROJECTS • PRODUCTION ARCHITECTURE ARCHIVE</span>
-              <h3 class="placeholder-title">Collaborative Engineering Projects Showcase</h3>
-              <p class="placeholder-text">
-                Co-engineered production platforms built in collaboration with cross-functional development teams,
-                featuring high-throughput hybrid clients, dynamic hospitality yield engines, and sub-millisecond AI
-                spatial geometry planners.
-              </p>
-            </div>
-
-            <!-- Bookshelf Rack Grid: 3 Projects -->
-            <div class="bookshelf-rack" id="bookshelf-rack">
-
-              <!-- Book 01 / Project 02: NCST SRMS -->
-              <div class="bookshelf-card" data-project-id="ncst-srms" tabindex="0" role="button"
-                aria-label="View NCST SRMS project modal">
-                <div class="bookshelf-visual">
-                  <span class="bookshelf-vol-badge">VOL. 02 • COLLABORATIVE PLATFORM</span>
-                  <img src="assets/projects/ncst-srms-banner.jpg" alt="NCST Student Record Management System"
-                    class="bookshelf-img" loading="lazy">
-                  <div class="bookshelf-visual-overlay">
-                    <span class="bookshelf-overlay-text">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                      Open Case Study
-                    </span>
-                  </div>
+                <div class="archive-tags-wrap">
+                  <span class="archive-tag archive-tag-active">PYTHON 3.11</span>
+                  <span class="archive-tag">PYQT6 DESKTOP</span>
+                  <span class="archive-tag">PHP 8.X PORTAL</span>
+                  <span class="archive-tag">PAYMONGO API</span>
+                  <span class="archive-tag">RBAC WORKFLOWS</span>
+                  <span class="archive-tag">MYSQL ENTERPRISE</span>
                 </div>
 
-                <div class="bookshelf-content">
-                  <div class="bookshelf-kicker">ACADEMIC WORKFLOWS &amp; FINTECH • TEAM CO-ENGINEERED</div>
-                  <h4 class="bookshelf-project-title highlighted-system-title">02 — NCST Student Record Management
-                    System (SRMS)</h4>
-                  <p class="bookshelf-desc">
-                    Synchronized, hybrid school operations platform coupling a Python/PyQt6 desktop client for
-                    administrative registrar workflows with a PHP self-service web portal and PayMongo gateway.
-                  </p>
+                <p class="archive-description">
+                  Synchronized dual-tier institutional operations platform coupling a high-speed Python/PyQt6 desktop client for administrative registrar workflows with a responsive PHP self-service student web portal and integrated PayMongo financial payment gateway.
+                </p>
 
-                  <!-- Emphasized Engineering Team Lineup -->
-                  <div class="collaborative-team-lineup">
-                    <div class="team-lineup-header">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                      </svg>
-                      <span class="team-lineup-label">CO-ENGINEERED TEAM LINEUP</span>
-                    </div>
-                    <div class="team-members-list">
-                      <div class="team-member-item member-lead">
-                        <span class="member-dot lead-dot"></span>
-                        <span class="member-name">Niño Miguel S. Rodriguez <span class="member-tag">(Me)</span></span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Albert Velez</span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Karl Evan Tabunda</span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Francis Lancelot Esquilla</span>
-                      </div>
-                    </div>
-                  </div>
+                <!-- Engineering Lineup Mini-Badge -->
+                <div class="archive-team-strip">
+                  <span class="team-label">CO-ENGINEERED WITH:</span>
+                  <span class="team-tag lead-tag">Niño Miguel S. Rodriguez (Me)</span>
+                  <span class="team-tag">Albert Velez</span>
+                  <span class="team-tag">Karl Evan Tabunda</span>
+                  <span class="team-tag">Francis Lancelot Esquilla</span>
+                </div>
 
-                  <div class="bookshelf-actions">
-                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn"
-                      data-project-target="ncst-srms">
-                      View Project
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
+                <div class="archive-actions-wrap">
+                  <div class="archive-split-btn open-project-modal-btn" data-project-target="ncst-srms" role="button" tabindex="0" aria-label="View NCST SRMS Case Study & Architecture">
+                    <span class="split-btn-text">VIEW CASE STUDY &amp; ARCHITECTURE</span>
+                    <span class="split-btn-icon">→</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Book 02 / Project 03: Fynn Boutique Hotel -->
-              <div class="bookshelf-card" data-project-id="fynn-hotel" tabindex="0" role="button"
-                aria-label="View Fynn Boutique Hotel project modal">
-                <div class="bookshelf-visual">
-                  <span class="bookshelf-vol-badge">VOL. 03 • COLLABORATIVE MONOREPO</span>
-                  <img src="assets/projects/fynn-hotel-banner.jpg" alt="Fynn Boutique Hotel Management & Booking System"
-                    class="bookshelf-img" loading="lazy">
-                  <div class="bookshelf-visual-overlay">
-                    <span class="bookshelf-overlay-text">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                      Open Case Study
-                    </span>
-                  </div>
-                </div>
-
-                <div class="bookshelf-content">
-                  <div class="bookshelf-kicker">ENTERPRISE HOSPITALITY &amp; YIELD • TEAM CO-ENGINEERED</div>
-                  <h4 class="bookshelf-project-title highlighted-system-title">03 — Fynn Boutique Hotel Management &amp;
-                    Booking</h4>
-                  <p class="bookshelf-desc">
-                    Full-stack modular hospitality monorepo with dynamic yield management (RevPAR, ADR, Occupancy),
-                    real-time housekeeping SLA tracking, mobile staff dispatch, and 2-tier refunds.
-                  </p>
-
-                  <!-- Emphasized Engineering Team Lineup -->
-                  <div class="collaborative-team-lineup">
-                    <div class="team-lineup-header">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                      </svg>
-                      <span class="team-lineup-label">CO-ENGINEERED TEAM LINEUP</span>
-                    </div>
-                    <div class="team-members-list">
-                      <div class="team-member-item member-lead">
-                        <span class="member-dot lead-dot"></span>
-                        <span class="member-name">Niño Miguel S. Rodriguez <span class="member-tag">(Me)</span></span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Albert Velez</span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Karl Evan Tabunda</span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Francis Lancelot Esquilla</span>
-                      </div>
-                    </div>
+              <div class="archive-col-viewport">
+                <div class="archive-viewport-box open-project-modal-btn" data-project-target="ncst-srms" role="button" tabindex="0" aria-label="Open NCST SRMS case study modal">
+                  <span class="corner-crosshair top-left">+</span>
+                  <span class="corner-crosshair top-right">+</span>
+                  <span class="corner-crosshair bottom-left">+</span>
+                  <span class="corner-crosshair bottom-right">+</span>
+                  
+                  <div class="viewport-hud-bar">
+                    <span class="hud-id">SYSTEM-ID: SRMS-02 // HYBRID ENTERPRISE</span>
+                    <span class="hud-action">EXPAND ARCHITECTURE ↗</span>
                   </div>
 
-                  <div class="bookshelf-actions">
-                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn"
-                      data-project-target="fynn-hotel">
-                      View Project
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
+                  <div class="viewport-img-frame">
+                    <img src="assets/projects/ncst-srms-banner.jpg" alt="NCST Student Record Management System" class="viewport-img" loading="lazy">
                   </div>
                 </div>
-              </div>
-
-              <!-- Book 03 / Project 04: SmartSpace -->
-              <div class="bookshelf-card" data-project-id="smartspace" tabindex="0" role="button"
-                aria-label="View SmartSpace project modal">
-                <div class="bookshelf-visual">
-                  <span class="bookshelf-vol-badge">VOL. 04 • COLLABORATIVE SPATIAL AI</span>
-                  <img src="assets/projects/smartspace-banner.jpg"
-                    alt="SmartSpace AI-Assisted Spatial Planning Platform" class="bookshelf-img" loading="lazy">
-                  <div class="bookshelf-visual-overlay">
-                    <span class="bookshelf-overlay-text">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                      Open Case Study
-                    </span>
-                  </div>
-                </div>
-
-                <div class="bookshelf-content">
-                  <div class="bookshelf-kicker">SPATIAL COMPUTING &amp; GEOMETRY • TEAM CO-ENGINEERED</div>
-                  <h4 class="bookshelf-project-title highlighted-system-title">04 — SmartSpace: AI Spatial Planning
-                    Platform</h4>
-                  <p class="bookshelf-desc">
-                    AI-assisted spatial planner decoupling Google Gemini 2.0 Flash perceptual AI from a deterministic
-                    mathematical physics engine at strict 1.00 scale (P95 &lt; 0.4 ms).
-                  </p>
-
-                  <!-- Emphasized Engineering Team Lineup -->
-                  <div class="collaborative-team-lineup">
-                    <div class="team-lineup-header">
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                      </svg>
-                      <span class="team-lineup-label">CO-ENGINEERED TEAM LINEUP</span>
-                    </div>
-                    <div class="team-members-list">
-                      <div class="team-member-item member-lead">
-                        <span class="member-dot lead-dot"></span>
-                        <span class="member-name">Niño Miguel S. Rodriguez <span class="member-tag">(Me)</span></span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Albert Velez</span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Karl Evan Tabunda</span>
-                      </div>
-                      <div class="team-member-item">
-                        <span class="member-dot"></span>
-                        <span class="member-name">Francis Lancelot Esquilla</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="bookshelf-actions">
-                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn"
-                      data-project-target="smartspace">
-                      View Project
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Architectural Bookshelf Shelf Bar -->
-            <div class="bookshelf-shelf-bar"></div>
-          </div>
-
-          <!-- My Projects — Solo Creations & Independent Software Architecture -->
-          <div class="my-projects-staging-card solo-showcase-card" id="my-projects-showcase-card"
-            data-category="my-projects">
-            <div class="placeholder-glow"></div>
-
-            <div class="staging-header">
-              <div class="placeholder-icon staging-pulse-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                  <path d="M2 17l10 5 10-5"></path>
-                  <path d="M2 12l10 5 10-5"></path>
-                </svg>
-              </div>
-              <span class="placeholder-badge">MY PROJECTS • INDEPENDENT SOFTWARE &amp; ARCHITECTURES</span>
-              <h3 class="placeholder-title">Solo Engineering Projects Showcase</h3>
-              <p class="placeholder-text">
-                Independent production web applications, biometric performance command centers, and digital systems
-                authored solely by Niño Miguel Rodriguez—engineered with zero runtime bloat, clinical precision, and
-                client-side persistence.
-              </p>
-            </div>
-
-            <!-- Bookshelf Rack Grid: 3 Projects (1 Live Production + 2 Staged in Pipeline) -->
-            <div class="bookshelf-rack" id="solo-bookshelf-rack">
-
-              <!-- Book 01 / Project 05: MIGUEL.FIT (Performance OS) -->
-              <div class="bookshelf-card bookshelf-card-live" data-project-id="miguelfit" tabindex="0" role="button"
-                aria-label="View MIGUEL.FIT Performance OS case study modal">
-                <div class="bookshelf-visual">
-                  <span class="bookshelf-vol-badge">VOL. 05 • INDEPENDENT PRODUCTION</span>
-                  <img src="assets/projects/miguelfit-today.png"
-                    alt="MIGUEL.FIT Performance OS - Biometric Command Center" class="bookshelf-img" loading="lazy">
-                  <div class="bookshelf-visual-overlay">
-                    <span class="bookshelf-overlay-text">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                      Open Case Study
-                    </span>
-                  </div>
-                </div>
-
-                <div class="bookshelf-content">
-                  <span class="bookshelf-kicker">VOL. 05 • PERFORMANCE OS // ZERO NOISE</span>
-                  <h4 class="bookshelf-project-title highlighted-system-title">MIGUEL.FIT – Biometric &amp; Tactical
-                    Performance OS</h4>
-                  <p class="bookshelf-desc">
-                    An offline-first, client-centric fitness command center engineered with zero frontend bloat.
-                    Replaces guesswork with clinically validated mathematical modeling (Mifflin-St Jeor &amp; Epley
-                    1RM), biometric readiness tracking, procedural Web Audio cues, and zero-latency localStorage
-                    persistence.
-                  </p>
-
-                  <div class="bookshelf-actions">
-                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn"
-                      data-project-target="miguelfit">
-                      View Project
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Book 02 / Project 06: AURA MART (Boutique E-Commerce) -->
-              <div class="bookshelf-card bookshelf-card-live" data-project-id="auramart" tabindex="0" role="button"
-                aria-label="View AURA MART boutique e-commerce case study modal">
-                <div class="bookshelf-visual">
-                  <span class="bookshelf-vol-badge">VOL. 06 • INDEPENDENT PRODUCTION</span>
-                  <img src="assets/projects/auramart-hero.png" alt="AURA MART Boutique E-Commerce Platform"
-                    class="bookshelf-img" loading="lazy">
-                  <div class="bookshelf-visual-overlay">
-                    <span class="bookshelf-overlay-text">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                      Open Case Study
-                    </span>
-                  </div>
-                </div>
-
-                <div class="bookshelf-content">
-                  <span class="bookshelf-kicker">VOL. 06 • BOUTIQUE E-COMMERCE // SOLO ARCHITECTURE</span>
-                  <h4 class="bookshelf-project-title highlighted-system-title">AURA MART – Atmospheric Boutique
-                    E-Commerce</h4>
-                  <p class="bookshelf-desc">
-                    An original boutique e-commerce concept conceived, architected, and engineered by Niño Miguel S.
-                    Rodriguez. Features dark-mode glassmorphism, instant catalog filtering, an interactive slide-over
-                    cart drawer with dynamic free-shipping progress, and an atomic file-backed JSON REST service.
-                  </p>
-
-                  <div class="bookshelf-actions">
-                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn"
-                      data-project-target="auramart">
-                      View Project
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Book 03 / Project 07: The Grazing Bull (Agri-Enterprise Platform) -->
-              <div class="bookshelf-card bookshelf-card-live" data-project-id="grazingbull" tabindex="0" role="button"
-                aria-label="View The Grazing Bull enterprise case study modal">
-                <div class="bookshelf-visual">
-                  <span class="bookshelf-vol-badge">VOL. 07 • ENTERPRISE PRODUCTION</span>
-                  <img src="assets/projects/grazingbull-hero.png"
-                    alt="The Grazing Bull - Sustainable Ranching & Cattle Genetics" class="bookshelf-img"
-                    loading="lazy">
-                  <div class="bookshelf-visual-overlay">
-                    <span class="bookshelf-overlay-text">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                      </svg>
-                      Open Case Study
-                    </span>
-                  </div>
-                </div>
-
-                <div class="bookshelf-content">
-                  <span class="bookshelf-kicker">VOL. 07 • AGRI-ENTERPRISE // CATTLE GENETICS</span>
-                  <h4 class="bookshelf-project-title highlighted-system-title">The Grazing Bull – Cattle Genetics &amp;
-                    Sustainable Ranching</h4>
-                  <p class="bookshelf-desc">
-                    Over 55 years of distinguished ranching heritage transformed into an enterprise AgTech platform.
-                    Spearheaded under the leadership of CEO Niño Miguel S. Rodriguez, it showcases world-class cattle
-                    genetics, natural pasture grazing, and scientific livestock breeding programs.
-                  </p>
-
-                  <div class="bookshelf-actions">
-                    <button type="button" class="btn btn-primary btn-project-view open-project-modal-btn"
-                      data-project-target="grazingbull">
-                      View Project
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Architectural Bookshelf Shelf Bar -->
-            <div class="bookshelf-shelf-bar"></div>
-
-            <!-- Coming Soon Telemetry / Status Radar Console (Image 5 Reference) -->
-            <div class="coming-soon-console" style="margin-top: 36px;">
-              <div class="console-terminal-top">
-                <div class="console-dots">
-                  <span class="console-dot dot-red"></span>
-                  <span class="console-dot dot-amber"></span>
-                  <span class="console-dot dot-green"></span>
-                </div>
-                <div class="console-title">PIPELINE_MONITOR // PRODUCTION_BRANCH</div>
-                <div class="console-badge-live">
-                  <span class="pulsing-radar-dot"></span>
-                  <span>3 LIVE PRODUCTION ARCHITECTURES</span>
-                </div>
-              </div>
-
-              <div class="console-body">
-                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-cmd">git status</span>:
-                  working tree clean — branch: <span class="c-highlight">main-production</span></div>
-                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Active Deployment
-                    05:</span> MIGUEL.FIT (Performance OS) live on Netlify &rarr; <a
-                    href="https://aesthetic-toffee-3de2c5.netlify.app/spa.html" target="_blank"
-                    rel="noopener noreferrer" style="color: inherit; text-decoration: underline;"><span
-                      class="c-highlight">https://aesthetic-toffee-3de2c5.netlify.app/spa.html</span></a></div>
-                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Active Deployment
-                    06:</span> AURA MART (Atmospheric E-Commerce) live on Netlify &rarr; <a
-                    href="https://tangerine-sopapillas-47b121.netlify.app/" target="_blank" rel="noopener noreferrer"
-                    style="color: inherit; text-decoration: underline;"><span
-                      class="c-highlight">https://tangerine-sopapillas-47b121.netlify.app/</span></a></div>
-                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Active Deployment
-                    07:</span> The Grazing Bull (Agri-Enterprise Platform) live on Netlify &rarr; <a
-                    href="https://rodriguezninomiguelbsit-12a3.netlify.app/" target="_blank" rel="noopener noreferrer"
-                    style="color: inherit; text-decoration: underline;"><span
-                      class="c-highlight">https://rodriguezninomiguelbsit-12a3.netlify.app/</span></a></div>
-                <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">Status:</span> All
-                  3 production systems operational with zero runtime bloat and responsive architecture.</div>
-              </div>
-
-              <div class="console-pills-row">
-                <span class="tech-pill"><span class="pill-dot mint-dot"></span>Live Production</span>
-                <span class="tech-pill"><span class="pill-dot red-dot"></span>Full-Stack Web</span>
-                <span class="tech-pill"><span class="pill-dot bs-dot"></span>Bootstrap 5 E-Commerce</span>
-                <span class="tech-pill"><span class="pill-dot js-dot"></span>Cattle Genetics AgTech</span>
-                <span class="tech-pill"><span class="pill-dot node-dot"></span>Node.js REST Services</span>
               </div>
             </div>
+          </article>
 
-            <!-- Staging Footer / Connect Notice -->
-            <div class="staging-footer-bar">
-              <div class="staging-note-text">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff2a3a" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="8" x2="12" y2="12"></line>
-                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                </svg>
-                <span>Solo creations authored and engineered exclusively by Niño Miguel Rodriguez.</span>
+          <!-- PROJECT 03: FYNN BOUTIQUE HOTEL MANAGEMENT & BOOKING -->
+          <article class="archive-row" data-category="collaborative" data-project-id="fynn-hotel">
+            <div class="archive-row-inner">
+              <div class="archive-col-info">
+                <div class="archive-num-kicker-row">
+                  <span class="archive-num">03</span>
+                  <span class="archive-kicker">ENTERPRISE HOSPITALITY &amp; DYNAMIC YIELD // MONOREPO</span>
+                </div>
+                <h3 class="archive-title">FYNN BOUTIQUE HOTEL MANAGEMENT &amp; BOOKING</h3>
+
+                <div class="archive-tags-wrap">
+                  <span class="archive-tag archive-tag-active">PHP MONOREPO</span>
+                  <span class="archive-tag">YIELD ENGINE (REVPAR/ADR)</span>
+                  <span class="archive-tag">HOUSEKEEPING SLA</span>
+                  <span class="archive-tag">MOBILE DISPATCH</span>
+                  <span class="archive-tag">AUDIT TRAILS</span>
+                  <span class="archive-tag">2-TIER REFUNDS</span>
+                </div>
+
+                <p class="archive-description">
+                  Full-stack modular hospitality monorepo with dynamic yield management (RevPAR, ADR, Occupancy), real-time housekeeping SLA tracking, mobile staff dispatch, and 2-tier refund authorizations engineered for zero revenue leakage.
+                </p>
+
+                <div class="archive-team-strip">
+                  <span class="team-label">CO-ENGINEERED WITH:</span>
+                  <span class="team-tag lead-tag">Niño Miguel S. Rodriguez (Me)</span>
+                  <span class="team-tag">Albert Velez</span>
+                  <span class="team-tag">Karl Evan Tabunda</span>
+                  <span class="team-tag">Francis Lancelot Esquilla</span>
+                </div>
+
+                <div class="archive-actions-wrap">
+                  <div class="archive-split-btn open-project-modal-btn" data-project-target="fynn-hotel" role="button" tabindex="0" aria-label="View Fynn Boutique Hotel Case Study & Architecture">
+                    <span class="split-btn-text">VIEW CASE STUDY &amp; ARCHITECTURE</span>
+                    <span class="split-btn-icon">→</span>
+                  </div>
+                </div>
               </div>
-              <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer"
-                class="btn btn-secondary btn-github-repo">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z">
-                  </path>
-                </svg>
-                Explore GitHub
-              </a>
+
+              <div class="archive-col-viewport">
+                <div class="archive-viewport-box open-project-modal-btn" data-project-target="fynn-hotel" role="button" tabindex="0" aria-label="Open Fynn Boutique Hotel case study modal">
+                  <span class="corner-crosshair top-left">+</span>
+                  <span class="corner-crosshair top-right">+</span>
+                  <span class="corner-crosshair bottom-left">+</span>
+                  <span class="corner-crosshair bottom-right">+</span>
+                  
+                  <div class="viewport-hud-bar">
+                    <span class="hud-id">SYSTEM-ID: FYNN-03 // HOSPITALITY MONOREPO</span>
+                    <span class="hud-action">EXPAND ARCHITECTURE ↗</span>
+                  </div>
+
+                  <div class="viewport-img-frame">
+                    <img src="assets/projects/fynn-hotel-banner.jpg" alt="Fynn Boutique Hotel Management & Booking" class="viewport-img" loading="lazy">
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </article>
+
+          <!-- PROJECT 04: SMARTSPACE: AI-ASSISTED SPATIAL PLANNING PLATFORM -->
+          <article class="archive-row" data-category="collaborative" data-project-id="smartspace">
+            <div class="archive-row-inner">
+              <div class="archive-col-info">
+                <div class="archive-num-kicker-row">
+                  <span class="archive-num">04</span>
+                  <span class="archive-kicker">SPATIAL COMPUTING &amp; GEOMETRY // PERCEPTUAL AI</span>
+                </div>
+                <h3 class="archive-title">SMARTSPACE: AI SPATIAL PLANNING PLATFORM</h3>
+
+                <div class="archive-tags-wrap">
+                  <span class="archive-tag archive-tag-active">GEMINI 2.0 FLASH</span>
+                  <span class="archive-tag">SPATIAL PHYSICS ENGINE</span>
+                  <span class="archive-tag">ZERO SCALE DRIFT</span>
+                  <span class="archive-tag">P95 &lt; 0.4 MS</span>
+                  <span class="archive-tag">GEOMETRIC SOLVER</span>
+                  <span class="archive-tag">HARDWARE CANVAS</span>
+                </div>
+
+                <p class="archive-description">
+                  AI-assisted spatial planner decoupling Google Gemini 2.0 Flash perceptual AI from a deterministic mathematical physics engine at strict 1.00 scale with zero spatial drift and sub-millisecond constraint solving (P95 &lt; 0.4 ms).
+                </p>
+
+                <div class="archive-team-strip">
+                  <span class="team-label">CO-ENGINEERED WITH:</span>
+                  <span class="team-tag lead-tag">Niño Miguel S. Rodriguez (Me)</span>
+                  <span class="team-tag">Albert Velez</span>
+                  <span class="team-tag">Karl Evan Tabunda</span>
+                  <span class="team-tag">Francis Lancelot Esquilla</span>
+                </div>
+
+                <div class="archive-actions-wrap">
+                  <div class="archive-split-btn open-project-modal-btn" data-project-target="smartspace" role="button" tabindex="0" aria-label="View SmartSpace Case Study & Architecture">
+                    <span class="split-btn-text">VIEW CASE STUDY &amp; ARCHITECTURE</span>
+                    <span class="split-btn-icon">→</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="archive-col-viewport">
+                <div class="archive-viewport-box open-project-modal-btn" data-project-target="smartspace" role="button" tabindex="0" aria-label="Open SmartSpace case study modal">
+                  <span class="corner-crosshair top-left">+</span>
+                  <span class="corner-crosshair top-right">+</span>
+                  <span class="corner-crosshair bottom-left">+</span>
+                  <span class="corner-crosshair bottom-right">+</span>
+                  
+                  <div class="viewport-hud-bar">
+                    <span class="hud-id">SYSTEM-ID: SPACE-04 // SPATIAL AI ENGINE</span>
+                    <span class="hud-action">EXPAND ARCHITECTURE ↗</span>
+                  </div>
+
+                  <div class="viewport-img-frame">
+                    <img src="assets/projects/smartspace-banner.jpg" alt="SmartSpace AI Spatial Planning Platform" class="viewport-img" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 05: MIGUEL.FIT: BIOMETRIC & TACTICAL PERFORMANCE OS -->
+          <article class="archive-row" data-category="my-projects" data-project-id="miguelfit">
+            <div class="archive-row-inner">
+              <div class="archive-col-info">
+                <div class="archive-num-kicker-row">
+                  <span class="archive-num">05</span>
+                  <span class="archive-kicker">BIOMETRIC COMMAND OS // CLIENT-CENTRIC ZERO NOISE</span>
+                </div>
+                <h3 class="archive-title">MIGUEL.FIT – PERFORMANCE OS</h3>
+
+                <div class="archive-tags-wrap">
+                  <span class="archive-tag archive-tag-active">VANILLA ES6+</span>
+                  <span class="archive-tag">MIFFLIN-ST JEOR MODEL</span>
+                  <span class="archive-tag">EPLEY 1RM ALGORITHM</span>
+                  <span class="archive-tag">WEB AUDIO SYNTHESIS</span>
+                  <span class="archive-tag">LOCALSTORAGE DB</span>
+                  <span class="archive-tag">OFFLINE-FIRST</span>
+                </div>
+
+                <p class="archive-description">
+                  An offline-first, client-centric fitness command center engineered with zero frontend bloat. Replaces guesswork with clinically validated mathematical modeling (Mifflin-St Jeor &amp; Epley 1RM), biometric readiness tracking, procedural Web Audio cues, and zero-latency persistence.
+                </p>
+
+                <div class="archive-actions-wrap">
+                  <div class="archive-split-btn open-project-modal-btn" data-project-target="miguelfit" role="button" tabindex="0" aria-label="View MIGUEL.FIT Case Study & Architecture">
+                    <span class="split-btn-text">VIEW CASE STUDY &amp; ARCHITECTURE</span>
+                    <span class="split-btn-icon">→</span>
+                  </div>
+                  <a href="https://aesthetic-toffee-3de2c5.netlify.app/spa.html" target="_blank" rel="noopener noreferrer" class="archive-repo-link" aria-label="Live Demo Link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span>LIVE PRODUCTION</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="archive-col-viewport">
+                <div class="archive-viewport-box open-project-modal-btn" data-project-target="miguelfit" role="button" tabindex="0" aria-label="Open MIGUEL.FIT case study modal">
+                  <span class="corner-crosshair top-left">+</span>
+                  <span class="corner-crosshair top-right">+</span>
+                  <span class="corner-crosshair bottom-left">+</span>
+                  <span class="corner-crosshair bottom-right">+</span>
+                  
+                  <div class="viewport-hud-bar">
+                    <span class="hud-id">SYSTEM-ID: FIT-05 // BIOMETRIC COMMAND OS</span>
+                    <span class="hud-action">EXPAND ARCHITECTURE ↗</span>
+                  </div>
+
+                  <div class="viewport-img-frame">
+                    <img src="assets/projects/miguelfit-today.png" alt="MIGUEL.FIT Performance OS" class="viewport-img" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 06: AURA MART: ATMOSPHERIC BOUTIQUE E-COMMERCE -->
+          <article class="archive-row" data-category="my-projects" data-project-id="auramart">
+            <div class="archive-row-inner">
+              <div class="archive-col-info">
+                <div class="archive-num-kicker-row">
+                  <span class="archive-num">06</span>
+                  <span class="archive-kicker">BOUTIQUE E-COMMERCE // GLASSMORPHISM REST SERVICE</span>
+                </div>
+                <h3 class="archive-title">AURA MART – BOUTIQUE E-COMMERCE</h3>
+
+                <div class="archive-tags-wrap">
+                  <span class="archive-tag archive-tag-active">ATOMIC JSON REST</span>
+                  <span class="archive-tag">INSTANT CATALOG FILTER</span>
+                  <span class="archive-tag">SLIDE-OVER DRAWER</span>
+                  <span class="archive-tag">DYNAMIC FREE SHIPPING</span>
+                  <span class="archive-tag">DARK GLASSMORPHISM</span>
+                  <span class="archive-tag">MODERN CSS</span>
+                </div>
+
+                <p class="archive-description">
+                  An original boutique e-commerce concept conceived, architected, and engineered by Niño Miguel S. Rodriguez. Features dark-mode glassmorphism, instant catalog filtering, an interactive slide-over cart drawer with dynamic free-shipping progress, and an atomic file-backed JSON REST service.
+                </p>
+
+                <div class="archive-actions-wrap">
+                  <div class="archive-split-btn open-project-modal-btn" data-project-target="auramart" role="button" tabindex="0" aria-label="View AURA MART Case Study & Architecture">
+                    <span class="split-btn-text">VIEW CASE STUDY &amp; ARCHITECTURE</span>
+                    <span class="split-btn-icon">→</span>
+                  </div>
+                  <a href="https://tangerine-sopapillas-47b121.netlify.app/" target="_blank" rel="noopener noreferrer" class="archive-repo-link" aria-label="Live Demo Link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span>LIVE PRODUCTION</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="archive-col-viewport">
+                <div class="archive-viewport-box open-project-modal-btn" data-project-target="auramart" role="button" tabindex="0" aria-label="Open AURA MART case study modal">
+                  <span class="corner-crosshair top-left">+</span>
+                  <span class="corner-crosshair top-right">+</span>
+                  <span class="corner-crosshair bottom-left">+</span>
+                  <span class="corner-crosshair bottom-right">+</span>
+                  
+                  <div class="viewport-hud-bar">
+                    <span class="hud-id">SYSTEM-ID: AURA-06 // BOUTIQUE E-COMMERCE</span>
+                    <span class="hud-action">EXPAND ARCHITECTURE ↗</span>
+                  </div>
+
+                  <div class="viewport-img-frame">
+                    <img src="assets/projects/auramart-hero.png" alt="AURA MART Boutique E-Commerce" class="viewport-img" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 07: THE GRAZING BULL: CATTLE GENETICS & AGRI-ENTERPRISE -->
+          <article class="archive-row" data-category="my-projects" data-project-id="grazingbull">
+            <div class="archive-row-inner">
+              <div class="archive-col-info">
+                <div class="archive-num-kicker-row">
+                  <span class="archive-num">07</span>
+                  <span class="archive-kicker">AGRI-ENTERPRISE // CATTLE HERITAGE &amp; GENETICS</span>
+                </div>
+                <h3 class="archive-title">THE GRAZING BULL – CATTLE GENETICS</h3>
+
+                <div class="archive-tags-wrap">
+                  <span class="archive-tag archive-tag-active">HERITAGE BRANDING</span>
+                  <span class="archive-tag">GENETIC LINEAGE DB</span>
+                  <span class="archive-tag">RESPONSIVE SHOWCASE</span>
+                  <span class="archive-tag">HIGH ACCESSIBILITY</span>
+                  <span class="archive-tag">AGTECH SYSTEM</span>
+                  <span class="archive-tag">BOOTSTRAP 5</span>
+                </div>
+
+                <p class="archive-description">
+                  Over 55 years of distinguished ranching heritage transformed into an enterprise AgTech platform. Spearheaded under the leadership of CEO Niño Miguel S. Rodriguez, it showcases world-class cattle genetics, natural pasture grazing, and scientific livestock breeding programs.
+                </p>
+
+                <div class="archive-actions-wrap">
+                  <div class="archive-split-btn open-project-modal-btn" data-project-target="grazingbull" role="button" tabindex="0" aria-label="View The Grazing Bull Case Study & Architecture">
+                    <span class="split-btn-text">VIEW CASE STUDY &amp; ARCHITECTURE</span>
+                    <span class="split-btn-icon">→</span>
+                  </div>
+                  <a href="https://rodriguezninomiguelbsit-12a3.netlify.app/" target="_blank" rel="noopener noreferrer" class="archive-repo-link" aria-label="Live Demo Link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                    <span>LIVE PRODUCTION</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="archive-col-viewport">
+                <div class="archive-viewport-box open-project-modal-btn" data-project-target="grazingbull" role="button" tabindex="0" aria-label="Open The Grazing Bull case study modal">
+                  <span class="corner-crosshair top-left">+</span>
+                  <span class="corner-crosshair top-right">+</span>
+                  <span class="corner-crosshair bottom-left">+</span>
+                  <span class="corner-crosshair bottom-right">+</span>
+                  
+                  <div class="viewport-hud-bar">
+                    <span class="hud-id">SYSTEM-ID: BULL-07 // AGRI-ENTERPRISE</span>
+                    <span class="hud-action">EXPAND ARCHITECTURE ↗</span>
+                  </div>
+
+                  <div class="viewport-img-frame">
+                    <img src="assets/projects/grazingbull-hero.png" alt="The Grazing Bull Platform" class="viewport-img" loading="lazy">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
         </div>
+
+        <!-- Telemetry Pipeline Status Console -->
+        <div class="archive-telemetry-console">
+          <div class="console-terminal-top">
+            <div class="console-dots">
+              <span class="console-dot dot-red"></span>
+              <span class="console-dot dot-amber"></span>
+              <span class="console-dot dot-green"></span>
+            </div>
+            <div class="console-title">PIPELINE_STATUS // MVCR_ARCHITECTURE</div>
+            <div class="console-badge-live">
+              <span class="pulsing-radar-dot"></span>
+              <span>07 PRODUCTION ARCHITECTURES VERIFIED</span>
+            </div>
+          </div>
+          <div class="console-body">
+            <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-cmd">system.status</span>: 4 Collaborative + 3 Solo Deployments online with 0 code conflicts.</div>
+            <div class="console-line"><span class="c-prompt">&gt;</span> <span class="c-success">GitHub Central:</span> All codebases modularized under MVCR standards &rarr; <a href="https://github.com/ninomiguel69" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;"><span class="c-highlight">https://github.com/ninomiguel69</span></a></div>
+          </div>
+        </div>
+
       </div>
     </section>
 

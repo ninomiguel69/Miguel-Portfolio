@@ -5,16 +5,13 @@
 
 export function initProjectArchive() {
   const filterBtns = document.querySelectorAll('.archive-filter-btn');
-  const projectCard = document.querySelector('.project-card[data-category="collaborative"]');
-  const soloShowcase = document.getElementById('solo-placeholder-card');
-  const myProjectsCard = document.getElementById('my-projects-showcase-card');
-  const switchBtns = document.querySelectorAll('.filter-switch-btn');
+  const rows = document.querySelectorAll('.archive-row');
 
-  function showElement(el, displayType = 'block') {
+  function showRow(el) {
     if (!el) return;
-    el.style.display = displayType;
+    el.style.display = 'block';
     el.style.opacity = '0';
-    el.style.transform = 'translateY(12px)';
+    el.style.transform = 'translateY(16px)';
     requestAnimationFrame(() => {
       el.style.transition = 'opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)';
       el.style.opacity = '1';
@@ -22,7 +19,7 @@ export function initProjectArchive() {
     });
   }
 
-  function hideElement(el) {
+  function hideRow(el) {
     if (!el) return;
     el.style.display = 'none';
   }
@@ -34,22 +31,18 @@ export function initProjectArchive() {
       btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
 
-    if (filter === 'all') {
-      // Show Celestine in its original large front view (display: flex)
-      showElement(projectCard, 'flex');
-      showElement(soloShowcase, 'block');
-      showElement(myProjectsCard, 'block');
-    } else if (filter === 'collaborative') {
-      // Show Celestine (large front view) and Collaborative Bookshelf Showcase; hide My Projects
-      showElement(projectCard, 'flex');
-      showElement(soloShowcase, 'block');
-      hideElement(myProjectsCard);
-    } else if (filter === 'my-projects') {
-      // When "MY PROJECTS" is selected, ALL collaborative projects are completely OUT OF SIGHT!
-      hideElement(projectCard);
-      hideElement(soloShowcase);
-      showElement(myProjectsCard, 'block');
+    if (window.appState) {
+      window.appState.activeFilter = filter;
     }
+
+    rows.forEach(row => {
+      const category = row.getAttribute('data-category');
+      if (filter === 'all' || category === filter) {
+        showRow(row);
+      } else {
+        hideRow(row);
+      }
+    });
   }
 
   filterBtns.forEach(btn => {
@@ -59,16 +52,10 @@ export function initProjectArchive() {
     });
   });
 
-  switchBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.getAttribute('data-target-filter') || 'all';
-      setFilter(target);
-    });
-  });
-
   // Synchronous initial view state matching 'all'
   setFilter('all');
 }
+
 
 
 export function initServicesSpotlight() {
