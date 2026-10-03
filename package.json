@@ -1,15 +1,18 @@
 {
-  "name": "smooth-scroll-animation",
-  "version": "1.0.0",
-  "description": "High-performance smooth scroll-driven image sequence animation",
+  "name": "nino-miguel-portfolio",
+  "version": "2.0.0",
+  "description": "High-performance MVCR portfolio and smooth scroll-driven image sequence animation",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "serve": "node server.js"
+    "serve": "node server.js",
+    "fix-webview": "powershell -ExecutionPolicy Bypass -File ./scripts/fix-webview.ps1"
   },
   "keywords": [
+    "mvcr",
+    "portfolio",
     "canvas",
     "smooth-scroll",
     "animation",

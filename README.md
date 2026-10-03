@@ -1,52 +1,61 @@
+# Technical Analysis & Architecture: Niño Miguel S. Rodriguez Portfolio
+
 This technical analysis details the architecture, subsystems, and structure of Niño Miguel S. Rodriguez’s single-page portfolio web application.
 
-Core Identity & Tech Stack
-Developer: Niño Miguel S. Rodriguez — Full-Stack Web Developer & IT Student.
+## Core Identity & Tech Stack
+- **Developer:** Niño Miguel S. Rodriguez — Full-Stack Web Developer & IT Student.
+- **Architecture:** Zero-framework, native client stack: HTML5, CSS3, ES6+ JavaScript, architected under the **MVCR (Model-View-Controller-Router)** pattern, coupled with a custom Node.js server.
+- **Core Highlight:** High-performance, hardware-accelerated, scroll-driven canvas scrubbing.
 
-Architecture: Zero-framework, native client stack: HTML5, CSS3, ES6+ JavaScript, coupled with a custom Node.js server.
+---
 
-Core Highlight: High-performance, hardware-accelerated, scroll-driven canvas scrubbing.
+## Architectural Pattern: MVCR (Model-View-Controller-Router)
 
-Key Architectural Subsystems
-300-Frame Animation Engine (generate_hd_frames.js, main.js):
+The codebase is organized under a modular MVCR architecture for high maintainability, zero code conflict, and separation of concerns:
 
-Video Pipeline: Uses ffmpeg-static with hqdn3d denoising, gradfun, and bicubic scaling to output 300 WebP frames (quality 95).
+- **Models (`models/`):**
+  - [`models/appState.js`](file:///d:/Portfolio%20Website/models/appState.js): Reactive state container (300-frame scroll tracking, active filter, loading states).
+  - [`models/projectsData.js`](file:///d:/Portfolio%20Website/models/projectsData.js): Authoritative project catalog, tech stacks, highlights, and gallery assets.
+  - [`models/index.js`](file:///d:/Portfolio%20Website/models/index.js): Clean re-export barrel.
 
-Rendering & Preloading: Interpolates frame delivery via requestAnimationFrame lerp loop; uses object-fit: cover with pixel snapping and distributed keyframe preloading (stride: 5) via asynchronous Image.decode() to avoid scroll locking.
+- **Views (`views/`):**
+  - [`views/canvasView.js`](file:///d:/Portfolio%20Website/views/canvasView.js): Hardware-accelerated canvas sizing, pixel snapping, and golden-ratio cover rendering.
+  - [`views/modalView.js`](file:///d:/Portfolio%20Website/views/modalView.js): Project case study modal renderer, gallery tab switcher, and tech pill badges.
+  - [`views/heatmapView.js`](file:///d:/Portfolio%20Website/views/heatmapView.js): 52-week GitHub-style commit heatmap matrix and interactive tooltip.
+  - [`views/dinoView.js`](file:///d:/Portfolio%20Website/views/dinoView.js): Arcade Dino dance runner visual HUD, floating score popups, and sound synthesizer.
+  - [`views/index.js`](file:///d:/Portfolio%20Website/views/index.js): Clean re-export barrel.
 
-Custom Delivery Server (server.js):
+- **Controllers (`controllers/`):**
+  - [`controllers/canvasController.js`](file:///d:/Portfolio%20Website/controllers/canvasController.js): 300-frame progressive preloader with distributed keyframes and smooth `requestAnimationFrame` lerp loop.
+  - [`controllers/modalController.js`](file:///d:/Portfolio%20Website/controllers/modalController.js): Accessible project modal manager (keyboard focus trap, ESC dismiss, deep linking).
+  - [`controllers/contactController.js`](file:///d:/Portfolio%20Website/controllers/contactController.js): Production FormSubmit AJAX handler, ticket generator (`#NMS-YYYY-XXXX`), anti-spam honeypot, and abuse moderation.
+  - [`controllers/dinoController.js`](file:///d:/Portfolio%20Website/controllers/dinoController.js): Retro runner game loop, obstacle proximity auto-leap, and score tracking.
+  - [`controllers/uiController.js`](file:///d:/Portfolio%20Website/controllers/uiController.js): Project category archive filters, services spotlight tracking, mobile HUD navigation drawer, and `Ctrl+K` command palette.
+  - [`controllers/index.js`](file:///d:/Portfolio%20Website/controllers/index.js): Clean re-export barrel.
 
-Zero-dependency Node.js HTTP server on port 3000 (with automatic port escalation).
+- **Routes (`routes/`):**
+  - [`routes/router.js`](file:///d:/Portfolio%20Website/routes/router.js): Client-side hash routing, scroll-spy section synchronizer, and deep link dispatcher.
+  - [`routes/serverRoutes.js`](file:///d:/Portfolio%20Website/routes/serverRoutes.js): Backend HTTP route handler with MIME resolution, HTTP 206 partial streaming, and immutable caching.
+  - [`routes/index.js`](file:///d:/Portfolio%20Website/routes/index.js): Clean re-export barrel.
 
-Serves media with HTTP 206 byte-range partial content streaming.
+---
 
-Implements aggressive immutable caching (max-age=31536000, immutable) for rapid scrubbing and path sanitization to prevent directory traversal.
+## Key Architectural Subsystems
 
-Frontend Page Modules (index.html, style.css, main.js):
+### 1. 300-Frame Animation Engine (`views/canvasView.js`, `controllers/canvasController.js`)
+- **Video Pipeline:** Uses `ffmpeg-static` with `hqdn3d` denoising, `gradfun`, and bicubic scaling to output 300 WebP frames (quality 95).
+- **Rendering & Preloading:** Interpolates frame delivery via `requestAnimationFrame` lerp loop; uses `object-fit: cover` with pixel snapping and distributed keyframe preloading (stride: 5) via asynchronous `Image.decode()` to avoid scroll locking.
 
-Hero & About (#home, #about): Branding, vector logo, navigation, fitness discipline ethos, and a core competency matrix.
+### 2. Custom Delivery Server (`server.js`, `routes/serverRoutes.js`)
+- Zero-dependency Node.js HTTP server on port 3000 (with automatic port escalation).
+- Serves media with HTTP 206 byte-range partial content streaming.
+- Implements aggressive immutable caching (`max-age=31536000, immutable`) for rapid scrubbing and path sanitization to prevent directory traversal.
 
-Services (#services): 6 service cards with dynamic cursor spotlight tracking.
-
-Project Showcase (#projects): Category-filtered grid (all, collaborative, my-projects) and deep modal inspection covering collaborative builds (CUP MVCR, NCST SRMS, Fynn Hotel, SmartSpace) and solo works (MIGUEL.FIT, AURA MART, The Grazing Bull).
-
-Arsenal & Credentials (#technologies, #certificates): Segmented tech stack grid alongside verified SoloLearn badges (HTML5, CSS3, JS) with certificate IDs.
-
-Activity Matrix (#activity): Interactive 52-week GitHub-style commit heatmap.
-
-ATS Resume (#resume): Printable, exportable ATS resume modal.
-
-Contact Gatekeeper (#contact): FormSubmit AJAX pipeline with fallback mailto links, receipt/ticket generator (#NMS-YYYY-XXXX), and an input abuse/toxicity filter.
-
-Footer Easter Egg: Chrome Dino-style runner game with jump physics and live scoring.
-
-Repository File Map
-index.html: Semantic page layout and inline SVG library (2,124 lines).
-
-style.css: Design tokens, glassmorphism UI scrims, and layout breakpoints.
-
-main.js: State orchestrator (Canvas engine, modal managers, filters, heatmap, Dino runner).
-
-server.js & generate_hd_frames.js: Node.js static/streaming server and FFmpeg processing pipeline.
-
-frames/ & assets/: Optimized WebP frame sequence, UI vector graphics, project previews, and credentials.
+### 3. Repository File Map
+- [`index.html`](file:///d:/Portfolio%20Website/index.html): Semantic page layout, inline SVG library, and ES module loader.
+- [`style.css`](file:///d:/Portfolio%20Website/style.css): Design tokens, glassmorphism UI scrims, and responsive layout breakpoints.
+- [`main.js`](file:///d:/Portfolio%20Website/main.js): Orchestrator that initializes all MVCR modules.
+- [`server.js`](file:///d:/Portfolio%20Website/server.js): Entry server delegating to `routes/serverRoutes.js`.
+- [`frames/`](file:///d:/Portfolio%20Website/frames/): 300 optimized WebP sequence frames (`frame-001.webp` ... `frame-300.webp`).
+- [`assets/`](file:///d:/Portfolio%20Website/assets/): Project banners, verified certificates, and brand vectors.
+- [`scripts/`](file:///d:/Portfolio%20Website/scripts/): Diagnostic and repair utilities (`fix-webview.ps1`, `fix-webview.bat`).
